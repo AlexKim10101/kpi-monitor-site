@@ -28,6 +28,10 @@ module.exports = (env, argv) => {
 					test: /\.js$/,
 					loader: "source-map-loader",
 				},
+				{
+					test: /\.css$/i,
+					use: ["style-loader", "css-loader"],
+				},
 			],
 		},
 		plugins: [
@@ -37,7 +41,7 @@ module.exports = (env, argv) => {
 		],
 		devServer: {
 			static: {
-				directory: path.join(__dirname, "dist"),
+				directory: path.join(__dirname, "public"),
 			},
 			historyApiFallback: true,
 			port: 3000,
