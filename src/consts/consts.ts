@@ -33,14 +33,29 @@ export const LOGO_DATA = {
 
 export const SCROLL_LIMIT = 2500;
 
-// 'http://85.192.20.139:1338/api/i18n/locales'
-// 'http://85.192.20.139:1338/api/buttons'
-// 'http://85.192.20.139:1338/api/captions'
-// 'http://85.192.20.139:1338/api/clients?populate=logo'
-// 'http://85.192.20.139:1338/api/features?populate=icon'
-// 'http://85.192.20.139:1338/api/news'
-// 'http://85.192.20.139:1338/api/solutions?populate=picture'
-// 'http://85.192.20.139:1338/api/function-types'
-//
-// "http://85.192.20.139:1338/api/upload/files/";
-// 'http://85.192.20.139:1338/api/functions?populate=function_type&populate=function_blocks'
+export const fakeStages = [
+	{
+		title: "Презентация",
+		content: [
+			"Удаленная онлайн демонстрация",
+			"Очная презентация решений",
+			"Специализированный  демо-стенд",
+		],
+	},
+	{
+		title: "Аудит",
+		content: [
+			"Разработанной методологии",
+			"Источников данных",
+			"Алгоритмов расчетов",
+		],
+	},
+	{
+		title: "Внедрение",
+		content: [
+			"Разработка технического задания",
+			"Настройка системы",
+			"Развертывание и запуск",
+		],
+	},
+];

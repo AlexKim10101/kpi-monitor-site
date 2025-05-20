@@ -8,6 +8,8 @@ import SolutionsSection from "../widgets/sections/solutions";
 
 import { urls } from "../consts/consts";
 import KeyFunctions from "../widgets/sections/keyfunctions";
+import Stages from "../widgets/sections/stages";
+import News from "../widgets/sections/news";
 
 type IHomPageProps = {};
 
@@ -53,6 +55,8 @@ const HomePage: React.FC<IHomPageProps> = () => {
 			<ClientsSection clientsData={clientsData} />
 			<SolutionsSection />
 			<KeyFunctions />
+			<Stages />
+			<News />
 		</main>
 	);
 };

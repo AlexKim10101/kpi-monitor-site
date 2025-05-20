@@ -38,3 +38,9 @@ export type IFunctionData = {
 		url: string;
 	};
 };
+
+export type INewData = {
+	id: number;
+	title: string;
+	date: string;
+};

@@ -11,7 +11,6 @@ const SolutionsSection: React.FC<ISolutionsSectionProps> = () => {
 		queryKey: ["solutions"],
 		queryFn: () => fetch(urls.solutions).then(res => res.json()),
 	});
-	console.log("solutionsQuery", solutionsQuery.data);
 
 	const solutions =
 		solutionsQuery && solutionsQuery.data ? solutionsQuery.data.data : [];

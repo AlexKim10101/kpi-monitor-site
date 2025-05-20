@@ -1,25 +1,21 @@
-import { Box, Button, Link, Stack, Tab, Tabs, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import React from "react";
+import { Link } from "react-router";
+import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Button from "@components/CustomButton";
+import Icon from "@components/icon";
+import "./footer.css";
 
 // import logoMim from "@mui/icons-material/Star";
 // Assuming KpiLogo is a component that needs to be imported
 // import { KpiLogo } from "./KpiLogo";
 
-const StyledTab = styled(Tab)(({ theme }) => ({
-	textTransform: "none",
-	color: theme.palette.primary.main,
-	fontFamily: "Manrope, Helvetica",
-	fontSize: "16px",
-	padding: "10px",
-	minWidth: "auto",
-	"&.Mui-selected": {
-		color: theme.palette.primary.main,
-		borderBottom: `1px solid ${theme.palette.primary.main}`,
-	},
-}));
+type IFooter = {
+	logo: { url: string; to: string };
+	links: Record<string, any>[];
+};
 
-const Footer = () => {
+const Footer: React.FC<IFooter> = ({ logo, links }) => {
 	const [value, setValue] = React.useState(0);
 
 	// const handleChange = (event, newValue) => {
@@ -34,190 +30,89 @@ const Footer = () => {
 	];
 
 	return (
-		<Box
-			component="footer"
-			sx={{
-				pt: 5,
-				pb: 10,
-				px: { xs: 3, md: 15 },
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "flex-start",
-				gap: 10,
-			}}
-		>
-			<Stack
-				direction={{ xs: "column", md: "row" }}
-				spacing={{ xs: 5, md: 0 }}
-				justifyContent="space-between"
-				width="100%"
-			>
-				{/* <KpiLogo sx={{ width: "235px", height: "44px" }} /> */}
-
-				<Stack
-					direction={{ xs: "column", md: "row" }}
-					spacing={{ xs: 5, md: 26 }}
-					width="100%"
-				>
-					<Box sx={{ width: { xs: "100%", md: "190px" } }}>
-						<Tabs
-							value={value}
-							// onChange={()=>handleChange()}
+		<footer className="footer">
+			<div className="footer-desk-container">
+				<div className="footer-desc-content">
+					<Link to={logo.to}>
+						<Box
+							component="img"
+							src={logo.url}
+							alt="Kpi logo"
 							sx={{
-								mb: 7.5,
-								"& .MuiTabs-flexContainer": {
-									flexWrap: "wrap",
-								},
+								width: "235px",
+								height: "44px",
 							}}
-							TabIndicatorProps={{
-								style: { display: "none" },
-							}}
-						>
-							{navItems.map((item, index) => (
-								<StyledTab key={index} label={item} />
-							))}
-						</Tabs>
+						/>
+					</Link>
 
-						<Stack spacing={2.5}>
-							<Button
-								variant="contained"
-								sx={{
-									bgcolor: "var(--bluesec)",
-									color: "var(--accent)",
-									borderRadius: "30px",
-									textTransform: "none",
-									px: 3.75,
-									py: 1.25,
-									fontFamily: "Ubuntu, Helvetica",
-									fontSize: "16px",
-									"&:hover": {
-										bgcolor: "var(--bluesec)",
-										opacity: 0.9,
-									},
-								}}
-							>
-								Быстрый старт
-							</Button>
+					<div className="footer-nav-container">
+						<nav>
+							<ul className="nav-list nav-list-footer">
+								{links.map((link, index) => (
+									<li key={index} className="nav-item">
+										<Link to={""} className="nav-link">
+											{link.caption}
+										</Link>
+									</li>
+								))}
+							</ul>
+						</nav>
 
-							<Button
-								variant="contained"
-								sx={{
-									bgcolor: "var(--accent)",
-									color: "white",
-									borderRadius: "30px",
-									textTransform: "none",
-									px: 3.75,
-									py: 1.25,
-									fontFamily: "Ubuntu, Helvetica",
-									fontSize: "16px",
-									"&:hover": {
-										bgcolor: "var(--bluehover)",
-									},
-								}}
-							>
-								Войти
-							</Button>
-						</Stack>
-					</Box>
+						<div className="btn-wrapper btn-wrapper-footer">
+							<Button variant="secondary">Быстрый старт</Button>
+							<Button variant="primary">Войти</Button>
+						</div>
+					</div>
 
-					<Box sx={{ flexGrow: 1 }}>
-						<Typography
-							variant="h4"
-							sx={{
-								mb: 1.875,
-								fontFamily: "Manrope, Helvetica",
-								fontSize: "32px",
-								color: "var(--accent)",
-							}}
-						>
-							Контакты:
-						</Typography>
+					<div className="footer-contacts-container">
+						<div className="footer-title">Контакты</div>
 
-						<Stack spacing={3.25}>
-							<Typography
-								sx={{
-									fontFamily: "Manrope, Helvetica",
-									fontSize: "16px",
-									color: "var(--accent)",
-								}}
-							>
-								111250, г. Москва, проезд Завода «Серп и Молот», д. 6 корп. 1,
+						<div className="contact-info">
+							<div className="address">
+								111250, г. Москва, проезд Завода «Серп и Молот», д. 6 корп. 1,
 								Бизнес-центр «РОСТЭК»
-							</Typography>
-
-							<Stack
-								direction={{ xs: "column", sm: "row" }}
-								spacing={7.5}
-								width="100%"
-							>
-								<Stack spacing={1.25}>
-									{phoneNumbers.map((phone, index) => (
-										<Typography
-											key={index}
-											sx={{
-												fontFamily: "Manrope, Helvetica",
-												fontSize: "16px",
-												color: "var(--accent)",
-											}}
-										>
-											{phone}
-										</Typography>
+							</div>
+							<div className="phone-and-email">
+								<div className="phone">
+									{phoneNumbers.map(pn => (
+										<div>{pn}</div>
 									))}
-								</Stack>
-
-								<Typography
-									sx={{
-										fontFamily: "Manrope, Helvetica",
-										fontSize: "16px",
-										color: "var(--accent)",
-									}}
-								>
-									info@kpi-monitor.ru
-								</Typography>
-							</Stack>
-
-							<Box
-								component="img"
-								// src={logoMim}
-								alt="Logo mim"
-								sx={{ width: "62px", height: "77px" }}
+								</div>
+								<div className="email">info@kpi-monitor.ru</div>
+							</div>
+							<Icon
+								path="/icons/Clip-path-group.svg"
+								id="Clip-path-group"
+								width={62}
+								height={77}
 							/>
-						</Stack>
-					</Box>
-				</Stack>
-			</Stack>
+						</div>
+					</div>
+				</div>
 
-			<Typography
-				sx={{
-					fontFamily: "Manrope, Helvetica",
-					fontSize: "14px",
-					color: "var(--accent)",
-					lineHeight: "normal",
-				}}
-			>
-				© 2010 KPI MONITOR - Автоматизация ключевых показателей эффективности
-				(KPI) предприятия. Все права защищены. Публикация любых материалов сайта
-				возможна только с разрешения владельца.{" "}
-				<Link
-					href="https://kpi-monitor.ru/terms-of-use"
-					target="_blank"
-					rel="noopener noreferrer"
-					sx={{ color: "var(--accent)" }}
-				>
-					Пользовательское соглашение
-				</Link>{" "}
-				|{" "}
-				<Link
-					href="https://kpi-monitor.ru/privacy-policy"
-					target="_blank"
-					rel="noopener noreferrer"
-					sx={{ color: "var(--accent)" }}
-				>
-					Политика конфиденциальности
-				</Link>{" "}
-				.
-			</Typography>
-		</Box>
+				<div className="footer-desc-signa">
+					© 2010 KPI MONITOR - Автоматизация ключевых показателей эффективности
+					(KPI) предприятия. Все права защищены. Публикация любых материалов
+					сайта возможна только с разрешения владельца.{" "}
+					<Link
+						to="https://kpi-monitor.ru/terms-of-use"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Пользовательское соглашение
+					</Link>{" "}
+					|{" "}
+					<Link
+						to="https://kpi-monitor.ru/privacy-policy"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Политика конфиденциальности
+					</Link>{" "}
+					.
+				</div>
+			</div>
+		</footer>
 	);
 };
 
