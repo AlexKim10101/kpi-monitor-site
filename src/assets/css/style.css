@@ -1,3 +1,77 @@
 body {
 	font-family: "Manrope", sans-serif;
 }
+
+main {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	gap: 60px;
+
+	position: relative;
+	top: 105px;
+}
+
+.intro-section {
+	width: 100%;
+	max-width: 1200px;
+
+	display: flex;
+	flex-direction: row;
+	gap: 40px;
+	justify-content: space-between;
+	align-items: end;
+
+	/* background-color: aquamarine; */
+}
+/* Coat_of_Arms_of_the_Russian_Federation.svg */
+
+.intro-bts {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+
+	margin-top: 40px;
+}
+
+.intro-title {
+	color: var(--Accent, #22409a);
+	font-family: Manrope;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.intro-message {
+	display: flex;
+	padding: 5px 15px;
+	align-items: center;
+	gap: 15px;
+
+	margin-top: 15px;
+
+	border-left: 2px solid var(--Accent, #22409a);
+}
+
+.message-text {
+	color: var(--black, #141414);
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.section-title {
+	color: var(--Accent, #22409a);
+	font-family: Manrope;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	width: 100%;
+	max-width: 1200px;
+}

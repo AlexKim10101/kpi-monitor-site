@@ -13,11 +13,20 @@ module.exports = (env, argv) => {
 			publicPath: "/",
 		},
 		resolve: {
-			extensions: [".tsx", ".ts", ".js"],
+			alias: {
+				"@assets": path.resolve(__dirname, "src/assets"),
+				"@components": path.resolve(__dirname, "src/components"),
+			},
+			extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
 		},
 		devtool: isDev ? "source-map" : false,
 		module: {
 			rules: [
+				{
+					test: /\.svg$/i,
+					issuer: /\.[jt]sx?$/,
+					use: ["@svgr/webpack"],
+				},
 				{
 					test: /\.tsx?$/,
 					use: "ts-loader",

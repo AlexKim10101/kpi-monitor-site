@@ -45,7 +45,7 @@ const sizeStyles = {
 	},
 	medium: {
 		padding: "10px 30px",
-		fontSize: "14px",
+		fontSize: "16px",
 	},
 	large: {
 		padding: "12px 20px",

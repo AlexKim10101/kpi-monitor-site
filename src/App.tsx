@@ -32,10 +32,10 @@ const App = () => {
 		queryFn: () => fetch(urls.buttons).then(res => res.json()),
 	});
 
-	const clientsQuery = useQuery({
-		queryKey: ["clients"],
-		queryFn: () => fetch(urls.clients).then(res => res.json()),
-	});
+	// const clientsQuery = useQuery({
+	// 	queryKey: ["clients"],
+	// 	queryFn: () => fetch(urls.clients).then(res => res.json()),
+	// });
 
 	const featuresQuery = useQuery({
 		queryKey: ["features"],
@@ -47,15 +47,10 @@ const App = () => {
 		queryFn: () => fetch(urls.news).then(res => res.json()),
 	});
 
-	const solutionsQuery = useQuery({
-		queryKey: ["solutions"],
-		queryFn: () => fetch(urls.solutions).then(res => res.json()),
-	});
-
-	const functionTypesQuery = useQuery({
-		queryKey: ["functionTypes"],
-		queryFn: () => fetch(urls.functionTypes).then(res => res.json()),
-	});
+	// const functionTypesQuery = useQuery({
+	// 	queryKey: ["functionTypes"],
+	// 	queryFn: () => fetch(urls.functionTypes).then(res => res.json()),
+	// });
 
 	const links =
 		captionsQuery && captionsQuery.data
@@ -69,11 +64,9 @@ const App = () => {
 	// console.log("clientsQuery", clientsQuery.data);
 	console.log("captionsQuery", captionsQuery.data);
 	console.log("buttonsQuery", buttonsQuery.data);
-	console.log("clientsQuery", clientsQuery.data);
+	// console.log("clientsQuery", clientsQuery.data);
 	console.log("featuresQuery", featuresQuery.data);
 	console.log("newsQuery", newsQuery.data);
-	console.log("solutionsQuery", solutionsQuery.data);
-	console.log("functionTypesQuery", functionTypesQuery.data);
 
 	return (
 		<div>

@@ -13,6 +13,8 @@ export const BG_GREY_COLOR = "#9EB1E8";
 export const ERROR_COLOR = "#FA8989";
 export const INACTIVE = "#747474";
 
+export const BASE_URL = "http://85.192.20.139:1338";
+
 export const urls = {
 	locales: "http://85.192.20.139:1338/api/i18n/locales",
 	buttons: "http://85.192.20.139:1338/api/buttons",
