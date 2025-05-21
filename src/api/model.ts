@@ -1,6 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchFromApi } from "./api";
-import { Solution, Client, KeyFunction, News, Operation } from "./interfaces";
+import {
+	Caption,
+	Solution,
+	Client,
+	KeyFunction,
+	News,
+	Operation,
+} from "./interfaces";
+
+export function useCaptions() {
+	return useQuery<Caption[]>({
+		queryKey: ["caption"],
+		queryFn: () => fetchFromApi("/captions"),
+	});
+}
 
 export function useClients() {
 	return useQuery<Client[]>({

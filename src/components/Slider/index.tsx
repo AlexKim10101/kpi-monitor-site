@@ -3,7 +3,12 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IconButton } from "@mui/material";
-import ForwardIcon from "@assets/icons/slider-arrow.svg";
+import BackIcon from "@assets/icons/left-arrow.svg";
+import BackIconHover from "@assets/icons/left-arrow-hover.svg";
+
+import ForwardIcon from "@assets/icons/right-arrow.svg";
+import ForwardIconHover from "@assets/icons/right-arrow-hover.svg";
+
 // import { ReactComponent as BackIcon } from "@assets/icons/back-icon.svg";
 
 import "./slider.css";
@@ -69,18 +74,14 @@ const CardGallery: React.FC<ICardGallery> = ({
 			</Slider>
 			<div className="button-container">
 				<div className="arrow-button" onClick={prev}>
-					<ForwardIcon />
+					<BackIcon />
+					<BackIconHover />
 				</div>
 
 				<div className="arrow-button" onClick={next}>
 					<ForwardIcon />
+					<ForwardIconHover />
 				</div>
-				{/* <IconButton onClick={prev} className="icon-button">
-					<ForwardIcon />
-				</IconButton> */}
-				{/* <IconButton onClick={next} className="icon-button">
-					<ForwardIcon />
-				</IconButton> */}
 			</div>
 		</div>
 	);

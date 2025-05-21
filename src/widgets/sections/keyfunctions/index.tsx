@@ -9,9 +9,9 @@ import { useKeyFunctoins } from "../../../api/model";
 
 import "./functions.css";
 
-type IKeyFunctionsProps = {};
+type IKeyFunctionsProps = { captions: Record<string, string> };
 
-const KeyFunctions: React.FC<IKeyFunctionsProps> = () => {
+const KeyFunctions: React.FC<IKeyFunctionsProps> = ({ captions }) => {
 	const { data, isLoading, error } = useKeyFunctoins();
 
 	if (isLoading) {
@@ -22,7 +22,7 @@ const KeyFunctions: React.FC<IKeyFunctionsProps> = () => {
 
 	return (
 		<section className="function-section">
-			<div className="section-title">Ключевые возможности KPI MONITOR</div>
+			<div className="section-title">{captions.heading_key_features}</div>
 			<div className="function-grid">
 				{data.map(f => {
 					return (

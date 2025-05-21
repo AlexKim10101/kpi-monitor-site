@@ -1,28 +1,3 @@
-.slide {
-	/* width: 100%; */
-	/* padding-top: 90%; */
-	/* position: relative;
-	height: 100%; */
-	/* align-items: stretch;
-	justify-content: stretch; */
-	/* align-self: stretch; */
-}
-
-.slick-track {
-	/* display: flex; */
-	/* align-items: stretch;
-	justify-content: stretch; */
-}
-
-.slick-track {
-	/* display: flex !important; */
-}
-
-.slick-slide {
-	/* height: auto; */
-	/* align-self: stretch; */
-}
-
 .slider-container {
 	width: 150%;
 	position: relative;
@@ -30,12 +5,6 @@
 }
 
 .card {
-	/* position: absolute; */
-	/* top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0; */
-
 	min-height: 162px;
 
 	margin: 5px;
@@ -129,8 +98,6 @@
 	background-color: #d0d0d0;
 }
 
-/*  */
-
 .forward-button {
 	background: none;
 	border: none;
@@ -138,63 +105,26 @@
 	cursor: pointer;
 }
 
-.forward-button svg .icon-circle {
-	fill: #e0e0e0; /* исходный цвет круга */
-	transition: fill 0.3s;
+.left-arrow-hover_svg__left2 {
+	display: none;
 }
 
-.forward-button svg .icon-arrow {
-	fill: #333; /* исходный цвет стрелки */
-	transition: fill 0.3s;
+.arrow-button:hover .left-arrow_svg__left1 {
+	display: none;
 }
 
-.forward-button:hover svg .icon-circle {
-	fill: #1976d2; /* цвет круга при наведении */
+.arrow-button:hover .left-arrow-hover_svg__left2 {
+	display: block;
 }
 
-.forward-button:hover svg .icon-arrow {
-	fill: #ffffff; /* цвет стрелки при наведении */
+.right-arrow-hover_svg__right-arrow-hover {
+	display: none;
 }
 
-.icon-button {
-	color: #007bff;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	padding: 8px;
-	transition: all 0.3s ease;
+.arrow-button:hover .right-arrow_svg__right-arrow {
+	display: none;
 }
 
-.icon-button:hover {
-	color: white; /* цвет стрелки */
-	fill: #007bff;
-
-	/* background-color: #007bff;  */
-}
-
-.icon {
-	width: 24px;
-	height: 24px;
-}
-
-.arrow-icon {
-	transition: all 0.3s ease;
-}
-
-.arrow-bg {
-	transition: fill 0.3s ease;
-	fill: transparent; /* по умолчанию прозрачный круг */
-}
-
-.arrow-path {
-	transition: fill 0.3s ease;
-	fill: #22409a; /* цвет стрелки по умолчанию */
-}
-
-.arrow-button:hover .arrow-bg {
-	fill: #22409a; /* синий круг на hover */
-}
-
-.arrow-button:hover .arrow-path {
-	fill: white; /* белая стрелка на hover */
+.arrow-button:hover .right-arrow-hover_svg__right-arrow-hover {
+	display: block;
 }

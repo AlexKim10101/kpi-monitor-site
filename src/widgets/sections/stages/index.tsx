@@ -3,15 +3,13 @@ import Button from "@components/CustomButton";
 import { fakeStages } from "../../../consts/consts";
 import "./stages.css";
 
-type IStagesProps = {};
+type IStagesProps = { captions: Record<string, string> };
 
-const Stages: React.FC<IStagesProps> = () => {
+const Stages: React.FC<IStagesProps> = ({ captions }) => {
 	return (
 		<section className="stages-section">
 			<div className="stage-header">
-				<div className="section-title">
-					Оставьте заявку, и мы сразу начнем работу
-				</div>
+				<div className="section-title">{captions.heading_request}</div>
 				<Button variant="secondary">Быстрый старт</Button>
 			</div>
 

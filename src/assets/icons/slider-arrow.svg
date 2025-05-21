@@ -1,4 +1,0 @@
-<svg className="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="currentColor" >
-  <rect className="arrow-bg" x="1" y="39.5" width="39" height="39" rx="19.5" transform="rotate(-90 1 39.5)" stroke="#22409A" />
-  <path className="arrow-path" fill-rule="evenodd" clip-rule="evenodd" d="M21.8672 26.7216L15.7801 20.6722C15.4066 20.3009 15.4066 19.6991 15.7801 19.3278L21.8672 13.2784C22.2407 12.9072 22.8463 12.9072 23.2199 13.2784C23.5934 13.6496 23.5934 14.2515 23.2199 14.6227L18.7656 19.0494L17.8145 20.0402L18.7656 20.9433L23.2199 25.3773C23.5934 25.7485 23.5934 26.3504 23.2199 26.7216C22.8463 27.0928 22.2407 27.0928 21.8672 26.7216Z" fill="currentColor" />
-</svg>

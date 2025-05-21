@@ -5,9 +5,9 @@ import { useQuery } from "@tanstack/react-query";
 import { urls } from "../../../consts/consts";
 import { useSolutions } from "../../../api/model";
 
-type ISolutionsSectionProps = {};
+type ISolutionsSectionProps = { captions: Record<string, string> };
 
-const SolutionsSection: React.FC<ISolutionsSectionProps> = () => {
+const SolutionsSection: React.FC<ISolutionsSectionProps> = ({ captions }) => {
 	// const solutionsQuery = useQuery({
 	// 	queryKey: ["solutions"],
 	// 	queryFn: () => fetch(urls.solutions).then(res => res.json()),
@@ -26,7 +26,7 @@ const SolutionsSection: React.FC<ISolutionsSectionProps> = () => {
 
 	return (
 		<section className="solutions-section">
-			<div className="section-title">Создаем решения для разных индустрий</div>
+			<div className="section-title">{captions.heading_solutions}</div>
 			<TabComponent solutions={data} />
 		</section>
 	);

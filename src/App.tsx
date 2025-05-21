@@ -5,65 +5,33 @@ import { useQuery } from "@tanstack/react-query";
 import Home from "./pages/Home";
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
+import { useCaptions } from "./api/model";
 import { LOGO_DATA, urls } from "./consts/consts";
 import InfoPage from "./pages/Info";
 
 const App = () => {
-	const captionsQuery = useQuery({
-		queryKey: ["captions"],
-		queryFn: () => fetch(urls.captions).then(res => res.json()),
-	});
+	const { data, isLoading, error } = useCaptions();
 
-	// const buttonsQuery = useQuery({
-	// 	queryKey: ["buttons"],
-	// 	queryFn: () => fetch(urls.buttons).then(res => res.json()),
-	// });
+	if (isLoading) {
+		return <div>Загрузка...</div>;
+	}
 
-	// // const clientsQuery = useQuery({
-	// // 	queryKey: ["clients"],
-	// // 	queryFn: () => fetch(urls.clients).then(res => res.json()),
-	// // });
+	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
-	// const featuresQuery = useQuery({
-	// 	queryKey: ["features"],
-	// 	queryFn: () => fetch(urls.features).then(res => res.json()),
-	// });
+	const captions: Record<string, string> = data.reduce((acc, item) => {
+		return { ...acc, [item.key]: item.caption };
+	}, {});
 
-	// const newsQuery = useQuery({
-	// 	queryKey: ["news"],
-	// 	queryFn: () => fetch(urls.news).then(res => res.json()),
-	// });
-
-	// const functionTypesQuery = useQuery({
-	// 	queryKey: ["functionTypes"],
-	// 	queryFn: () => fetch(urls.functionTypes).then(res => res.json()),
-	// });
-
-	const functionBlocksQuery = useQuery({
-		queryKey: ["functionBlocks"],
-		queryFn: () => fetch(urls.functionBlocks).then(res => res.json()),
-	});
-
-	const links =
-		captionsQuery && captionsQuery.data
-			? captionsQuery.data.data.filter(
-					(item: any) =>
-						item.key.includes("menu_") || item.key.includes("main_")
-			  )
-			: [];
-
-	console.log("functionBlocksQuery", functionBlocksQuery.data);
-	console.log("captionsQuery", captionsQuery.data);
-	// console.log("buttonsQuery", buttonsQuery.data);
-	// console.log("featuresQuery", featuresQuery.data);
-	// console.log("newsQuery", newsQuery.data);
+	const links = data.filter(
+		(item: any) => item.key.includes("menu_") || item.key.includes("main_")
+	);
 
 	return (
 		<div className="wrapper">
 			<Header logo={LOGO_DATA} links={links} />
 			<main>
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Home captions={captions} />} />
 					<Route path="/info" element={<InfoPage />} />
 				</Routes>
 			</main>
@@ -75,187 +43,41 @@ const App = () => {
 
 export default App;
 
-// <Box
-// 	component="footer"
-// 	sx={{
-// 		pt: 5,
-// 		pb: 10,
-// 		px: { xs: 3, md: 15 },
-// 		display: "flex",
-// 		flexDirection: "column",
-// 		alignItems: "flex-start",
-// 		gap: 10,
-// 	}}
-// >
-// 	<Stack
-// 		direction={{ xs: "column", md: "row" }}
-// 		spacing={{ xs: 5, md: 0 }}
-// 		justifyContent="space-between"
-// 		width="100%"
-// 	>
-// 		{/* <KpiLogo sx={{ width: "235px", height: "44px" }} /> */}
+// const captionsQuery = useQuery({
+// 	queryKey: ["captions"],
+// 	queryFn: () => fetch(urls.captions).then(res => res.json()),
+// });
 
-// 		<Stack
-// 			direction={{ xs: "column", md: "row" }}
-// 			spacing={{ xs: 5, md: 26 }}
-// 			width="100%"
-// 		>
-// 			<Box sx={{ width: { xs: "100%", md: "190px" } }}>
-// 				<Tabs
-// 					value={value}
-// 					// onChange={()=>handleChange()}
-// 					sx={{
-// 						mb: 7.5,
-// 						"& .MuiTabs-flexContainer": {
-// 							flexWrap: "wrap",
-// 						},
-// 					}}
-// 					TabIndicatorProps={{
-// 						style: { display: "none" },
-// 					}}
-// 				>
-// 					{navItems.map((item, index) => (
-// 						<StyledTab key={index} label={item} />
-// 					))}
-// 				</Tabs>
+// const buttonsQuery = useQuery({
+// 	queryKey: ["buttons"],
+// 	queryFn: () => fetch(urls.buttons).then(res => res.json()),
+// });
 
-// 				<Stack spacing={2.5}>
-// 					<Button
-// 						variant="contained"
-// 						sx={{
-// 							bgcolor: "var(--bluesec)",
-// 							color: "var(--accent)",
-// 							borderRadius: "30px",
-// 							textTransform: "none",
-// 							px: 3.75,
-// 							py: 1.25,
-// 							fontFamily: "Ubuntu, Helvetica",
-// 							fontSize: "16px",
-// 							"&:hover": {
-// 								bgcolor: "var(--bluesec)",
-// 								opacity: 0.9,
-// 							},
-// 						}}
-// 					>
-// 						Быстрый старт
-// 					</Button>
+// // const clientsQuery = useQuery({
+// // 	queryKey: ["clients"],
+// // 	queryFn: () => fetch(urls.clients).then(res => res.json()),
+// // });
 
-// 					<Button
-// 						variant="contained"
-// 						sx={{
-// 							bgcolor: "var(--accent)",
-// 							color: "white",
-// 							borderRadius: "30px",
-// 							textTransform: "none",
-// 							px: 3.75,
-// 							py: 1.25,
-// 							fontFamily: "Ubuntu, Helvetica",
-// 							fontSize: "16px",
-// 							"&:hover": {
-// 								bgcolor: "var(--bluehover)",
-// 							},
-// 						}}
-// 					>
-// 						Войти
-// 					</Button>
-// 				</Stack>
-// 			</Box>
+// const featuresQuery = useQuery({
+// 	queryKey: ["features"],
+// 	queryFn: () => fetch(urls.features).then(res => res.json()),
+// });
 
-// 			<Box sx={{ flexGrow: 1 }}>
-// 				<Typography
-// 					variant="h4"
-// 					sx={{
-// 						mb: 1.875,
-// 						fontFamily: "Manrope, Helvetica",
-// 						fontSize: "32px",
-// 						color: "var(--accent)",
-// 					}}
-// 				>
-// 					Контакты:
-// 				</Typography>
+// const newsQuery = useQuery({
+// 	queryKey: ["news"],
+// 	queryFn: () => fetch(urls.news).then(res => res.json()),
+// });
 
-// 				<Stack spacing={3.25}>
-// 					<Typography
-// 						sx={{
-// 							fontFamily: "Manrope, Helvetica",
-// 							fontSize: "16px",
-// 							color: "var(--accent)",
-// 						}}
-// 					>
-// 						111250, г. Москва, проезд Завода «Серп и Молот», д. 6 корп. 1,
-// 						Бизнес-центр «РОСТЭК»
-// 					</Typography>
+// const functionTypesQuery = useQuery({
+// 	queryKey: ["functionTypes"],
+// 	queryFn: () => fetch(urls.functionTypes).then(res => res.json()),
+// });
 
-// 					<Stack
-// 						direction={{ xs: "column", sm: "row" }}
-// 						spacing={7.5}
-// 						width="100%"
-// 					>
-// 						<Stack spacing={1.25}>
-// 							{phoneNumbers.map((phone, index) => (
-// 								<Typography
-// 									key={index}
-// 									sx={{
-// 										fontFamily: "Manrope, Helvetica",
-// 										fontSize: "16px",
-// 										color: "var(--accent)",
-// 									}}
-// 								>
-// 									{phone}
-// 								</Typography>
-// 							))}
-// 						</Stack>
-
-// 						<Typography
-// 							sx={{
-// 								fontFamily: "Manrope, Helvetica",
-// 								fontSize: "16px",
-// 								color: "var(--accent)",
-// 							}}
-// 						>
-// 							info@kpi-monitor.ru
-// 						</Typography>
-// 					</Stack>
-
-// 					<Box
-// 						component="img"
-// 						// src={logoMim}
-// 						alt="Logo mim"
-// 						sx={{ width: "62px", height: "77px" }}
-// 					/>
-// 				</Stack>
-// 			</Box>
-// 		</Stack>
-// 	</Stack>
-
-// 	<Typography
-// 		sx={{
-// 			fontFamily: "Manrope, Helvetica",
-// 			fontSize: "14px",
-// 			color: "var(--accent)",
-// 			lineHeight: "normal",
-// 		}}
-// 	>
-// 		© 2010 KPI MONITOR - Автоматизация ключевых показателей эффективности (KPI)
-// 		предприятия. Все права защищены. Публикация любых материалов сайта возможна
-// 		только с разрешения владельца.{" "}
-// 		<Link
-// 			href="https://kpi-monitor.ru/terms-of-use"
-// 			target="_blank"
-// 			rel="noopener noreferrer"
-// 			sx={{ color: "var(--accent)" }}
-// 		>
-// 			Пользовательское соглашение
-// 		</Link>{" "}
-// 		|{" "}
-// 		<Link
-// 			href="https://kpi-monitor.ru/privacy-policy"
-// 			target="_blank"
-// 			rel="noopener noreferrer"
-// 			sx={{ color: "var(--accent)" }}
-// 		>
-// 			Политика конфиденциальности
-// 		</Link>{" "}
-// 		.
-// 	</Typography>
-// </Box>;
+// const functionBlocksQuery = useQuery({
+// 	queryKey: ["functionBlocks"],
+// 	queryFn: () => fetch(urls.functionBlocks).then(res => res.json()),
+// });
+// console.log("functionBlocksQuery", functionBlocksQuery.data);
+// console.log("buttonsQuery", buttonsQuery.data);
+// console.log("featuresQuery", featuresQuery.data);
+// console.log("newsQuery", newsQuery.data);

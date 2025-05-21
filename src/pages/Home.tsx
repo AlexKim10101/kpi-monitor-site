@@ -11,25 +11,21 @@ import KeyFunctions from "../widgets/sections/keyfunctions";
 import Stages from "../widgets/sections/stages";
 import News from "../widgets/sections/news";
 
-type IHomPageProps = {};
+type IHomPageProps = { captions: Record<string, string> };
 
-const HomePage: React.FC<IHomPageProps> = () => {
+const HomePage: React.FC<IHomPageProps> = ({ captions }) => {
 	return (
 		<>
 			<section className="intro-section">
 				<div className="intro-info">
-					<div className="intro-title">
-						Готовое решение для оценки эффективности работы компании
-					</div>
+					<div className="intro-title">{captions.heading_main}</div>
 					<div className="intro-message">
 						<Icon
 							id="coat_of_arm"
 							path="/icons/Coat_of_Arms_of_the_Russian_Federation.svg"
 							size={44}
 						></Icon>
-						<div className="message-text">
-							Входим в реестр отечественного программного обеспечения.
-						</div>
+						<div className="message-text">{captions.russian_registry}</div>
 					</div>
 					<div className="intro-bts">
 						<Button variant="accent">Быстрый старт</Button>
@@ -45,11 +41,11 @@ const HomePage: React.FC<IHomPageProps> = () => {
 					/>
 				</div>
 			</section>
-			<ClientsSection />
-			<SolutionsSection />
-			<KeyFunctions />
-			<Stages />
-			<News />
+			<ClientsSection captions={captions} />
+			<SolutionsSection captions={captions} />
+			<KeyFunctions captions={captions} />
+			<Stages captions={captions} />
+			<News captions={captions} />
 		</>
 	);
 };

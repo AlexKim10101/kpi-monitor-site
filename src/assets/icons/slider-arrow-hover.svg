@@ -1,7 +1,0 @@
-<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="slider">
-<rect x="40" y="0.5" width="39" height="39" rx="19.5" transform="rotate(90 40 0.5)" class="icon-circle" fill="currentColor"/>
-<rect x="40" y="0.5" width="39" height="39" rx="19.5" transform="rotate(90 40 0.5)" stroke="#22409A"/>
-<path id="Arrow 4 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M19.1328 13.2784L25.2199 19.3278C25.5934 19.6991 25.5934 20.3009 25.2199 20.6722L19.1328 26.7216C18.7593 27.0928 18.1537 27.0928 17.7801 26.7216C17.4066 26.3504 17.4066 25.7485 17.7801 25.3773L22.2344 20.9506L23.1855 19.9598L22.2344 19.0567L17.7801 14.6227C17.4066 14.2515 17.4066 13.6496 17.7801 13.2784C18.1537 12.9072 18.7593 12.9072 19.1328 13.2784Z" fill="#FEFEFF"/>
-</g>
-</svg>

@@ -62,7 +62,7 @@ header.hidden {
 	left: 0;
 	right: 0;
 	bottom: -10px;
-	height: 2px;
+	height: 1px;
 	background-color: currentColor;
 	transform: scaleX(1);
 	transform-origin: center;

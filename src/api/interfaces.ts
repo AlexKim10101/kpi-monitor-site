@@ -1,3 +1,9 @@
+export interface Caption {
+	id: number;
+	key: string;
+	caption: string;
+}
+
 interface PictureFormat {
 	width: number;
 	height: number;

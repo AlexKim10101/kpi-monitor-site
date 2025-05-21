@@ -1,14 +1,18 @@
 import React from "react";
-import { Link } from "react-router";
-import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { Link, useLocation } from "react-router";
+import classNames from "classnames";
+import { Box } from "@mui/material";
 import Button from "@components/CustomButton";
 import Icon from "@components/icon";
+import { getPathname } from "../../utils/getPathName";
+import { locationsDict } from "../../consts/consts";
+
 import "./footer.css";
 
-// import logoMim from "@mui/icons-material/Star";
-// Assuming KpiLogo is a component that needs to be imported
-// import { KpiLogo } from "./KpiLogo";
+type ILinkData = {
+	key: string;
+	caption: string;
+};
 
 type IFooter = {
 	logo: { url: string; to: string };
@@ -16,13 +20,12 @@ type IFooter = {
 };
 
 const Footer: React.FC<IFooter> = ({ logo, links }) => {
-	const [value, setValue] = React.useState(0);
-
 	// const handleChange = (event, newValue) => {
 	// 	setValue(newValue);
 	// };
 
-	const navItems = ["Главная", "О программе", "Решения", "Инфоцентр"];
+	const { pathname } = useLocation();
+
 	const phoneNumbers = [
 		"+7 (495) 662-11-31",
 		"+7 (495) 662-11-32",
@@ -48,13 +51,23 @@ const Footer: React.FC<IFooter> = ({ logo, links }) => {
 					<div className="footer-nav-container">
 						<nav>
 							<ul className="nav-list nav-list-footer">
-								{links.map((link, index) => (
-									<li key={index} className="nav-item">
-										<Link to={""} className="nav-link">
-											{link.caption}
-										</Link>
-									</li>
-								))}
+								{(links as ILinkData[]).map((link, index) => {
+									const linkClassName = classNames("nav-link", {
+										"nav-link-active":
+											getPathname(locationsDict, link.key) === pathname,
+									});
+
+									return (
+										<li key={index} className="nav-item">
+											<Link
+												to={getPathname(locationsDict, link.key)}
+												className={linkClassName}
+											>
+												{link.caption}
+											</Link>
+										</li>
+									);
+								})}
 							</ul>
 						</nav>
 

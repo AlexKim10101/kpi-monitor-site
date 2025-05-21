@@ -5,9 +5,9 @@ import { BASE_URL } from "../../../consts/consts";
 import CardGallery from "../../../components/Slider";
 import { useClients } from "../../../api/model";
 
-type IClientsSectionProps = {};
+type IClientsSectionProps = { captions: Record<string, string> };
 
-const ClientsSection: React.FC<IClientsSectionProps> = () => {
+const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 	const { data, isLoading, error } = useClients();
 
 	if (isLoading) {
@@ -20,7 +20,7 @@ const ClientsSection: React.FC<IClientsSectionProps> = () => {
 
 	return (
 		<section className="clients-section">
-			<div className="section-title">Более 50 компаний сотрудничают с нами</div>
+			<div className="section-title">{captions.heading_clients}</div>
 			<CardGallery
 				desctopSlidesToShow={6}
 				laptopSlidesToShow={6}

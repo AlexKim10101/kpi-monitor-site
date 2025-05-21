@@ -5,9 +5,9 @@ import { useNews } from "../../../api/model";
 import formatDateToDDMMYYYY from "../../../utils/dateformatter";
 import "./news.css";
 
-type INewsProps = {};
+type INewsProps = { captions: Record<string, string> };
 
-const News: React.FC<INewsProps> = () => {
+const News: React.FC<INewsProps> = ({ captions }) => {
 	const { data, isLoading, error } = useNews();
 
 	if (isLoading) {
@@ -19,7 +19,7 @@ const News: React.FC<INewsProps> = () => {
 	return (
 		<section className="news-section">
 			<div className="news-wrapper">
-				<div className="news-section-title">Новости и мероприятия</div>
+				<div className="news-section-title">{captions.heading_news}</div>
 				<div className="news-section-content">
 					<div className="news-list">
 						{data.map((n, i) => (

@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "react-router";
 import classNames from "classnames";
-import {
-	AppBar,
-	Box,
-	Container,
-	Stack,
-	Toolbar,
-	Typography,
-} from "@mui/material";
-import "./header.css";
-import { locationsDict, LOGO_DATA, SCROLL_LIMIT } from "../../consts/consts";
+import { Box, Typography } from "@mui/material";
 import Button from "../../components/CustomButton";
 import Icon from "../../components/icon";
 import { getPathname } from "../../utils/getPathName";
+import { locationsDict, LOGO_DATA, SCROLL_LIMIT } from "../../consts/consts";
+
+import "./header.css";
 
 type ILinkData = {
 	key: string;
@@ -33,7 +26,7 @@ const Header: React.FC<IHeader> = ({ logo, links }) => {
 
 	const { pathname } = useLocation();
 
-	console.log("pathname", pathname);
+	// console.log("pathname", pathname);
 
 	// useEffect(() => {
 	// 	const handleScroll = () => {
@@ -82,11 +75,6 @@ const Header: React.FC<IHeader> = ({ logo, links }) => {
 										</li>
 									);
 								})}
-								{/* <li key="fakeLink" className="nav-item">
-									<Link to={"info"} className="nav-link">
-										Инфоцентр
-									</Link>
-								</li> */}
 							</ul>
 						</nav>
 
@@ -155,119 +143,3 @@ const Header: React.FC<IHeader> = ({ logo, links }) => {
 };
 
 export default Header;
-
-// <Container maxWidth={false}>
-// 	<Toolbar disableGutters sx={{ height: "100%" }}>
-// 		{/* Logo */}
-// 		<Box
-// 			component="img"
-// 			src="./kpi-logo.svg"
-// 			alt="Kpi logo"
-// 			sx={{
-// 				width: "235px",
-// 				height: "44px",
-// 				mr: "100px",
-// 			}}
-// 		/>
-
-// 		{/* Navigation Menu */}
-// 		<Stack direction="row" spacing={0.5} sx={{ flexGrow: 1 }}>
-// 			{navItems.map(item => (
-// 				<Box
-// 					key={item.name}
-// 					sx={{
-// 						p: 2.5,
-// 						borderBottom: item.active ? 1 : 0,
-// 						borderColor: item.active ? "primary.main" : "transparent",
-// 						cursor: "pointer",
-// 					}}
-// 				>
-// 					<Typography
-// 						sx={{
-// 							color: "primary.main",
-// 							fontFamily: "var(--body-caption-pc-reg-font-family)",
-// 							fontSize: "var(--body-caption-pc-reg-font-size)",
-// 							fontWeight: "var(--body-caption-pc-reg-font-weight)",
-// 							letterSpacing: "var(--body-caption-pc-reg-letter-spacing)",
-// 							lineHeight: "var(--body-caption-pc-reg-line-height)",
-// 						}}
-// 					>
-// 						{item.name}
-// 					</Typography>
-// 				</Box>
-// 			))}
-// 		</Stack>
-
-// 		{/* Action Buttons */}
-// 		<Stack direction="row" spacing={2.5} alignItems="center">
-// 			<Stack direction="row" spacing={2}>
-// 				<Button
-// 					variant="contained"
-// 					sx={{
-// 						backgroundColor: "var(--bluesec)",
-// 						color: "primary.main",
-// 						borderRadius: "30px",
-// 						px: "30px",
-// 						py: 1.25,
-// 						textTransform: "none",
-// 						fontFamily: "var(--button-pc-font-family)",
-// 						fontSize: "var(--button-pc-font-size)",
-// 						fontWeight: "var(--button-pc-font-weight)",
-// 						letterSpacing: "var(--button-pc-letter-spacing)",
-// 						lineHeight: "var(--button-pc-line-height)",
-// 						"&:hover": {
-// 							backgroundColor: "var(--bluesec)",
-// 						},
-// 					}}
-// 				>
-// 					Быстрый старт
-// 				</Button>
-// 				<Button
-// 					variant="contained"
-// 					sx={{
-// 						backgroundColor: "primary.main",
-// 						color: "white",
-// 						borderRadius: "30px",
-// 						px: "30px",
-// 						py: 1.25,
-// 						textTransform: "none",
-// 						fontFamily: "var(--button-pc-font-family)",
-// 						fontSize: "var(--button-pc-font-size)",
-// 						fontWeight: "var(--button-pc-font-weight)",
-// 						letterSpacing: "var(--button-pc-letter-spacing)",
-// 						lineHeight: "var(--button-pc-line-height)",
-// 					}}
-// 				>
-// 					Войти
-// 				</Button>
-// 			</Stack>
-
-// 			{/* Language Selector */}
-// 			<Box
-// 				sx={{
-// 					width: "42px",
-// 					height: "42px",
-// 					display: "flex",
-// 					alignItems: "center",
-// 					justifyContent: "center",
-// 					border: 1,
-// 					borderColor: "primary.main",
-// 					borderRadius: "10px",
-// 				}}
-// 			>
-// 				<Typography
-// 					sx={{
-// 						color: "primary.main",
-// 						fontFamily: "var(--button-pc-font-family)",
-// 						fontSize: "var(--button-pc-font-size)",
-// 						fontWeight: "var(--button-pc-font-weight)",
-// 						letterSpacing: "var(--button-pc-letter-spacing)",
-// 						lineHeight: "var(--button-pc-line-height)",
-// 					}}
-// 				>
-// 					RU
-// 				</Typography>
-// 			</Box>
-// 		</Stack>
-// 	</Toolbar>
-// </Container>;

@@ -25,16 +25,19 @@ const variantStyles = {
 		background: PRIMARY_COLOR,
 		color: WHITE_COLOR,
 		hover: PRIMARY_HOVER_COLOR,
+		active: "#AABEFA",
 	},
 	secondary: {
 		background: SECONDARY_COLOR,
 		color: PRIMARY_COLOR,
 		hover: SECONDARY_COLOR,
+		active: PRIMARY_COLOR,
 	},
 	accent: {
 		background: ACCENT_COLOR,
 		color: BLACK_COLOR,
 		hover: ACCENT_COLOR,
+		active: PRIMARY_COLOR,
 	},
 };
 
@@ -69,8 +72,16 @@ const StyledButton = styled.button<
 	color: ${({ variant }) => variantStyles[variant].color};
 	text-decoration: none;
 	white-space: nowrap;
+	border: 1px solid white;
+
 	&:hover {
 		background-color: ${({ variant }) => variantStyles[variant].hover};
+		border: 1px solid var(--Accent, #22409a);
+	}
+
+	&:active {
+		color: ${({ variant }) => variantStyles[variant].active};
+		background-color: ${({ variant }) => variantStyles[variant].background};
 	}
 
 	&:disabled {
