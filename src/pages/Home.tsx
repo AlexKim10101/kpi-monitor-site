@@ -14,13 +14,6 @@ import News from "../widgets/sections/news";
 type IHomPageProps = {};
 
 const HomePage: React.FC<IHomPageProps> = () => {
-	const clientsQuery = useQuery({
-		queryKey: ["clients"],
-		queryFn: () => fetch(urls.clients).then(res => res.json()),
-	});
-	const clientsData =
-		clientsQuery && clientsQuery.data ? clientsQuery.data.data : [];
-
 	return (
 		<main>
 			<section className="intro-section">
@@ -52,7 +45,7 @@ const HomePage: React.FC<IHomPageProps> = () => {
 					/>
 				</div>
 			</section>
-			<ClientsSection clientsData={clientsData} />
+			<ClientsSection />
 			<SolutionsSection />
 			<KeyFunctions />
 			<Stages />

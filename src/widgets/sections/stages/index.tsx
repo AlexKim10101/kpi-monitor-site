@@ -17,11 +17,11 @@ const Stages: React.FC<IStagesProps> = () => {
 
 			<div className="stages-list">
 				{fakeStages.map((s, i) => (
-					<div className="stage-list-item">
+					<div key={i} className="stage-list-item">
 						<div className="stage-title">{s.title}</div>
 						<div className="stage-description">
-							{s.content.map(item => (
-								<div>{item}</div>
+							{s.content.map((item, i) => (
+								<div key={i}>{item}</div>
 							))}
 						</div>
 						<div className="stage-icon">

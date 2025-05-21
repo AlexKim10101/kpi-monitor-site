@@ -74,8 +74,8 @@ const Footer: React.FC<IFooter> = ({ logo, links }) => {
 							</div>
 							<div className="phone-and-email">
 								<div className="phone">
-									{phoneNumbers.map(pn => (
-										<div>{pn}</div>
+									{phoneNumbers.map((pn, i) => (
+										<div key={pn}>{pn + "index" + i}</div>
 									))}
 								</div>
 								<div className="email">info@kpi-monitor.ru</div>

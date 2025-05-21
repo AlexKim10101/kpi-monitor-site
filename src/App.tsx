@@ -27,46 +27,12 @@ const App = () => {
 		queryFn: () => fetch(urls.captions).then(res => res.json()),
 	});
 
-	const buttonsQuery = useQuery({
-		queryKey: ["buttons"],
-		queryFn: () => fetch(urls.buttons).then(res => res.json()),
-	});
-
-	// const clientsQuery = useQuery({
-	// 	queryKey: ["clients"],
-	// 	queryFn: () => fetch(urls.clients).then(res => res.json()),
-	// });
-
-	const featuresQuery = useQuery({
-		queryKey: ["features"],
-		queryFn: () => fetch(urls.features).then(res => res.json()),
-	});
-
-	const newsQuery = useQuery({
-		queryKey: ["news"],
-		queryFn: () => fetch(urls.news).then(res => res.json()),
-	});
-
-	// const functionTypesQuery = useQuery({
-	// 	queryKey: ["functionTypes"],
-	// 	queryFn: () => fetch(urls.functionTypes).then(res => res.json()),
-	// });
-
 	const links =
 		captionsQuery && captionsQuery.data
 			? captionsQuery.data.data.filter((item: any) =>
 					item.key.includes("menu_")
 			  )
 			: [];
-
-	// console.log("menuData", captionsQuery.data);
-
-	// console.log("clientsQuery", clientsQuery.data);
-	console.log("captionsQuery", captionsQuery.data);
-	console.log("buttonsQuery", buttonsQuery.data);
-	// console.log("clientsQuery", clientsQuery.data);
-	console.log("featuresQuery", featuresQuery.data);
-	console.log("newsQuery", newsQuery.data);
 
 	return (
 		<div>

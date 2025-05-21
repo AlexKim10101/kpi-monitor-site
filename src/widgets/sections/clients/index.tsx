@@ -3,22 +3,21 @@ import "./clients.css";
 import Icon from "../../../components/icon";
 import { BASE_URL } from "../../../consts/consts";
 import CardGallery from "../../../components/Slider";
+import { useClients } from "../../../api/model";
 
-type IClient = {
-	id: number;
-	logo: {
-		width: number;
-		height: number;
-		url: string;
-		hash: string;
-	};
-};
+type IClientsSectionProps = {};
 
-type IClientsSectionProps = {
-	clientsData: IClient[];
-};
+const ClientsSection: React.FC<IClientsSectionProps> = () => {
+	const { data, isLoading, error } = useClients();
 
-const ClientsSection: React.FC<IClientsSectionProps> = ({ clientsData }) => {
+	if (isLoading) {
+		return <div>Загрузка...</div>;
+	}
+
+	// console.log("ClientsSection", data);
+
+	if (error || !data) return <p>Ошибка загрузки данных</p>;
+
 	return (
 		<section className="clients-section">
 			<div className="section-title">Более 50 компаний сотрудничают с нами</div>
@@ -27,7 +26,7 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ clientsData }) => {
 				laptopSlidesToShow={6}
 				mobileSlidesToShow={6}
 			>
-				{clientsData.map((item, index, arr) => {
+				{data.map((item, index, arr) => {
 					const shift = Math.ceil(arr.length / 2);
 
 					const shiftItemIndex =

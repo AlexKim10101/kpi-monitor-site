@@ -5,29 +5,28 @@ import { ListItem } from "@mui/material";
 import { IFunctionData } from "../../../types";
 import Button from "@components/CustomButton";
 import Icon from "@components/icon";
+import { useKeyFunctoins } from "../../../api/model";
+
 import "./functions.css";
 
 type IKeyFunctionsProps = {};
 
 const KeyFunctions: React.FC<IKeyFunctionsProps> = () => {
-	const functionTypesQuery = useQuery({
-		queryKey: ["features"],
-		queryFn: () => fetch(urls.features).then(res => res.json()),
-	});
+	const { data, isLoading, error } = useKeyFunctoins();
 
-	console.log("functionTypesQuery!!!!", functionTypesQuery.data);
-	const keyfunctions: IFunctionData[] =
-		functionTypesQuery && functionTypesQuery.data
-			? functionTypesQuery.data.data
-			: [];
+	if (isLoading) {
+		return <div>Загрузка...</div>;
+	}
+
+	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
 	return (
 		<section className="function-section">
 			<div className="section-title">Ключевые возможности KPI MONITOR</div>
 			<div className="function-grid">
-				{keyfunctions.map(f => {
+				{data.map(f => {
 					return (
-						<div id={String(f.id)} className="function-grid-item">
+						<div key={String(f.id)} className="function-grid-item">
 							<div className="function-title">{f.title}</div>
 							<div className="function-description">{f.description}</div>
 							<div className="function-btn-wrapper">

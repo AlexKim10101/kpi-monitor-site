@@ -24,6 +24,8 @@ export const urls = {
 	news: "http://85.192.20.139:1338/api/news",
 	solutions: "http://85.192.20.139:1338/api/solutions?populate=picture",
 	functionTypes: "http://85.192.20.139:1338/api/function-types",
+	functionBlocks:
+		"http://85.192.20.139:1338/api/functions?populate=function_type&populate=function_blocks",
 };
 
 export const LOGO_DATA = {

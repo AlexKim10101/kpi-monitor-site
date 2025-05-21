@@ -20,7 +20,7 @@ type IHeader = {
 };
 
 const Header: React.FC<IHeader> = ({ logo, links }) => {
-	console.log(links);
+	// console.log(links);
 	const [hidden, setHidden] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 

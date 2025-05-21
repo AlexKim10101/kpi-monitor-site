@@ -1,22 +1,20 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { urls } from "../../../consts/consts";
-import { INewData } from "../../../types";
-import formatDateToDDMMYYYY from "../../../utils/dateformatter";
-import Icon from "@components/icon";
-import "./news.css";
 import Button from "@components/CustomButton";
+import Icon from "@components/icon";
+import { useNews } from "../../../api/model";
+import formatDateToDDMMYYYY from "../../../utils/dateformatter";
+import "./news.css";
 
 type INewsProps = {};
 
 const News: React.FC<INewsProps> = () => {
-	const newsQuery = useQuery({
-		queryKey: ["news"],
-		queryFn: () => fetch(urls.news).then(res => res.json()),
-	});
+	const { data, isLoading, error } = useNews();
 
-	const newsData: INewData[] =
-		newsQuery && newsQuery.data ? newsQuery.data.data : [];
+	if (isLoading) {
+		return <div>Загрузка...</div>;
+	}
+
+	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
 	return (
 		<section className="news-section">
@@ -24,7 +22,7 @@ const News: React.FC<INewsProps> = () => {
 				<div className="news-section-title">Новости и мероприятия</div>
 				<div className="news-section-content">
 					<div className="news-list">
-						{newsData.map(n => (
+						{data.map(n => (
 							<div className="news-list-item">
 								<div className="news-item-date">
 									{formatDateToDDMMYYYY(n.date)}
