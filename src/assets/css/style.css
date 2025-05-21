@@ -2,6 +2,13 @@ body {
 	font-family: "Manrope", sans-serif;
 }
 
+.wrapper {
+	display: flex;
+	flex-direction: column;
+
+	min-height: 100vh;
+}
+
 main {
 	display: flex;
 	flex-direction: column;
@@ -12,6 +19,7 @@ main {
 
 	position: relative;
 	padding-top: 105px;
+	flex-grow: 1;
 }
 
 .intro-section {
@@ -23,10 +31,65 @@ main {
 	gap: 40px;
 	justify-content: space-between;
 	align-items: end;
-
-	/* background-color: aquamarine; */
 }
-/* Coat_of_Arms_of_the_Russian_Federation.svg */
+.nav-section {
+	width: 100%;
+	max-width: 1200px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.nav-function-description,
+.nav-function-list {
+	flex: 0 1 calc(50% - 60px);
+}
+
+.nav-function-description {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.nav-section-title {
+	color: var(--Accent, #22409a);
+	font-family: Manrope;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.nav-description-text {
+	color: var(--black, #141414);
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.nav-function-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+
+	padding: 10px 30px;
+
+	border-left: 1px solid var(--gray_blue, #aabefa);
+}
+
+.nav-function-item {
+	padding: 10px;
+
+	color: var(--Accent, #22409a);
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
 
 .intro-bts {
 	display: flex;

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchFromApi } from "./api";
-import { Solution, Client, KeyFunction, News } from "./interfaces";
+import { Solution, Client, KeyFunction, News, Operation } from "./interfaces";
 
 export function useClients() {
 	return useQuery<Client[]>({
@@ -27,5 +27,15 @@ export function useNews() {
 	return useQuery<News[]>({
 		queryKey: ["news"],
 		queryFn: () => fetchFromApi("/news"),
+	});
+}
+
+export function useOperations() {
+	return useQuery<Operation[]>({
+		queryKey: ["operations"],
+		queryFn: () =>
+			fetchFromApi(
+				"/functions?populate=function_type&populate=function_blocks"
+			),
 	});
 }

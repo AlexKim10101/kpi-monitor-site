@@ -22,8 +22,8 @@ const News: React.FC<INewsProps> = () => {
 				<div className="news-section-title">Новости и мероприятия</div>
 				<div className="news-section-content">
 					<div className="news-list">
-						{data.map(n => (
-							<div className="news-list-item">
+						{data.map((n, i) => (
+							<div key={n.id} className="news-list-item">
 								<div className="news-item-date">
 									{formatDateToDDMMYYYY(n.date)}
 								</div>

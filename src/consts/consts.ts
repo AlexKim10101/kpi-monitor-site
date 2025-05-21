@@ -28,6 +28,15 @@ export const urls = {
 		"http://85.192.20.139:1338/api/functions?populate=function_type&populate=function_blocks",
 };
 
+const linkKeys = ["menu_main", "menu_about", "menu_solutions", "main_info"];
+
+export const locationsDict = {
+	menu_main: "/",
+	menu_about: "/aboutprogram",
+	menu_solutions: "/solutions",
+	main_info: "/info",
+};
+
 export const LOGO_DATA = {
 	url: "/icons/kpi_logo.svg",
 	to: "https://kpi-monitor.ru",

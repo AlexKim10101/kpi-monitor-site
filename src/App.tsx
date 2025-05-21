@@ -1,25 +1,12 @@
 import React from "react";
-// import { Routes, Route, Link } from "react-router-dom";
-import { BrowserRouter, Routes, Route, HashRouter } from "react-router";
+import { Routes, Route, HashRouter } from "react-router";
 
 import { useQuery } from "@tanstack/react-query";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
 import { LOGO_DATA, urls } from "./consts/consts";
-
-// const StyledLink = styled(Link)`
-// 	margin: 0 10px;
-// 	color: blue;
-// 	text-decoration: none;
-
-// 	&:hover {
-// 		text-decoration: underline;
-// 	}
-// `;
+import InfoPage from "./pages/Info";
 
 const App = () => {
 	const captionsQuery = useQuery({
@@ -27,25 +14,60 @@ const App = () => {
 		queryFn: () => fetch(urls.captions).then(res => res.json()),
 	});
 
+	// const buttonsQuery = useQuery({
+	// 	queryKey: ["buttons"],
+	// 	queryFn: () => fetch(urls.buttons).then(res => res.json()),
+	// });
+
+	// // const clientsQuery = useQuery({
+	// // 	queryKey: ["clients"],
+	// // 	queryFn: () => fetch(urls.clients).then(res => res.json()),
+	// // });
+
+	// const featuresQuery = useQuery({
+	// 	queryKey: ["features"],
+	// 	queryFn: () => fetch(urls.features).then(res => res.json()),
+	// });
+
+	// const newsQuery = useQuery({
+	// 	queryKey: ["news"],
+	// 	queryFn: () => fetch(urls.news).then(res => res.json()),
+	// });
+
+	// const functionTypesQuery = useQuery({
+	// 	queryKey: ["functionTypes"],
+	// 	queryFn: () => fetch(urls.functionTypes).then(res => res.json()),
+	// });
+
+	const functionBlocksQuery = useQuery({
+		queryKey: ["functionBlocks"],
+		queryFn: () => fetch(urls.functionBlocks).then(res => res.json()),
+	});
+
 	const links =
 		captionsQuery && captionsQuery.data
-			? captionsQuery.data.data.filter((item: any) =>
-					item.key.includes("menu_")
+			? captionsQuery.data.data.filter(
+					(item: any) =>
+						item.key.includes("menu_") || item.key.includes("main_")
 			  )
 			: [];
 
-	return (
-		<div>
-			{/* <nav>
-				<StyledLink to="/">Home</StyledLink>
-				<StyledLink to="/about">About</StyledLink>
-			</nav> */}
+	console.log("functionBlocksQuery", functionBlocksQuery.data);
+	console.log("captionsQuery", captionsQuery.data);
+	// console.log("buttonsQuery", buttonsQuery.data);
+	// console.log("featuresQuery", featuresQuery.data);
+	// console.log("newsQuery", newsQuery.data);
 
+	return (
+		<div className="wrapper">
 			<Header logo={LOGO_DATA} links={links} />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/about" element={<About />} />
-			</Routes>
+			<main>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/info" element={<InfoPage />} />
+				</Routes>
+			</main>
+
 			<Footer logo={LOGO_DATA} links={links} />
 		</div>
 	);

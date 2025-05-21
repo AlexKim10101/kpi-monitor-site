@@ -15,7 +15,7 @@ type IHomPageProps = {};
 
 const HomePage: React.FC<IHomPageProps> = () => {
 	return (
-		<main>
+		<>
 			<section className="intro-section">
 				<div className="intro-info">
 					<div className="intro-title">
@@ -50,7 +50,7 @@ const HomePage: React.FC<IHomPageProps> = () => {
 			<KeyFunctions />
 			<Stages />
 			<News />
-		</main>
+		</>
 	);
 };
 

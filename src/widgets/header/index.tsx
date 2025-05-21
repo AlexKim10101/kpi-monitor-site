@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
+import classNames from "classnames";
 import {
 	AppBar,
 	Box,
@@ -10,9 +11,15 @@ import {
 	Typography,
 } from "@mui/material";
 import "./header.css";
-import { LOGO_DATA, SCROLL_LIMIT } from "../../consts/consts";
+import { locationsDict, LOGO_DATA, SCROLL_LIMIT } from "../../consts/consts";
 import Button from "../../components/CustomButton";
 import Icon from "../../components/icon";
+import { getPathname } from "../../utils/getPathName";
+
+type ILinkData = {
+	key: string;
+	caption: string;
+};
 
 type IHeader = {
 	logo: { url: string; to: string };
@@ -24,18 +31,22 @@ const Header: React.FC<IHeader> = ({ logo, links }) => {
 	const [hidden, setHidden] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollLimit = SCROLL_LIMIT;
-			setHidden(window.scrollY > scrollLimit);
-		};
+	const { pathname } = useLocation();
 
-		window.addEventListener("scroll", handleScroll);
+	console.log("pathname", pathname);
 
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
+	// useEffect(() => {
+	// 	const handleScroll = () => {
+	// 		const scrollLimit = SCROLL_LIMIT;
+	// 		setHidden(window.scrollY > scrollLimit);
+	// 	};
+
+	// 	window.addEventListener("scroll", handleScroll);
+
+	// 	return () => {
+	// 		window.removeEventListener("scroll", handleScroll);
+	// 	};
+	// }, []);
 
 	return (
 		<>
@@ -55,13 +66,27 @@ const Header: React.FC<IHeader> = ({ logo, links }) => {
 						</Link>
 						<nav>
 							<ul className="nav-list">
-								{links.map((link, index) => (
-									<li key={index} className="nav-item">
-										<Link to={""} className="nav-link">
-											{link.caption}
-										</Link>
-									</li>
-								))}
+								{(links as ILinkData[]).map((link, index) => {
+									const linkClassName = classNames("nav-link", {
+										"nav-link-active":
+											getPathname(locationsDict, link.key) === pathname,
+									});
+									return (
+										<li key={index} className="nav-item">
+											<Link
+												to={getPathname(locationsDict, link.key)}
+												className={linkClassName}
+											>
+												{link.caption}
+											</Link>
+										</li>
+									);
+								})}
+								{/* <li key="fakeLink" className="nav-item">
+									<Link to={"info"} className="nav-link">
+										Инфоцентр
+									</Link>
+								</li> */}
 							</ul>
 						</nav>
 

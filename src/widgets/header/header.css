@@ -56,7 +56,7 @@ header.hidden {
 	text-decoration: none;
 }
 
-.nav-link::after {
+.nav-link-active::after {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -64,14 +64,14 @@ header.hidden {
 	bottom: -10px;
 	height: 2px;
 	background-color: currentColor;
-	transform: scaleX(0);
+	transform: scaleX(1);
 	transform-origin: center;
 	transition: transform 0.3s ease;
 }
-
+/* 
 .nav-link:hover::after {
 	transform: scaleX(1);
-}
+} */
 
 .btn-wrapper {
 	display: flex;
