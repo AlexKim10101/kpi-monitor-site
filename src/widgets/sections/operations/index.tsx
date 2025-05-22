@@ -10,6 +10,7 @@ import {
 	Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AccordionComponent from "@components/AccordionComponent";
 
 type OperationsProps = {};
 
@@ -29,12 +30,30 @@ const Operations: React.FC<OperationsProps> = () => {
 					<div className="operation-section-title">{operation.title}</div>
 					<div className="operation-grid">
 						{operation.functions.map(item => (
+							<AccordionComponent
+								key={item.id}
+								title={`${item.title} (${item.description})`}
+							>
+								{item.function_blocks
+									.sort((a, b) => a.order - b.order)
+									.map(block => (
+										<div key={block.id} className="oper-block">
+											{block.title && (
+												<div className="oper-block-title">{block.title}</div>
+											)}
+											<div className="oper-block-text">
+												<Markdown remarkPlugins={[remarkGfm]}>
+													{block.description}
+												</Markdown>
+											</div>
+										</div>
+									))}
+							</AccordionComponent>
+						))}
+
+						{/* {operation.functions.map(item => (
 							<Accordion key={item.id}>
-								<AccordionSummary
-									expandIcon={<ExpandMoreIcon />}
-									aria-controls="panel1-content"
-									id="panel1-header"
-								>
+								<AccordionSummary expandIcon={<ExpandMoreIcon />}>
 									<div className="operation-title">
 										{item.title} ({item.description})
 									</div>
@@ -56,7 +75,7 @@ const Operations: React.FC<OperationsProps> = () => {
 									</div>
 								</AccordionDetails>
 							</Accordion>
-						))}
+						))} */}
 					</div>
 				</div>
 			))}

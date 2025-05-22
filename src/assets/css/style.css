@@ -22,6 +22,10 @@ main {
 	flex-grow: 1;
 }
 
+p {
+	all: unset;
+}
+
 .intro-section {
 	width: 100%;
 	max-width: 1200px;
