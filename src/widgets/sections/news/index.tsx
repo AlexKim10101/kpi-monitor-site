@@ -5,7 +5,10 @@ import { useNews } from "../../../api/model";
 import formatDateToDDMMYYYY from "../../../utils/dateformatter";
 import "./news.css";
 
-type INewsProps = { captions: Record<string, string> };
+type INewsProps = {
+	captions: Record<string, string>;
+	btnCaptions: Record<string, string>;
+};
 
 const News: React.FC<INewsProps> = ({ captions }) => {
 	const { data, isLoading, error } = useNews();

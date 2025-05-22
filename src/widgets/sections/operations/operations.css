@@ -5,15 +5,16 @@
 	width: 100%;
 
 	background: var(--blue_bg, #f8faff);
+
+	padding-top: 60px;
+	padding-bottom: 60px;
+	gap: 60px;
 }
 
 .operation-wrapper {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-
-	padding-top: 60px;
-	padding-bottom: 60px;
 
 	width: 100%;
 	max-width: 1200px;

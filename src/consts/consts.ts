@@ -16,6 +16,7 @@ export const INACTIVE = "#747474";
 export const BASE_URL = "http://85.192.20.139:1338";
 
 export const urls = {
+	navigation: "http://85.192.20.139:1338/api/navigations?populate=parent",
 	locales: "http://85.192.20.139:1338/api/i18n/locales",
 	buttons: "http://85.192.20.139:1338/api/buttons",
 	captions: "http://85.192.20.139:1338/api/captions",
@@ -26,15 +27,17 @@ export const urls = {
 	functionTypes: "http://85.192.20.139:1338/api/function-types",
 	functionBlocks:
 		"http://85.192.20.139:1338/api/functions?populate=function_type&populate=function_blocks",
+	stages: "http://85.192.20.139:1338/api/applications?populate=icon",
 };
 
 const linkKeys = ["menu_main", "menu_about", "menu_solutions", "main_info"];
 
 export const locationsDict = {
-	menu_main: "/",
-	menu_about: "/aboutprogram",
-	menu_solutions: "/solutions",
-	main_info: "/info",
+	main: "/",
+	about: "/aboutprogram",
+	solutions: "/solutions",
+	infocentre: "/info",
+	version: "/version",
 };
 
 export const LOGO_DATA = {
@@ -42,7 +45,7 @@ export const LOGO_DATA = {
 	to: "https://kpi-monitor.ru",
 };
 
-export const SCROLL_LIMIT = 2500;
+export const SCROLL_LIMIT = 1000;
 
 export const keys = [
 	"menu_main",
@@ -79,6 +82,16 @@ const captions = {
 		"111250, г. Москва, проезд Завода «Серп и Молот», д. 6 корп. 1, Бизнес-центр «РОСТЭК»",
 	footer_phones: "+7 (495) 662-11-31\n+7 (495) 662-11-32\n+7 (495) 662-11-33",
 	footer_email: "info@kpi-monitor.ru",
+};
+
+const btnCaptions = {
+	quick_start: "Быстрый старт",
+	entry: "Войти",
+	contact_us: "Связаться с нами",
+	demo: "Посмотреть демо",
+	learn_more: "Подробнее",
+	all_news: "Все новости",
+	solutions_education: "ТУРБО Университет",
 };
 
 export const fakeStages = [

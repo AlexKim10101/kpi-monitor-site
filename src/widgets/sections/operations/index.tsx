@@ -22,44 +22,44 @@ const Operations: React.FC<OperationsProps> = () => {
 
 	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
-	// console.log("Operations", data);
-
 	return (
 		<section className="operations-section">
-			<div className="operation-wrapper">
-				<div className="operation-section-title">Операторы</div>
-				<div className="operation-grid">
-					{data.map(item => (
-						<Accordion key={item.id}>
-							<AccordionSummary
-								expandIcon={<ExpandMoreIcon />}
-								aria-controls="panel1-content"
-								id="panel1-header"
-							>
-								<div className="operation-title">
-									{item.title} ({item.description})
-								</div>
-							</AccordionSummary>
-							<AccordionDetails>
-								<div className="operation-content">
-									{item.function_blocks
-										.sort((a, b) => a.order - b.order)
-										.map(block => (
-											<div key={block.id} className="oper-block">
-												<div className="oper-block-title">{block.title}</div>
-												<div className="oper-block-text">
-													<Markdown remarkPlugins={[remarkGfm]}>
-														{block.description}
-													</Markdown>
+			{data.map(operation => (
+				<div className="operation-wrapper">
+					<div className="operation-section-title">{operation.title}</div>
+					<div className="operation-grid">
+						{operation.functions.map(item => (
+							<Accordion key={item.id}>
+								<AccordionSummary
+									expandIcon={<ExpandMoreIcon />}
+									aria-controls="panel1-content"
+									id="panel1-header"
+								>
+									<div className="operation-title">
+										{item.title} ({item.description})
+									</div>
+								</AccordionSummary>
+								<AccordionDetails>
+									<div className="operation-content">
+										{item.function_blocks
+											.sort((a, b) => a.order - b.order)
+											.map(block => (
+												<div key={block.id} className="oper-block">
+													<div className="oper-block-title">{block.title}</div>
+													<div className="oper-block-text">
+														<Markdown remarkPlugins={[remarkGfm]}>
+															{block.description}
+														</Markdown>
+													</div>
 												</div>
-											</div>
-										))}
-								</div>
-							</AccordionDetails>
-						</Accordion>
-					))}
+											))}
+									</div>
+								</AccordionDetails>
+							</Accordion>
+						))}
+					</div>
 				</div>
-			</div>
+			))}
 		</section>
 	);
 };

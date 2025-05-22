@@ -72,7 +72,7 @@ const StyledButton = styled.button<
 	color: ${({ variant }) => variantStyles[variant].color};
 	text-decoration: none;
 	white-space: nowrap;
-	border: 1px solid white;
+	border: 1px solid transparent;
 
 	&:hover {
 		background-color: ${({ variant }) => variantStyles[variant].hover};

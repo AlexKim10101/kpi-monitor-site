@@ -11,9 +11,12 @@ import KeyFunctions from "../widgets/sections/keyfunctions";
 import Stages from "../widgets/sections/stages";
 import News from "../widgets/sections/news";
 
-type IHomPageProps = { captions: Record<string, string> };
+type IHomPageProps = {
+	captions: Record<string, string>;
+	btnCaptions: Record<string, string>;
+};
 
-const HomePage: React.FC<IHomPageProps> = ({ captions }) => {
+const HomePage: React.FC<IHomPageProps> = ({ captions, btnCaptions }) => {
 	return (
 		<>
 			<section className="intro-section">
@@ -28,7 +31,7 @@ const HomePage: React.FC<IHomPageProps> = ({ captions }) => {
 						<div className="message-text">{captions.russian_registry}</div>
 					</div>
 					<div className="intro-bts">
-						<Button variant="accent">Быстрый старт</Button>
+						<Button variant="primary">Быстрый старт</Button>
 						<Button variant="secondary">Связаться с нами</Button>
 					</div>
 				</div>
@@ -42,10 +45,10 @@ const HomePage: React.FC<IHomPageProps> = ({ captions }) => {
 				</div>
 			</section>
 			<ClientsSection captions={captions} />
-			<SolutionsSection captions={captions} />
-			<KeyFunctions captions={captions} />
-			<Stages captions={captions} />
-			<News captions={captions} />
+			<SolutionsSection captions={captions} btnCaptions={btnCaptions} />
+			<KeyFunctions captions={captions} btnCaptions={btnCaptions} />
+			<Stages captions={captions} btnCaptions={btnCaptions} />
+			<News captions={captions} btnCaptions={btnCaptions} />
 		</>
 	);
 };

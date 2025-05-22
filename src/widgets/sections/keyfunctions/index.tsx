@@ -9,7 +9,10 @@ import { useKeyFunctoins } from "../../../api/model";
 
 import "./functions.css";
 
-type IKeyFunctionsProps = { captions: Record<string, string> };
+type IKeyFunctionsProps = {
+	captions: Record<string, string>;
+	btnCaptions: Record<string, string>;
+};
 
 const KeyFunctions: React.FC<IKeyFunctionsProps> = ({ captions }) => {
 	const { data, isLoading, error } = useKeyFunctoins();

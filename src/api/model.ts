@@ -1,18 +1,34 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchFromApi } from "./api";
 import {
+	Navigation,
 	Caption,
 	Solution,
 	Client,
 	KeyFunction,
 	News,
 	Operation,
+	Stage,
 } from "./interfaces";
+
+export function useNavigation() {
+	return useQuery<Navigation[]>({
+		queryKey: ["navigation"],
+		queryFn: () => fetchFromApi("/navigations?populate=parent"),
+	});
+}
 
 export function useCaptions() {
 	return useQuery<Caption[]>({
 		queryKey: ["caption"],
 		queryFn: () => fetchFromApi("/captions"),
+	});
+}
+
+export function useButtons() {
+	return useQuery<Caption[]>({
+		queryKey: ["button"],
+		queryFn: () => fetchFromApi("/buttons"),
 	});
 }
 
@@ -49,7 +65,14 @@ export function useOperations() {
 		queryKey: ["operations"],
 		queryFn: () =>
 			fetchFromApi(
-				"/functions?populate=function_type&populate=function_blocks"
+				"/function-types?populate[functions][populate][function_blocks]=true&populate[functions]=true&populate=true"
 			),
+	});
+}
+
+export function useStages() {
+	return useQuery<Stage[]>({
+		queryKey: ["stages"],
+		queryFn: () => fetchFromApi("/applications?populate=icon"),
 	});
 }

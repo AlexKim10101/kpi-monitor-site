@@ -9,9 +9,12 @@ import Button from "@components/CustomButton";
 
 const tabsCss = css``;
 
-type ITabComponent = { solutions: ISolutionData[] };
+type ITabComponent = {
+	solutions: ISolutionData[];
+	btnCaptions: Record<string, string>;
+};
 
-const TabComponent: React.FC<ITabComponent> = ({ solutions }) => {
+const TabComponent: React.FC<ITabComponent> = ({ solutions, btnCaptions }) => {
 	const [value, setValue] = React.useState(0);
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {

@@ -17,33 +17,29 @@ type ILinkData = {
 type IHeader = {
 	logo: { url: string; to: string };
 	links: Record<string, any>[];
+	btnCaptions: Record<string, string>;
 };
 
-const Header: React.FC<IHeader> = ({ logo, links }) => {
+const Header: React.FC<IHeader> = ({ logo, links, btnCaptions }) => {
 	// console.log(links);
 	const [hidden, setHidden] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
-
 	const { pathname } = useLocation();
 
-	// console.log("pathname", pathname);
-
-	// useEffect(() => {
-	// 	const handleScroll = () => {
-	// 		const scrollLimit = SCROLL_LIMIT;
-	// 		setHidden(window.scrollY > scrollLimit);
-	// 	};
-
-	// 	window.addEventListener("scroll", handleScroll);
-
-	// 	return () => {
-	// 		window.removeEventListener("scroll", handleScroll);
-	// 	};
-	// }, []);
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollLimit = SCROLL_LIMIT;
+			setHidden(window.scrollY > scrollLimit);
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
 
 	return (
 		<>
-			<header>
+			<header className={hidden ? "hidden" : ""}>
 				<div className="header-container">
 					<div className="block-desk">
 						<Link to={logo.to}>
@@ -79,8 +75,8 @@ const Header: React.FC<IHeader> = ({ logo, links }) => {
 						</nav>
 
 						<div className="btn-wrapper">
-							<Button variant="secondary">Быстрый старт</Button>
-							<Button variant="accent">Войти</Button>
+							<Button variant="secondary">{btnCaptions.quick_start}</Button>
+							<Button variant="primary">{btnCaptions.entry}</Button>
 							<Box
 								display="flex"
 								alignItems="center"

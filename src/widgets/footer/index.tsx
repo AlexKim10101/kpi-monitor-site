@@ -17,20 +17,18 @@ type ILinkData = {
 type IFooter = {
 	logo: { url: string; to: string };
 	links: Record<string, any>[];
+	btnCaptions: Record<string, string>;
+	captions: Record<string, string>;
 };
 
-const Footer: React.FC<IFooter> = ({ logo, links }) => {
+const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
 	// const handleChange = (event, newValue) => {
 	// 	setValue(newValue);
 	// };
 
 	const { pathname } = useLocation();
 
-	const phoneNumbers = [
-		"+7 (495) 662-11-31",
-		"+7 (495) 662-11-32",
-		"+7 (495) 662-11-33",
-	];
+	const phoneNumbers = captions.footer_phones.split("\n");
 
 	return (
 		<footer className="footer">
@@ -72,26 +70,25 @@ const Footer: React.FC<IFooter> = ({ logo, links }) => {
 						</nav>
 
 						<div className="btn-wrapper btn-wrapper-footer">
-							<Button variant="secondary">Быстрый старт</Button>
-							<Button variant="primary">Войти</Button>
+							<Button variant="secondary">{btnCaptions.quick_start}</Button>
+							<Button variant="primary">{btnCaptions.entry}</Button>
 						</div>
 					</div>
 
 					<div className="footer-contacts-container">
-						<div className="footer-title">Контакты</div>
+						<div className="footer-title">
+							{captions.heading_footer_contacts}
+						</div>
 
 						<div className="contact-info">
-							<div className="address">
-								111250, г. Москва, проезд Завода «Серп и Молот», д. 6 корп. 1,
-								Бизнес-центр «РОСТЭК»
-							</div>
+							<div className="address">{captions.footer_adress}</div>
 							<div className="phone-and-email">
 								<div className="phone">
 									{phoneNumbers.map((pn, i) => (
-										<div key={pn}>{pn + "index" + i}</div>
+										<div key={pn + "index" + i}>{pn}</div>
 									))}
 								</div>
-								<div className="email">info@kpi-monitor.ru</div>
+								<div className="email">{captions.footer_email}</div>
 							</div>
 							<Icon
 								path="/icons/Clip-path-group.svg"
