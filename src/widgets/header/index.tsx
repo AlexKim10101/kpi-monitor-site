@@ -7,6 +7,9 @@ import Icon from "../../components/icon";
 import { getPathname } from "../../utils/getPathName";
 import { locationsDict, LOGO_DATA, SCROLL_LIMIT } from "../../consts/consts";
 import { useLanguage } from "../../context/languageContext";
+import KpiMonitorIcon from "@assets/icons/kpi_logo.svg";
+import KpiMonitorIconMob from "@assets/icons/kpi_logo_mob.svg";
+import BurgerIcon from "@assets/icons/burger-btn.svg";
 
 import "./header.css";
 import LanguageMenu from "@components/LanguageMenu";
@@ -46,7 +49,8 @@ const Header: React.FC<IHeader> = ({ logo, links, btnCaptions }) => {
 				<div className="header-container">
 					<div className="block-desk">
 						<Link to={logo.to}>
-							<Box
+							<KpiMonitorIcon />
+							{/* <Box
 								component="img"
 								src={logo.url}
 								alt="Kpi logo"
@@ -54,7 +58,7 @@ const Header: React.FC<IHeader> = ({ logo, links, btnCaptions }) => {
 									width: "235px",
 									height: "44px",
 								}}
-							/>
+							/> */}
 						</Link>
 						<nav>
 							<ul className="nav-list">
@@ -86,7 +90,7 @@ const Header: React.FC<IHeader> = ({ logo, links, btnCaptions }) => {
 					</div>
 					<div className="block-mob">
 						<Link to={logo.to}>
-							<Box
+							{/* <Box
 								component="img"
 								src={logo.url}
 								alt="Kpi logo"
@@ -94,10 +98,12 @@ const Header: React.FC<IHeader> = ({ logo, links, btnCaptions }) => {
 									width: "142px",
 									height: "30px",
 								}}
-							/>
+							/> */}
+							<KpiMonitorIconMob />
 						</Link>
 						<div onClick={() => setIsOpen(!isOpen)}>
-							<Icon id="burgerBtn" path="/icons/burger-btn.svg" />
+							{/* <Icon id="burgerBtn" path="/icons/burger-btn.svg" /> */}
+							<BurgerIcon />
 						</div>
 					</div>
 				</div>

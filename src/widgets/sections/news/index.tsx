@@ -3,6 +3,8 @@ import Button from "@components/CustomButton";
 import Icon from "@components/icon";
 import { useNews } from "../../../api/model";
 import formatDateToDDMMYYYY from "../../../utils/dateformatter";
+import NewsArrowIcon from "@assets/icons/news_arrow.svg";
+
 import "./news.css";
 
 type INewsProps = {
@@ -32,12 +34,13 @@ const News: React.FC<INewsProps> = ({ captions }) => {
 								</div>
 								<div className="news-item-title">{n.title}</div>
 								<div className="icon-wrapper">
-									<Icon
+									{/* <Icon
 										path="/icons/news_arrow.svg"
 										id={String(n.id)}
 										width={40}
 										height={54}
-									/>
+									/> */}
+									<NewsArrowIcon />
 								</div>
 							</div>
 						))}

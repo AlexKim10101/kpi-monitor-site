@@ -10,6 +10,7 @@ import { urls } from "../consts/consts";
 import KeyFunctions from "../widgets/sections/keyfunctions";
 import Stages from "../widgets/sections/stages";
 import News from "../widgets/sections/news";
+import CoatOfArmsIcon from "@assets/icons/Coat_of_Arms.svg";
 
 type IHomPageProps = {
 	captions: Record<string, string>;
@@ -23,11 +24,12 @@ const HomePage: React.FC<IHomPageProps> = ({ captions, btnCaptions }) => {
 				<div className="intro-info">
 					<div className="intro-title">{captions.heading_main}</div>
 					<div className="intro-message">
-						<Icon
+						{/* <Icon
 							id="coat_of_arm"
 							path="/icons/Coat_of_Arms_of_the_Russian_Federation.svg"
 							size={44}
-						></Icon>
+						></Icon> */}
+						<CoatOfArmsIcon />
 						<div className="message-text">{captions.russian_registry}</div>
 					</div>
 					<div className="intro-bts">

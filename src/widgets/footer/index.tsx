@@ -6,6 +6,8 @@ import Button from "@components/CustomButton";
 import Icon from "@components/icon";
 import { getPathname } from "../../utils/getPathName";
 import { locationsDict } from "../../consts/consts";
+import KpiMonitorIcon from "@assets/icons/kpi_logo.svg";
+import ClipPathGroup from "@assets/icons/Clip-path-group.svg";
 
 import "./footer.css";
 
@@ -35,7 +37,7 @@ const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
 			<div className="footer-desk-container">
 				<div className="footer-desc-content">
 					<Link to={logo.to}>
-						<Box
+						{/* <Box
 							component="img"
 							src={logo.url}
 							alt="Kpi logo"
@@ -43,7 +45,8 @@ const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
 								width: "235px",
 								height: "44px",
 							}}
-						/>
+						/> */}
+						<KpiMonitorIcon />
 					</Link>
 
 					<div className="footer-nav-container">
@@ -90,12 +93,13 @@ const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
 								</div>
 								<div className="email">{captions.footer_email}</div>
 							</div>
-							<Icon
+							{/* <Icon
 								path="/icons/Clip-path-group.svg"
 								id="Clip-path-group"
 								width={62}
 								height={77}
-							/>
+							/> */}
+							<ClipPathGroup />
 						</div>
 					</div>
 				</div>
