@@ -26,7 +26,7 @@ const Operations: React.FC<OperationsProps> = () => {
 	return (
 		<section className="operations-section">
 			{data.map(operation => (
-				<div className="operation-wrapper">
+				<div key={operation.id} className="operation-wrapper">
 					<div className="operation-section-title">{operation.title}</div>
 					<div className="operation-grid">
 						{operation.functions.map(item => (

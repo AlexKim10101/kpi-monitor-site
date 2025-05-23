@@ -1,4 +1,4 @@
-export const API_URL = "http://85.192.20.139:1338/api";
+export const API_URL = "http://10.0.0.39:1337/api";
 
 export async function fetchFromApi<T>(
 	endpoint: string,

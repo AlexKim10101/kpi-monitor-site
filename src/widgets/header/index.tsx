@@ -6,8 +6,10 @@ import Button from "../../components/CustomButton";
 import Icon from "../../components/icon";
 import { getPathname } from "../../utils/getPathName";
 import { locationsDict, LOGO_DATA, SCROLL_LIMIT } from "../../consts/consts";
+import { useLanguage } from "../../context/languageContext";
 
 import "./header.css";
+import LanguageMenu from "@components/LanguageMenu";
 
 type ILinkData = {
 	key: string;
@@ -25,6 +27,7 @@ const Header: React.FC<IHeader> = ({ logo, links, btnCaptions }) => {
 	const [hidden, setHidden] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const { pathname } = useLocation();
+	const { language, setLanguage } = useLanguage();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -77,24 +80,8 @@ const Header: React.FC<IHeader> = ({ logo, links, btnCaptions }) => {
 						<div className="btn-wrapper">
 							<Button variant="secondary">{btnCaptions.quick_start}</Button>
 							<Button variant="primary">{btnCaptions.entry}</Button>
-							<Box
-								display="flex"
-								alignItems="center"
-								justifyContent="center"
-								padding={1.25}
-								borderRadius="10px"
-								border={1}
-								borderColor="primary.main"
-								sx={{ cursor: "pointer" }}
-							>
-								<Typography
-									variant="button"
-									color="primary.main"
-									sx={{ lineHeight: 1 }}
-								>
-									RU
-								</Typography>
-							</Box>
+
+							<LanguageMenu />
 						</div>
 					</div>
 					<div className="block-mob">

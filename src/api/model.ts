@@ -21,9 +21,18 @@ export function useNavigation() {
 export function useCaptions() {
 	return useQuery<Caption[]>({
 		queryKey: ["caption"],
-		queryFn: () => fetchFromApi("/captions"),
+		queryFn: () => fetchFromApi("/captions?locale=ru"),
 	});
 }
+
+// export function useCaptions() {
+// 	const { language } = useLanguage();
+
+// 	return useQuery<Caption[]>({
+// 		queryKey: ["captions", language],
+// 		queryFn: () => fetchFromApi(`/captions?locale=${language}`),
+// 	});
+// }
 
 export function useButtons() {
 	return useQuery<Caption[]>({
