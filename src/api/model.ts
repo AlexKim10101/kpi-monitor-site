@@ -9,79 +9,97 @@ import {
 	News,
 	Operation,
 	Stage,
+	Locale,
 } from "./interfaces";
+import { useLanguage } from "../context/languageContext";
 
 export function useNavigation() {
+	const { language } = useLanguage();
+
 	return useQuery<Navigation[]>({
-		queryKey: ["navigation"],
-		queryFn: () => fetchFromApi("/navigations?populate=parent"),
+		queryKey: ["navigation", language],
+		queryFn: () =>
+			fetchFromApi(`/navigations?populate=parent&locale=${language}`),
+	});
+}
+
+export function useLocales() {
+	return useQuery<Locale[]>({
+		queryKey: ["locales"],
+		queryFn: () => fetchFromApi("/i18n/locales"),
+		initialData: [],
 	});
 }
 
 export function useCaptions() {
+	const { language } = useLanguage();
 	return useQuery<Caption[]>({
-		queryKey: ["caption"],
-		queryFn: () => fetchFromApi("/captions?locale=ru"),
+		queryKey: ["captions", language],
+		queryFn: () => fetchFromApi(`/captions?locale=${language}`),
 	});
 }
 
-// export function useCaptions() {
-// 	const { language } = useLanguage();
-
-// 	return useQuery<Caption[]>({
-// 		queryKey: ["captions", language],
-// 		queryFn: () => fetchFromApi(`/captions?locale=${language}`),
-// 	});
-// }
-
 export function useButtons() {
+	const { language } = useLanguage();
 	return useQuery<Caption[]>({
-		queryKey: ["button"],
-		queryFn: () => fetchFromApi("/buttons"),
+		queryKey: ["button", language],
+		queryFn: () => fetchFromApi(`/buttons?locale=${language}`),
 	});
 }
 
 export function useClients() {
+	const { language } = useLanguage();
 	return useQuery<Client[]>({
-		queryKey: ["clients"],
-		queryFn: () => fetchFromApi("/clients?populate=logo"),
+		queryKey: ["clients", language],
+		queryFn: () => fetchFromApi(`/clients?populate=logo&locale=${language}`),
 	});
 }
 
 export function useSolutions() {
+	const { language } = useLanguage();
+
 	return useQuery<Solution[]>({
-		queryKey: ["solutions"],
-		queryFn: () => fetchFromApi("/solutions?populate=picture"),
+		queryKey: ["solutions", language],
+		queryFn: () =>
+			fetchFromApi(`/solutions?populate=picture&locale=${language}`),
 	});
 }
 
 export function useKeyFunctoins() {
+	const { language } = useLanguage();
 	return useQuery<KeyFunction[]>({
-		queryKey: ["features"],
-		queryFn: () => fetchFromApi("/features?populate=icon"),
+		queryKey: ["features", language],
+		queryFn: () => fetchFromApi(`/features?populate=icon&locale=${language}`),
 	});
 }
 
 export function useNews() {
+	const { language } = useLanguage();
+
 	return useQuery<News[]>({
-		queryKey: ["news"],
-		queryFn: () => fetchFromApi("/news"),
+		queryKey: ["news", language],
+		queryFn: () => fetchFromApi(`/news?locale=${language}`),
 	});
 }
 
 export function useOperations() {
+	const { language } = useLanguage();
+
 	return useQuery<Operation[]>({
-		queryKey: ["operations"],
+		queryKey: ["operations", language],
 		queryFn: () =>
 			fetchFromApi(
-				"/function-types?populate[functions][populate][function_blocks]=true&populate[functions]=true&populate=true"
+				`/function-types?populate[functions][populate][function_blocks]=true&populate[functions]=true&populate=true&locale=${language}`
 			),
 	});
 }
 
 export function useStages() {
+	const { language } = useLanguage();
+
 	return useQuery<Stage[]>({
-		queryKey: ["stages"],
-		queryFn: () => fetchFromApi("/applications?populate=icon"),
+		queryKey: ["stages", language],
+		queryFn: () =>
+			fetchFromApi(`/applications?populate=icon&locale=${language}`),
 	});
 }

@@ -72,19 +72,19 @@ const TabComponent: React.FC<ITabComponent> = ({ solutions, btnCaptions }) => {
 			<div className="solution-content">
 				<div className="solution-picture">
 					<img
-						src={BASE_URL + solution.picture.formats.medium.url}
-						alt={solution.picture.name}
+						src={BASE_URL + solution?.picture?.formats.medium.url}
+						alt={solution?.picture?.name}
 					/>
 					<div className="sol-btn-wrap">
 						<Button variant="primary" size="medium">
-							Посмотреть демо
+							{btnCaptions.demo}
 						</Button>
 					</div>
 				</div>
 				<div className="solution-description">
-					<div className="description-text">{solution.description}</div>
+					<div className="description-text">{solution?.description}</div>
 					<Button variant="secondary" size="medium">
-						Быстрый старт
+						{btnCaptions.quick_start}
 					</Button>
 				</div>
 			</div>

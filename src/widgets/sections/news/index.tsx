@@ -12,7 +12,7 @@ type INewsProps = {
 	btnCaptions: Record<string, string>;
 };
 
-const News: React.FC<INewsProps> = ({ captions }) => {
+const News: React.FC<INewsProps> = ({ captions, btnCaptions }) => {
 	const { data, isLoading, error } = useNews();
 
 	if (isLoading) {
@@ -30,7 +30,7 @@ const News: React.FC<INewsProps> = ({ captions }) => {
 						{data.map((n, i) => (
 							<div key={n.id} className="news-list-item">
 								<div className="news-item-date">
-									{formatDateToDDMMYYYY(n.date)}
+									{n.date ? formatDateToDDMMYYYY(n.date) : ""}
 								</div>
 								<div className="news-item-title">{n.title}</div>
 								<div className="icon-wrapper">
@@ -46,7 +46,7 @@ const News: React.FC<INewsProps> = ({ captions }) => {
 						))}
 					</div>
 					<div className="news-btn-wrapper">
-						<Button variant="secondary">Все новости</Button>
+						<Button variant="secondary">{btnCaptions.all_news}</Button>
 					</div>
 				</div>
 			</div>

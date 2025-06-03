@@ -100,6 +100,13 @@ export interface Stage {
 	};
 }
 
+export interface Locale {
+	id: number;
+	name: string;
+	code: string;
+	isDefault: boolean;
+}
+
 const stageItem = {
 	id: 2,
 	title: "Презентация",

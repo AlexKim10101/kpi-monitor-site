@@ -3,13 +3,6 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useOperations } from "../../../api/model";
 import "./operations.css";
-import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Typography,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionComponent from "@components/AccordionComponent";
 
 type OperationsProps = {};

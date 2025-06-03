@@ -14,7 +14,10 @@ type IKeyFunctionsProps = {
 	btnCaptions: Record<string, string>;
 };
 
-const KeyFunctions: React.FC<IKeyFunctionsProps> = ({ captions }) => {
+const KeyFunctions: React.FC<IKeyFunctionsProps> = ({
+	captions,
+	btnCaptions,
+}) => {
 	const { data, isLoading, error } = useKeyFunctoins();
 
 	if (isLoading) {
@@ -33,7 +36,7 @@ const KeyFunctions: React.FC<IKeyFunctionsProps> = ({ captions }) => {
 							<div className="function-title">{f.title}</div>
 							<div className="function-description">{f.description}</div>
 							<div className="function-btn-wrapper">
-								<Button variant="secondary">Подробнее</Button>
+								<Button variant="secondary">{btnCaptions.learn_more}</Button>
 							</div>
 							<div className="function-icon">
 								<Icon

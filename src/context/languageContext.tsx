@@ -15,7 +15,7 @@ export const LanguageProvider = ({
 }: {
 	children: React.ReactNode;
 }) => {
-	const [language, setLanguage] = useState("en");
+	const [language, setLanguage] = useState("ru");
 
 	return (
 		<LanguageContext.Provider value={{ language, setLanguage }}>

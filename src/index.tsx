@@ -7,6 +7,7 @@ import "normalize.css";
 import "./assets/css/style.css";
 
 import App from "./App";
+import { LanguageProvider } from "./context/languageContext";
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
@@ -15,8 +16,10 @@ const queryClient = new QueryClient();
 
 root.render(
 	<BrowserRouter>
-		<QueryClientProvider client={queryClient}>
-			<App />
-		</QueryClientProvider>
+		<LanguageProvider>
+			<QueryClientProvider client={queryClient}>
+				<App />
+			</QueryClientProvider>
+		</LanguageProvider>
 	</BrowserRouter>
 );

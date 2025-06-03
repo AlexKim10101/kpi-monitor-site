@@ -122,3 +122,36 @@ export const fakeStages = [
 		],
 	},
 ];
+
+const fakeLocales = [
+	{
+		id: 8,
+		documentId: "ag2m5t1794r9oiw2ukjymg6w",
+		name: "English (en)",
+		code: "en",
+		createdAt: "2025-04-17T12:35:59.352Z",
+		updatedAt: "2025-04-17T12:35:59.352Z",
+		publishedAt: "2025-04-17T12:35:59.360Z",
+		isDefault: false,
+	},
+	{
+		id: 9,
+		documentId: "evcm0brctjdgmh9bkdwy6ah3",
+		name: "Russian (ru)",
+		code: "ru",
+		createdAt: "2025-04-24T07:51:23.395Z",
+		updatedAt: "2025-04-24T07:51:23.395Z",
+		publishedAt: "2025-04-24T07:51:23.395Z",
+		isDefault: true,
+	},
+	{
+		id: 10,
+		documentId: "qgmj0q96i6rgig7qdrn0d8dy",
+		name: "Persian (Iran) (fa-IR)",
+		code: "fa-IR",
+		createdAt: "2025-04-24T07:52:07.557Z",
+		updatedAt: "2025-04-24T07:52:07.557Z",
+		publishedAt: "2025-04-24T07:52:07.558Z",
+		isDefault: false,
+	},
+];

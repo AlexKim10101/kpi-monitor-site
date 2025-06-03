@@ -10,13 +10,11 @@ type AccordionComponentProps = {
 };
 
 const AccordionComponent: React.FC<AccordionComponentProps> = ({
-	key,
 	title,
 	children,
 }) => {
 	return (
 		<Accordion
-			key={key}
 			sx={{
 				"&.MuiAccordion-root": {
 					borderRadius: "10px",

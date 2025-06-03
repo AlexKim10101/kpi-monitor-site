@@ -1,47 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import classNames from "classnames";
-import { Box, Typography } from "@mui/material";
 import Button from "../../components/CustomButton";
-import Icon from "../../components/icon";
 import { getPathname } from "../../utils/getPathName";
-import { locationsDict, LOGO_DATA, SCROLL_LIMIT } from "../../consts/consts";
-import { useLanguage } from "../../context/languageContext";
+import { locationsDict, SCROLL_LIMIT } from "../../consts/consts";
 import KpiMonitorIcon from "@assets/icons/kpi_logo.svg";
 import KpiMonitorIconMob from "@assets/icons/kpi_logo_mob.svg";
 import BurgerIcon from "@assets/icons/burger-btn.svg";
-
 import "./header.css";
 import LanguageMenu from "@components/LanguageMenu";
+import { Locale } from "../../api/interfaces";
 
 type ILinkData = {
 	key: string;
 	caption: string;
 };
 
-type IHeader = {
+type IHeaderProps = {
 	logo: { url: string; to: string };
 	links: Record<string, any>[];
 	btnCaptions: Record<string, string>;
+	locales: Locale[];
+	language: string;
+	setLanguage: (code: string) => void;
 };
 
-const Header: React.FC<IHeader> = ({ logo, links, btnCaptions }) => {
-	// console.log(links);
+const Header: React.FC<IHeaderProps> = ({
+	logo,
+	links,
+	btnCaptions,
+	locales,
+	language,
+	setLanguage,
+}) => {
 	const [hidden, setHidden] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const { pathname } = useLocation();
-	const { language, setLanguage } = useLanguage();
 
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollLimit = SCROLL_LIMIT;
-			setHidden(window.scrollY > scrollLimit);
-		};
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
+	// useEffect(() => {
+	// 	const handleScroll = () => {
+	// 		const scrollLimit = SCROLL_LIMIT;
+	// 		setHidden(window.scrollY > scrollLimit);
+	// 	};
+	// 	window.addEventListener("scroll", handleScroll);
+	// 	return () => {
+	// 		window.removeEventListener("scroll", handleScroll);
+	// 	};
+	// }, []);
 
 	return (
 		<>
@@ -85,7 +90,11 @@ const Header: React.FC<IHeader> = ({ logo, links, btnCaptions }) => {
 							<Button variant="secondary">{btnCaptions.quick_start}</Button>
 							<Button variant="primary">{btnCaptions.entry}</Button>
 
-							<LanguageMenu />
+							<LanguageMenu
+								locales={locales}
+								setLanguage={setLanguage}
+								language={language}
+							/>
 						</div>
 					</div>
 					<div className="block-mob">

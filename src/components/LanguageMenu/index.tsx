@@ -1,12 +1,20 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
+import React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Box, Typography } from "@mui/material";
+import { Locale } from "../../api/interfaces";
 
-type ILanguageMenuProps = {};
+type ILanguageMenuProps = {
+	locales: Locale[];
+	setLanguage: (code: string) => void;
+	language: string;
+};
 
-export const LanguageMenu: React.FC<ILanguageMenuProps> = () => {
+export const LanguageMenu: React.FC<ILanguageMenuProps> = ({
+	locales,
+	setLanguage,
+	language,
+}) => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -14,6 +22,11 @@ export const LanguageMenu: React.FC<ILanguageMenuProps> = () => {
 	};
 	const handleClose = () => {
 		setAnchorEl(null);
+	};
+
+	const handleChange = (code: string) => {
+		setLanguage(code);
+		handleClose();
 	};
 
 	return (
@@ -43,7 +56,7 @@ export const LanguageMenu: React.FC<ILanguageMenuProps> = () => {
 						color="primary.main"
 						sx={{ lineHeight: 1 }}
 					>
-						RU
+						{language}
 					</Typography>
 				</Box>
 			</button>
@@ -53,10 +66,18 @@ export const LanguageMenu: React.FC<ILanguageMenuProps> = () => {
 				anchorEl={anchorEl}
 				open={open}
 				onClose={handleClose}
+				disableScrollLock
 			>
-				<MenuItem onClick={handleClose}>Profile</MenuItem>
-				<MenuItem onClick={handleClose}>My account</MenuItem>
-				<MenuItem onClick={handleClose}>Logout</MenuItem>
+				{locales.map(l => (
+					<MenuItem
+						key={l.id}
+						onClick={() => {
+							handleChange(l.code);
+						}}
+					>
+						{l.name}
+					</MenuItem>
+				))}
 			</Menu>
 		</div>
 	);

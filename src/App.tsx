@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, HashRouter } from "react-router";
 
-import { useQuery } from "@tanstack/react-query";
 import Home from "./pages/Home";
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
-import { useNavigation, useCaptions, useButtons } from "./api/model";
+import {
+	useNavigation,
+	useCaptions,
+	useButtons,
+	useLocales,
+} from "./api/model";
 import { LOGO_DATA, urls } from "./consts/consts";
 import InfoPage from "./pages/Info";
+import { Locale } from "./api/interfaces";
+import { useLanguage } from "./context/languageContext";
 
 const App = () => {
+	const {
+		data: localesData,
+		isLoading: isLocalesLoaging,
+		error: localesError,
+	} = useLocales();
+
+	const { language, setLanguage } = useLanguage();
+
+	const currentLocale = localesData.find(l => l.isDefault) as Locale;
+
+	useEffect(() => {
+		if (currentLocale && currentLocale.code !== language) {
+			setLanguage(currentLocale.code);
+		}
+	}, [currentLocale]);
+
 	const { data, isLoading, error } = useCaptions();
 
 	const {
@@ -24,11 +46,20 @@ const App = () => {
 		error: btnError,
 	} = useButtons();
 
-	if (isLoading || isBtnLoaging || isNavLoaging) {
+	if (isLoading || isBtnLoaging || isNavLoaging || isLocalesLoaging) {
 		return <div>Загрузка...</div>;
 	}
 
-	if (error || btnError || navError || !data || !btnData || !navData)
+	if (
+		error ||
+		btnError ||
+		navError ||
+		localesError ||
+		!data ||
+		!btnData ||
+		!navData ||
+		!localesData
+	)
 		return <p>Ошибка загрузки данных</p>;
 
 	const captions: Record<string, string> = data.reduce((acc, item) => {
@@ -43,7 +74,14 @@ const App = () => {
 
 	return (
 		<div className="wrapper">
-			<Header logo={LOGO_DATA} links={links} btnCaptions={btnCaptions} />
+			<Header
+				logo={LOGO_DATA}
+				links={links}
+				btnCaptions={btnCaptions}
+				locales={localesData}
+				language={language}
+				setLanguage={setLanguage}
+			/>
 			<main>
 				<Routes>
 					<Route

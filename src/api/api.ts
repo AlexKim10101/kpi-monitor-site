@@ -15,5 +15,9 @@ export async function fetchFromApi<T>(
 
 	const json = await res.json();
 
-	return json.data;
+	if (json.data) {
+		return json.data;
+	}
+
+	return json;
 }

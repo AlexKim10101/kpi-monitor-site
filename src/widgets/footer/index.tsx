@@ -24,13 +24,11 @@ type IFooter = {
 };
 
 const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
-	// const handleChange = (event, newValue) => {
-	// 	setValue(newValue);
-	// };
-
 	const { pathname } = useLocation();
 
-	const phoneNumbers = captions.footer_phones.split("\n");
+	const phoneNumbers = captions.footer_phones
+		? captions.footer_phones.split("\n")
+		: [];
 
 	return (
 		<footer className="footer">
