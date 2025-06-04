@@ -40,12 +40,16 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 								<Icon
 									id={String(item.id)}
 									path={BASE_URL + item.logo.url}
-									width={item.logo.width}
-									height={item.logo.height}
+									// width={160}
+									// height={130}
+									width={shiftItem.logo.width}
+									height={shiftItem.logo.height}
 								/>
 								<Icon
 									id={String(shiftItem.id)}
 									path={BASE_URL + shiftItem.logo.url}
+									// width={160}
+									// height={130}
 									width={shiftItem.logo.width}
 									height={shiftItem.logo.height}
 								/>

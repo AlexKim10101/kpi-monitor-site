@@ -18,6 +18,13 @@
 
 	width: 100%;
 	max-width: 1200px;
+
+	position: relative;
+}
+
+.scroll-target-shift-block {
+	position: absolute;
+	top: -180px;
 }
 
 .operation-section-title {

@@ -56,6 +56,23 @@ header.hidden {
 	text-decoration: none;
 }
 
+.nav-link::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -10px;
+	height: 1px;
+	background-color: #aabefa;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+	transform: scaleX(1);
+}
+
 .nav-link-active::after {
 	content: "";
 	position: absolute;
@@ -67,6 +84,10 @@ header.hidden {
 	transform: scaleX(1);
 	transform-origin: center;
 	transition: transform 0.3s ease;
+}
+
+.nav-link-active:hover::after {
+	background-color: currentColor;
 }
 /* 
 .nav-link:hover::after {

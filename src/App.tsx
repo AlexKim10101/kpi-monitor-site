@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, HashRouter } from "react-router";
+import { Routes, Route } from "react-router";
 
 import Home from "./pages/Home";
 import Header from "./widgets/header";

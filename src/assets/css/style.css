@@ -48,6 +48,8 @@ p {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+
+	padding-top: 80px;
 }
 
 .nav-function-description,
@@ -98,6 +100,11 @@ p {
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	cursor: pointer;
+}
+
+.nav-function-item-active {
+	border-bottom: 1px solid #22409a;
 }
 
 .intro-bts {

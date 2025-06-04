@@ -1,22 +1,56 @@
-import React from "react";
-
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import classNames from "classnames";
+import throttle from "lodash.throttle";
 import Icon from "../components/icon";
 import Button from "../components/CustomButton";
 import Operations from "../widgets/sections/operations";
+import { useOperations } from "../api/model";
+import FloatingTabs from "@components/FloatingTabs";
+import { Operation } from "../api/interfaces";
 
-type IInfoPageProps = {};
+type IInfoPageProps = { operations: Operation[] };
 
-const InfoPage: React.FC<IInfoPageProps> = () => {
-	const navigationItems = [
-		"Операторы",
-		"Математические функции",
-		"Строковые значения",
-		"Работа с датами",
-		"Дополнительные функции Мастера настройки импорта",
-		"Вычисление значений показателей",
-		"Дополнительные функции Карт KPI",
-		"Параметры",
-	];
+const DataWrapper: React.FC<{}> = () => {
+	const { data, isLoading, error } = useOperations();
+
+	if (isLoading) {
+		return <div>Загрузка...</div>;
+	}
+
+	if (error || !data) return <p>Ошибка загрузки данных</p>;
+
+	const operations = data.sort((a, b) => a.order - b.order);
+
+	return <InfoPage operations={operations} />;
+};
+
+const InfoPage: React.FC<IInfoPageProps> = ({ operations }) => {
+	const [activeTab, setActiveTab] = useState(operations[0]?.documentId);
+
+	const activeObserverRef = useRef(true);
+
+	const scrollToTarget = (id: string) => {
+		const el = document.getElementById(id);
+		setActiveTab(id);
+		activeObserverRef.current = false;
+		if (el) {
+			el.scrollIntoView({ behavior: "smooth", block: "start" });
+		}
+		setTimeout(() => {
+			activeObserverRef.current = true;
+		}, 600);
+	};
+
+	const throttledHandler = useMemo(
+		() =>
+			throttle((id: string) => {
+				if (activeObserverRef.current) {
+					setActiveTab(id);
+				}
+			}, 0),
+		[]
+	);
+
 	return (
 		<>
 			<section className="nav-section">
@@ -31,16 +65,27 @@ const InfoPage: React.FC<IInfoPageProps> = () => {
 					</div>
 				</div>
 				<div className="nav-function-list">
-					{navigationItems.map((item, index) => (
-						<div className="nav-function-item" key={index}>
-							{item}
+					{operations.map((item, index) => (
+						<div
+							className={classNames("nav-function-item", {
+								"nav-function-item-active": activeTab === item.documentId,
+							})}
+							key={index}
+							onClick={() => scrollToTarget(item.documentId)}
+						>
+							{item.point}
 						</div>
 					))}
 				</div>
 			</section>
-			<Operations />
+			<FloatingTabs
+				operations={operations}
+				activeTab={activeTab}
+				setActiveTab={throttledHandler}
+			/>
+			<Operations operations={operations} />
 		</>
 	);
 };
 
-export default InfoPage;
+export default DataWrapper;

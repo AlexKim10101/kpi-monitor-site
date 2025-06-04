@@ -1,0 +1,43 @@
+.floating-tabs-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: fixed;
+	top: 0px;
+	height: 75px;
+
+	background-color: white;
+	z-index: 900;
+
+	transition: all 0.3s ease;
+}
+
+.floating-tabs-wrapper-down {
+	top: 105px;
+}
+
+.floating-tabs-container {
+	display: flex;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.floating-tabs {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.next-btr-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-grow: 1;
+}
+
+.next-btn {
+	all: unset;
+	cursor: pointer;
+}

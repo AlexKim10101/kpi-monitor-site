@@ -70,7 +70,9 @@ export interface News {
 
 export interface Operation {
 	id: number;
+	documentId: string;
 	title: string;
+	point: string;
 	description: string;
 	order: number;
 	functions: {

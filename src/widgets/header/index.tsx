@@ -37,16 +37,19 @@ const Header: React.FC<IHeaderProps> = ({
 	const [isOpen, setIsOpen] = useState(false);
 	const { pathname } = useLocation();
 
-	// useEffect(() => {
-	// 	const handleScroll = () => {
-	// 		const scrollLimit = SCROLL_LIMIT;
-	// 		setHidden(window.scrollY > scrollLimit);
-	// 	};
-	// 	window.addEventListener("scroll", handleScroll);
-	// 	return () => {
-	// 		window.removeEventListener("scroll", handleScroll);
-	// 	};
-	// }, []);
+	useEffect(() => {
+		const handleScroll = () => {
+			const distanceFromBottom =
+				document.documentElement.scrollHeight -
+				window.scrollY -
+				window.innerHeight;
+			setHidden(distanceFromBottom < SCROLL_LIMIT);
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
 
 	return (
 		<>

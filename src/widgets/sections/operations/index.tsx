@@ -4,23 +4,23 @@ import remarkGfm from "remark-gfm";
 import { useOperations } from "../../../api/model";
 import "./operations.css";
 import AccordionComponent from "@components/AccordionComponent";
+import { Operation } from "../../../api/interfaces";
 
-type OperationsProps = {};
+type OperationsProps = {
+	operations: Operation[];
+};
 
-const Operations: React.FC<OperationsProps> = () => {
-	const { data, isLoading, error } = useOperations();
-
-	if (isLoading) {
-		return <div>Загрузка...</div>;
-	}
-
-	if (error || !data) return <p>Ошибка загрузки данных</p>;
-
+const Operations: React.FC<OperationsProps> = ({ operations }) => {
 	return (
 		<section className="operations-section">
-			{data.map(operation => (
+			{operations.map(operation => (
 				<div key={operation.id} className="operation-wrapper">
 					<div className="operation-section-title">{operation.title}</div>
+					<div
+						id={operation.documentId}
+						className="scroll-target-shift-block"
+					></div>
+
 					<div className="operation-grid">
 						{operation.functions.map(item => (
 							<AccordionComponent
@@ -43,32 +43,6 @@ const Operations: React.FC<OperationsProps> = () => {
 									))}
 							</AccordionComponent>
 						))}
-
-						{/* {operation.functions.map(item => (
-							<Accordion key={item.id}>
-								<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-									<div className="operation-title">
-										{item.title} ({item.description})
-									</div>
-								</AccordionSummary>
-								<AccordionDetails>
-									<div className="operation-content">
-										{item.function_blocks
-											.sort((a, b) => a.order - b.order)
-											.map(block => (
-												<div key={block.id} className="oper-block">
-													<div className="oper-block-title">{block.title}</div>
-													<div className="oper-block-text">
-														<Markdown remarkPlugins={[remarkGfm]}>
-															{block.description}
-														</Markdown>
-													</div>
-												</div>
-											))}
-									</div>
-								</AccordionDetails>
-							</Accordion>
-						))} */}
 					</div>
 				</div>
 			))}
@@ -76,4 +50,4 @@ const Operations: React.FC<OperationsProps> = () => {
 	);
 };
 
-export default Operations;
+export default React.memo(Operations);
