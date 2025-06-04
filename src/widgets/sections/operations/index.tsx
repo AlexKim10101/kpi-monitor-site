@@ -25,7 +25,8 @@ const Operations: React.FC<OperationsProps> = ({ operations }) => {
 						{operation.functions.map(item => (
 							<AccordionComponent
 								key={item.id}
-								title={`${item.title} (${item.description})`}
+								title={item.title}
+								subtitle={item.description ? `(${item.description})` : ""}
 							>
 								{item.function_blocks
 									.sort((a, b) => a.order - b.order)

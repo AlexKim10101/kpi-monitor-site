@@ -43,6 +43,12 @@
 	gap: 20px;
 }
 
+.operation-title-wrapper {
+	margin: 12px 0px;
+	/* display: flex;
+	gap: 10px; */
+}
+
 .operation-title,
 .oper-block-title {
 	color: var(--black, #141414);
@@ -50,6 +56,15 @@
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 700;
+	line-height: normal;
+}
+
+.operation-subtitle {
+	color: var(--black, #141414);
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
 	line-height: normal;
 }
 
@@ -73,3 +88,120 @@
 	font-weight: 700;
 	line-height: normal;
 }
+
+.oper-block-text p {
+	display: block;
+	margin-top: 5px;
+}
+
+/* 
+.table {
+	align-items: flex-start;
+	border: 1px solid;
+	border-color: var(--grayblue);
+	border-radius: 15px;
+	box-shadow: var(--2);
+	display: flex;
+	flex-direction: column;
+	height: 306px;
+	overflow: hidden;
+	position: relative;
+	width: 1202px;
+  }
+  
+  .table .frame {
+	align-items: center;
+	align-self: stretch;
+	background-color: var(--bluesec);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-color: var(--grayblue);
+	border-radius: 15px 15px 0px 0px;
+	display: flex;
+	flex: 0 0 auto;
+	position: relative;
+	width: 100%;
+  }
+  
+  .table .div {
+	align-items: center;
+	display: flex;
+	flex: 1;
+	flex-grow: 1;
+	position: relative;
+  }
+  
+  .table .cell-instance {
+	width: 159px !important;
+  }
+  
+  .table .design-component-instance-node {
+	color: var(--accent) !important;
+	font-family: var(--subhead-pc-bold-font-family) !important;
+	font-size: var(--subhead-pc-bold-font-size) !important;
+	font-style: var(--subhead-pc-bold-font-style) !important;
+	font-weight: var(--subhead-pc-bold-font-weight) !important;
+	letter-spacing: var(--subhead-pc-bold-letter-spacing) !important;
+	line-height: var(--subhead-pc-bold-line-height) !important;
+	margin-top: unset !important;
+  }
+  
+  .table .cell-2 {
+	padding: 20px 0px !important;
+	width: 179px !important;
+  }
+  
+  .table .cell-3 {
+	color: var(--accent) !important;
+	flex: unset !important;
+	font-family: var(--subhead-pc-bold-font-family) !important;
+	font-size: var(--subhead-pc-bold-font-size) !important;
+	font-style: var(--subhead-pc-bold-font-style) !important;
+	font-weight: var(--subhead-pc-bold-font-weight) !important;
+	letter-spacing: var(--subhead-pc-bold-letter-spacing) !important;
+	line-height: var(--subhead-pc-bold-line-height) !important;
+	margin-top: unset !important;
+	width: 179px !important;
+  }
+  
+  .table .cell-4 {
+	color: var(--accent) !important;
+	font-family: var(--subhead-pc-bold-font-family) !important;
+	font-size: var(--subhead-pc-bold-font-size) !important;
+	font-style: var(--subhead-pc-bold-font-style) !important;
+	font-weight: var(--subhead-pc-bold-font-weight) !important;
+	letter-spacing: var(--subhead-pc-bold-letter-spacing) !important;
+	line-height: var(--subhead-pc-bold-line-height) !important;
+  }
+  
+  .table .frame-2 {
+	align-items: center;
+	align-self: stretch;
+	background-color: var(--white);
+	display: flex;
+	flex: 0 0 auto;
+	position: relative;
+	width: 100%;
+  }
+  
+  .table .cell-5 {
+	color: var(--accent) !important;
+	margin-top: unset !important;
+  }
+  
+  .table .cell-6 {
+	color: var(--accent) !important;
+	flex: unset !important;
+	margin-top: unset !important;
+	width: 179px !important;
+  }
+  
+  .table .frame-3 {
+	align-items: center;
+	align-self: stretch;
+	background-color: var(--bluesec);
+	display: flex;
+	flex: 0 0 auto;
+	position: relative;
+	width: 100%;
+  } */

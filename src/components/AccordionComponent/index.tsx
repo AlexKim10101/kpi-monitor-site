@@ -6,11 +6,13 @@ import DownArrowIcon from "@assets/icons/down-arrow.svg";
 type AccordionComponentProps = {
 	key: number | string;
 	title: string;
+	subtitle: string;
 	children: React.ReactNode[];
 };
 
 const AccordionComponent: React.FC<AccordionComponentProps> = ({
 	title,
+	subtitle,
 	children,
 }) => {
 	return (
@@ -24,16 +26,26 @@ const AccordionComponent: React.FC<AccordionComponentProps> = ({
 					display: "flex",
 					flexDirection: "column",
 					gap: "15px",
-					// padding: "15px",
+					margin: 0,
 				},
+
 				"&.MuiAccordion-root::before": {
 					height: 0,
 				},
+
 				"& .MuiAccordion-heading": {
 					border: "1px solid  #E1E9FF",
 					borderRadius: "10px",
 					background: "#FEFEFF",
 					boxShadow: "0px 2px 20px 0px rgba(45, 86, 206, 0.05)",
+				},
+
+				"& .MuiAccordion-heading:hover": {
+					border: "1px solid #aabef9",
+				},
+
+				"&.Mui-expanded .MuiAccordion-heading:hover": {
+					border: "1px solid #E1E9FF",
 				},
 
 				"&.MuiAccordion-root .Mui-expanded": {
@@ -44,13 +56,26 @@ const AccordionComponent: React.FC<AccordionComponentProps> = ({
 					margin: 0,
 				},
 
+				"& .MuiAccordionSummary-content": {
+					margin: 0,
+				},
+
 				"& .MuiAccordionSummary-root.Mui-expanded": {
-					minHeight: "48px",
+					minHeight: "unset",
+				},
+
+				"& .MuiButtonBase-root": {
+					minHeight: "unset",
+					gap: "15px",
 				},
 			}}
 		>
 			<AccordionSummary expandIcon={<DownArrowIcon />}>
-				<div className="operation-title">{title}</div>
+				<span className="operation-title-wrapper">
+					<span className="operation-title">{title}</span>
+					<span>{` `}</span>
+					<span className="operation-subtitle">{subtitle}</span>
+				</span>
 			</AccordionSummary>
 			<AccordionDetails
 				sx={{
