@@ -18,6 +18,8 @@ const Stages: React.FC<IStagesProps> = ({ captions, btnCaptions }) => {
 
 	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
+	const sortedData = data.sort((a, b) => a.order - b.order);
+
 	return (
 		<section className="stages-section">
 			<div className="stage-header">
@@ -26,7 +28,7 @@ const Stages: React.FC<IStagesProps> = ({ captions, btnCaptions }) => {
 			</div>
 
 			<div className="stages-list">
-				{data.map((s, i) => (
+				{sortedData.map((s, i) => (
 					<div key={i} className="stage-list-item">
 						<div className="stage-title">{s.title}</div>
 						<div className="stage-description">

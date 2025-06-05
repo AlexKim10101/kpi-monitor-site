@@ -14,6 +14,7 @@ import { LOGO_DATA, urls } from "./consts/consts";
 import InfoPage from "./pages/Info";
 import { Locale } from "./api/interfaces";
 import { useLanguage } from "./context/languageContext";
+import Loader from "@components/Loader";
 
 const App = () => {
 	const {
@@ -47,7 +48,11 @@ const App = () => {
 	} = useButtons();
 
 	if (isLoading || isBtnLoaging || isNavLoaging || isLocalesLoaging) {
-		return <div>Загрузка...</div>;
+		return (
+			<div className="wrapper">
+				<Loader />
+			</div>
+		);
 	}
 
 	if (

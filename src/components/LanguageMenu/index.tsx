@@ -1,8 +1,10 @@
 import React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import classNames from "classnames";
 import { Box, Typography } from "@mui/material";
 import { Locale } from "../../api/interfaces";
+import "./language-menu.css";
 
 type ILanguageMenuProps = {
 	locales: Locale[];
@@ -33,32 +35,13 @@ export const LanguageMenu: React.FC<ILanguageMenuProps> = ({
 		<div>
 			<button
 				id="basic-button"
+				className="lang-btn"
 				aria-controls={open ? "basic-menu" : undefined}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : undefined}
 				onClick={handleClick}
-				style={{
-					all: "unset",
-				}}
 			>
-				<Box
-					display="flex"
-					alignItems="center"
-					justifyContent="center"
-					padding={1.25}
-					borderRadius="10px"
-					border={1}
-					borderColor="primary.main"
-					sx={{ cursor: "pointer" }}
-				>
-					<Typography
-						variant="button"
-						color="primary.main"
-						sx={{ lineHeight: 1 }}
-					>
-						{language}
-					</Typography>
-				</Box>
+				{language}
 			</button>
 
 			<Menu
@@ -84,3 +67,18 @@ export const LanguageMenu: React.FC<ILanguageMenuProps> = ({
 };
 
 export default LanguageMenu;
+
+// <Box
+// 	display="flex"
+// 	alignItems="center"
+// 	justifyContent="center"
+// 	padding={1.25}
+// 	borderRadius="10px"
+// 	border={1}
+// 	borderColor="primary.main"
+// 	sx={{ cursor: "pointer" }}
+// >
+// 	<Typography variant="button" color="primary.main" sx={{ lineHeight: 1 }}>
+// 		{language}
+// 	</Typography>
+// </Box>;

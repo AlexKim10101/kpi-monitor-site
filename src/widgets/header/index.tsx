@@ -43,7 +43,9 @@ const Header: React.FC<IHeaderProps> = ({
 				document.documentElement.scrollHeight -
 				window.scrollY -
 				window.innerHeight;
-			setHidden(distanceFromBottom < SCROLL_LIMIT);
+			setHidden(
+				distanceFromBottom < SCROLL_LIMIT && window.scrollY > SCROLL_LIMIT / 2
+			);
 		};
 		window.addEventListener("scroll", handleScroll);
 		return () => {

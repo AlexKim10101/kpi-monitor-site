@@ -1,0 +1,25 @@
+.lang-btn {
+	all: unset;
+	display: flex;
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	border: 1px solid var(--Accent, #22409a);
+	min-width: 42px;
+	box-sizing: border-box;
+
+	color: var(--Accent, #22409a);
+	font-family: Ubuntu;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-transform: uppercase;
+
+	cursor: pointer;
+}
+
+.lang-btn:hover {
+	background: var(--blue_sec, #e1e9ff);
+}

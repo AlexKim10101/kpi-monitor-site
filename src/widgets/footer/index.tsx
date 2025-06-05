@@ -1,11 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router";
 import classNames from "classnames";
-import { Box } from "@mui/material";
 import Button from "@components/CustomButton";
-import Icon from "@components/icon";
 import { getPathname } from "../../utils/getPathName";
-import { locationsDict } from "../../consts/consts";
+import { locationsDict } from "@consts/consts";
 import KpiMonitorIcon from "@assets/icons/kpi_logo.svg";
 import ClipPathGroup from "@assets/icons/Clip-path-group.svg";
 

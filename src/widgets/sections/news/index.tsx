@@ -4,6 +4,7 @@ import Icon from "@components/icon";
 import { useNews } from "../../../api/model";
 import formatDateToDDMMYYYY from "../../../utils/dateformatter";
 import NewsArrowIcon from "@assets/icons/news_arrow.svg";
+import NewsArrowIconHover from "@assets/icons/news_arrow_hover.svg";
 
 import "./news.css";
 
@@ -34,13 +35,12 @@ const News: React.FC<INewsProps> = ({ captions, btnCaptions }) => {
 								</div>
 								<div className="news-item-title">{n.title}</div>
 								<div className="icon-wrapper">
-									{/* <Icon
-										path="/icons/news_arrow.svg"
-										id={String(n.id)}
-										width={40}
-										height={54}
-									/> */}
-									<NewsArrowIcon />
+									<div className="icon">
+										<NewsArrowIcon />
+									</div>
+									<div className="icon-hover">
+										<NewsArrowIconHover />
+									</div>
 								</div>
 							</div>
 						))}

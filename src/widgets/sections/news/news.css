@@ -45,6 +45,29 @@
 	position: relative;
 	padding: 10px;
 	border-bottom: 1px solid var(--gray_blue, #aabefa);
+	cursor: pointer;
+}
+
+.news-list-item:hover {
+	border-radius: 5px;
+	border-bottom: 1px solid var(--gray_blue, #aabefa);
+	background: var(--gray_blue_25, rgba(158, 177, 232, 0.25));
+}
+
+.news-list-item .icon {
+	display: block;
+}
+
+.news-list-item:hover .icon {
+	display: none;
+}
+
+.news-list-item .icon-hover {
+	display: none;
+}
+
+.news-list-item:hover .icon-hover {
+	display: block;
 }
 
 .news-item-date {

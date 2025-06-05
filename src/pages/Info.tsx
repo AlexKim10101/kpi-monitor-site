@@ -1,12 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import classNames from "classnames";
 import throttle from "lodash.throttle";
-import Icon from "../components/icon";
-import Button from "../components/CustomButton";
 import Operations from "../widgets/sections/operations";
 import { useOperations } from "../api/model";
 import FloatingTabs from "@components/FloatingTabs";
 import { Operation } from "../api/interfaces";
+import Loader from "@components/Loader";
 
 type IInfoPageProps = { operations: Operation[] };
 
@@ -14,7 +13,7 @@ const DataWrapper: React.FC<{}> = () => {
 	const { data, isLoading, error } = useOperations();
 
 	if (isLoading) {
-		return <div>Загрузка...</div>;
+		return <Loader />;
 	}
 
 	if (error || !data) return <p>Ошибка загрузки данных</p>;

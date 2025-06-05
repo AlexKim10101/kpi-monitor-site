@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = (env, argv) => {
 	const isDev = argv.mode === "development";
@@ -16,6 +17,7 @@ module.exports = (env, argv) => {
 			alias: {
 				"@assets": path.resolve(__dirname, "src/assets"),
 				"@components": path.resolve(__dirname, "src/components"),
+				"@consts": path.resolve(__dirname, "src/consts"),
 			},
 			extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
 		},
@@ -46,6 +48,15 @@ module.exports = (env, argv) => {
 		plugins: [
 			new HtmlWebpackPlugin({
 				template: "./public/index.html",
+			}),
+			new CopyPlugin({
+				patterns: [
+					{
+						from: "public",
+						to: ".",
+						filter: resourcePath => !resourcePath.endsWith("index.html"),
+					},
+				],
 			}),
 		],
 		devServer: {
