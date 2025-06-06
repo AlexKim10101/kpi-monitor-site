@@ -1,12 +1,8 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { BASE_URL, urls } from "../../../consts/consts";
-import { ListItem } from "@mui/material";
-import { IFunctionData } from "../../../types";
 import Button from "@components/CustomButton";
 import Icon from "@components/icon";
-import { useKeyFunctoins } from "../../../api/model";
-
+import { useKeyFunctoins } from "@api/model";
+import { URL_ADDRESS } from "@consts/paths";
 import "./functions.css";
 
 type IKeyFunctionsProps = {
@@ -41,7 +37,7 @@ const KeyFunctions: React.FC<IKeyFunctionsProps> = ({
 							<div className="function-icon">
 								<Icon
 									id={String(f.icon.id)}
-									path={BASE_URL + f.icon.url}
+									path={URL_ADDRESS + f.icon.url}
 									width={f.icon.width}
 									height={f.icon.height}
 								/>

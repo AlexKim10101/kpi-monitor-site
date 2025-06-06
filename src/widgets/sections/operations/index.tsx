@@ -1,10 +1,9 @@
 import React from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { useOperations } from "../../../api/model";
-import "./operations.css";
 import AccordionComponent from "@components/AccordionComponent";
-import { Operation } from "../../../api/interfaces";
+import { Operation } from "@api/interfaces";
+import "./operations.css";
 
 type OperationsProps = {
 	operations: Operation[];

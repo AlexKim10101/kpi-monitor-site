@@ -14,7 +14,8 @@
       "paths": {
         "@components/*": ["components/*"],
         "@assets/*": ["assets/*"],
-        "@consts/*": ["consts/*"]
+        "@consts/*": ["consts/*"],
+        "@api/*": ["api/*"]
       }
     },
     "include": ["src"]

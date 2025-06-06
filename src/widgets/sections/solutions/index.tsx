@@ -1,9 +1,7 @@
 import React from "react";
-import "./solutions.css";
 import TabComponent from "@components/TabComponent";
-import { useQuery } from "@tanstack/react-query";
-import { urls } from "../../../consts/consts";
-import { useSolutions } from "../../../api/model";
+import { useSolutions } from "@api/model";
+import "./solutions.css";
 
 type ISolutionsSectionProps = {
 	captions: Record<string, string>;
@@ -14,14 +12,6 @@ const SolutionsSection: React.FC<ISolutionsSectionProps> = ({
 	captions,
 	btnCaptions,
 }) => {
-	// const solutionsQuery = useQuery({
-	// 	queryKey: ["solutions"],
-	// 	queryFn: () => fetch(urls.solutions).then(res => res.json()),
-	// });
-
-	// const solutions =
-	// 	solutionsQuery && solutionsQuery.data ? solutionsQuery.data.data : [];
-
 	const { data, isLoading, error } = useSolutions();
 
 	if (isLoading) {

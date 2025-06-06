@@ -1,20 +1,14 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
-
+import { useLanguage } from "./context/languageContext";
+import { Locale } from "@api/interfaces";
+import { useNavigation, useCaptions, useButtons, useLocales } from "@api/model";
 import Home from "./pages/Home";
+import InfoPage from "./pages/Info";
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
-import {
-	useNavigation,
-	useCaptions,
-	useButtons,
-	useLocales,
-} from "./api/model";
-import { LOGO_DATA, urls } from "./consts/consts";
-import InfoPage from "./pages/Info";
-import { Locale } from "./api/interfaces";
-import { useLanguage } from "./context/languageContext";
 import Loader from "@components/Loader";
+import { LOGO_DATA } from "@consts/consts";
 
 const App = () => {
 	const {
@@ -111,50 +105,3 @@ const App = () => {
 };
 
 export default App;
-
-// const stagesQuery = useQuery({
-// 	queryKey: ["stages"],
-// 	queryFn: () => fetch(urls.stages).then(res => res.json()),
-// });
-
-// const captionsQuery = useQuery({
-// 	queryKey: ["captions"],
-// 	queryFn: () => fetch(urls.captions).then(res => res.json()),
-// });
-
-// const buttonsQuery = useQuery({
-// 	queryKey: ["buttons"],
-// 	queryFn: () => fetch(urls.buttons).then(res => res.json()),
-// });
-
-// const clientsQuery = useQuery({
-// 	queryKey: ["clients"],
-// 	queryFn: () => fetch(urls.clients).then(res => res.json()),
-// });
-
-// const featuresQuery = useQuery({
-// 	queryKey: ["features"],
-// 	queryFn: () => fetch(urls.features).then(res => res.json()),
-// });
-
-// const newsQuery = useQuery({
-// 	queryKey: ["news"],
-// 	queryFn: () => fetch(urls.news).then(res => res.json()),
-// });
-
-// const functionTypesQuery = useQuery({
-// 	queryKey: ["functionTypes"],
-// 	queryFn: () => fetch(urls.functionTypes).then(res => res.json()),
-// });
-
-// const functionBlocksQuery = useQuery({
-// 	queryKey: ["functionBlocks"],
-// 	queryFn: () => fetch(urls.functionBlocks).then(res => res.json()),
-// });
-
-// console.log("functionTypesQuery", functionTypesQuery.data);
-
-// console.log("functionBlocksQuery", functionBlocksQuery.data);
-// console.log("buttonsQuery", buttonsQuery.data);
-// console.log("featuresQuery", featuresQuery.data);
-// console.log("newsQuery", newsQuery.data);

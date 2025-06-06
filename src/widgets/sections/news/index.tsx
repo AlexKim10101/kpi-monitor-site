@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "@components/CustomButton";
-import Icon from "@components/icon";
-import { useNews } from "../../../api/model";
+import { useNews } from "@api/model";
 import formatDateToDDMMYYYY from "../../../utils/dateformatter";
 import NewsArrowIcon from "@assets/icons/news_arrow.svg";
 import NewsArrowIconHover from "@assets/icons/news_arrow_hover.svg";

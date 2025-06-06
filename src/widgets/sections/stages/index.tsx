@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@components/CustomButton";
-import { useStages } from "../../../api/model";
-import { BASE_URL, fakeStages } from "../../../consts/consts";
+import { useStages } from "@api/model";
+import { URL_ADDRESS } from "@consts/paths";
 import "./stages.css";
 
 type IStagesProps = {
@@ -38,7 +38,7 @@ const Stages: React.FC<IStagesProps> = ({ captions, btnCaptions }) => {
 						</div>
 						<div className="stage-icon">
 							<img
-								src={BASE_URL + s.icon.url}
+								src={URL_ADDRESS + s.icon.url}
 								alt={s.icon.name}
 								width={s.icon.width}
 								height={s.icon.height}

@@ -1,6 +1,10 @@
 const path = require("path");
+const webpack = require("webpack");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+
+// const isDevMode = process.env.NODE_ENV === "development";
 
 module.exports = (env, argv) => {
 	const isDev = argv.mode === "development";
@@ -18,6 +22,7 @@ module.exports = (env, argv) => {
 				"@assets": path.resolve(__dirname, "src/assets"),
 				"@components": path.resolve(__dirname, "src/components"),
 				"@consts": path.resolve(__dirname, "src/consts"),
+				"@api": path.resolve(__dirname, "src/api"),
 			},
 			extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
 		},
@@ -58,6 +63,9 @@ module.exports = (env, argv) => {
 					},
 				],
 			}),
+			new webpack.DefinePlugin({
+				__IS_PROD_BUNDLE_MODE__: JSON.stringify(!isDev),
+			}),
 		],
 		devServer: {
 			static: {
@@ -70,3 +78,9 @@ module.exports = (env, argv) => {
 		mode: isDev ? "development" : "production",
 	};
 };
+
+// const getHost = () => window.location.origin;
+// const urlProduction = getHost();
+// export const URL_ADDRESS = __IS_PROD_BUNDLE_MODE__
+// 	? urlProduction
+// 	: urlDevelopment.cloudKpi2;

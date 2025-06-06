@@ -1,9 +1,9 @@
 import React from "react";
 import "./clients.css";
 import Icon from "../../../components/icon";
-import { BASE_URL } from "../../../consts/consts";
 import CardGallery from "../../../components/Slider";
-import { useClients } from "../../../api/model";
+import { useClients } from "@api/model";
+import { URL_ADDRESS } from "@consts/paths";
 
 type IClientsSectionProps = { captions: Record<string, string> };
 
@@ -13,8 +13,6 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 	if (isLoading) {
 		return <div>Загрузка...</div>;
 	}
-
-	// console.log("ClientsSection", data);
 
 	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
@@ -39,7 +37,7 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 							<div className="client-card">
 								<Icon
 									id={String(item.id)}
-									path={BASE_URL + item.logo.url}
+									path={URL_ADDRESS + item.logo.url}
 									// width={160}
 									// height={130}
 									width={shiftItem.logo.width}
@@ -47,7 +45,7 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 								/>
 								<Icon
 									id={String(shiftItem.id)}
-									path={BASE_URL + shiftItem.logo.url}
+									path={URL_ADDRESS + shiftItem.logo.url}
 									// width={160}
 									// height={130}
 									width={shiftItem.logo.width}

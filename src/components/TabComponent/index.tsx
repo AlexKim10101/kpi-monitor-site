@@ -3,11 +3,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { ISolutionData } from "types";
-import { BASE_URL, PRIMARY_COLOR } from "../../consts/consts";
-import { css } from "@emotion/react";
+import { PRIMARY_COLOR } from "../../consts/consts";
 import Button from "@components/CustomButton";
-
-const tabsCss = css``;
+import { URL_ADDRESS } from "@consts/paths";
 
 type ITabComponent = {
 	solutions: ISolutionData[];
@@ -72,7 +70,7 @@ const TabComponent: React.FC<ITabComponent> = ({ solutions, btnCaptions }) => {
 			<div className="solution-content">
 				<div className="solution-picture">
 					<img
-						src={BASE_URL + solution?.picture?.formats.medium.url}
+						src={URL_ADDRESS + solution?.picture?.formats.medium.url}
 						alt={solution?.picture?.name}
 					/>
 					<div className="sol-btn-wrap">

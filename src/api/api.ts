@@ -1,10 +1,10 @@
-import { BASE_URL } from "../consts/consts";
+import { URL_ADDRESS } from "@consts/paths";
 
 export async function fetchFromApi<T>(
 	endpoint: string,
 	options?: RequestInit
 ): Promise<T> {
-	const res = await fetch(`${BASE_URL}/api${endpoint}`, {
+	const res = await fetch(`${URL_ADDRESS}/api${endpoint}`, {
 		headers: { "Content-Type": "application/json" },
 		...options,
 	});

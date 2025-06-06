@@ -15,7 +15,7 @@ export const INACTIVE = "#747474";
 
 // export const BASE_URL = "http://85.192.20.139:1338";
 
-export const BASE_URL = "http://10.0.0.39:1337";
+export const DEV_BASE_URL = "http://10.0.0.39:1337";
 
 export const urls = {
 	navigation: "http://85.192.20.139:1338/api/navigations?populate=parent",
