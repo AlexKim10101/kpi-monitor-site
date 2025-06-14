@@ -5,7 +5,7 @@ import DownArrowIcon from "@assets/icons/down-arrow.svg";
 
 type AccordionComponentProps = {
 	key: number | string;
-	title: string;
+	title: string | null;
 	subtitle: string;
 	children: React.ReactNode[];
 };

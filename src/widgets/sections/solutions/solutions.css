@@ -25,12 +25,16 @@
 	flex: 1;
 }
 
+.solution-picture {
+	overflow: hidden;
+	border-radius: 8px;
+}
+
 .solution-picture img {
 	width: 100%;
 	height: auto;
-	border-radius: 8px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 	object-fit: cover;
+	transition: all 0.3s;
 }
 
 .solution-description {
@@ -50,13 +54,13 @@
 }
 
 .sol-btn-wrap {
-	display: none;
+	display: block;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
-.solution-picture:hover .sol-btn-wrap {
-	display: block;
+.solution-picture:hover img {
+	scale: 1.1;
 }

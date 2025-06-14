@@ -3,7 +3,7 @@ import "./clients.css";
 import Icon from "../../../components/icon";
 import CardGallery from "../../../components/Slider";
 import { useClients } from "@api/model";
-import { URL_ADDRESS } from "@consts/paths";
+import { getImageUrl } from "../../../utils/getImageUrl";
 
 type IClientsSectionProps = { captions: Record<string, string> };
 
@@ -37,7 +37,7 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 							<div className="client-card">
 								<Icon
 									id={String(item.id)}
-									path={URL_ADDRESS + item.logo.url}
+									path={getImageUrl(item.logo.url)}
 									// width={160}
 									// height={130}
 									width={shiftItem.logo.width}
@@ -45,7 +45,7 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 								/>
 								<Icon
 									id={String(shiftItem.id)}
-									path={URL_ADDRESS + shiftItem.logo.url}
+									path={getImageUrl(shiftItem.logo.url)}
 									// width={160}
 									// height={130}
 									width={shiftItem.logo.width}

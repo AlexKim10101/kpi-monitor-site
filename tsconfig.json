@@ -2,22 +2,24 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "ESNext",
-      "moduleResolution": "Node",
-      "jsx": "react-jsx",
-      "strict": true,
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "skipLibCheck": true,
-      "sourceMap": true,
-      "outDir": "./dist",
-      "baseUrl": "src",
-      "paths": {
-        "@components/*": ["components/*"],
-        "@assets/*": ["assets/*"],
-        "@consts/*": ["consts/*"],
-        "@api/*": ["api/*"]
-      }
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@assets/*": ["assets/*"],
+      "@consts/*": ["consts/*"],
+      "@api/*": ["api/*"]
     },
+    
+  },
   "include": ["src"],
   "ts-node": {
     "compilerOptions": {

@@ -12,6 +12,7 @@ export function buildPlugins({
 	mode,
 	paths,
 	analyzer,
+	useMock,
 }: BuildOptions): Configuration["plugins"] {
 	const isDev = mode === "development";
 	const isProd = mode === "production";
@@ -34,6 +35,7 @@ export function buildPlugins({
 		}),
 		new DefinePlugin({
 			__IS_PROD_BUNDLE_MODE__: JSON.stringify(!isDev),
+			__USE_MOCK__: JSON.stringify(useMock),
 		}),
 	];
 

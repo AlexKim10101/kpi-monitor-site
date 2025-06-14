@@ -69,7 +69,9 @@ const App = () => {
 		return { ...acc, [item.key]: item.caption };
 	}, {});
 
-	const links = navData.filter(item => !item.parent);
+	const links = navData
+		.filter(item => !item.parent)
+		.sort((a, b) => a.order - b.order);
 
 	return (
 		<div className="wrapper">

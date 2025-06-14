@@ -2,13 +2,15 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { ISolutionData } from "types";
+
 import { PRIMARY_COLOR } from "../../consts/consts";
 import Button from "@components/CustomButton";
 import { URL_ADDRESS } from "@consts/paths";
+import { Solution } from "@api/interfaces";
+import { getImageUrl } from "../../utils/getImageUrl";
 
 type ITabComponent = {
-	solutions: ISolutionData[];
+	solutions: Solution[];
 	btnCaptions: Record<string, string>;
 };
 
@@ -55,6 +57,9 @@ const TabComponent: React.FC<ITabComponent> = ({ solutions, btnCaptions }) => {
 							fontStyle: "normal",
 							fontWeight: "400",
 							lineHeight: "normal",
+							"&:hover": {
+								color: PRIMARY_COLOR,
+							},
 							"&.Mui-selected": {
 								color: PRIMARY_COLOR,
 								fontWeight: "700",
@@ -70,7 +75,7 @@ const TabComponent: React.FC<ITabComponent> = ({ solutions, btnCaptions }) => {
 			<div className="solution-content">
 				<div className="solution-picture">
 					<img
-						src={URL_ADDRESS + solution?.picture?.formats.medium.url}
+						src={getImageUrl(solution?.picture?.formats.medium.url)}
 						alt={solution?.picture?.name}
 					/>
 					<div className="sol-btn-wrap">

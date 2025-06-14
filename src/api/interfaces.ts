@@ -2,13 +2,16 @@ export interface Navigation {
 	id: number;
 	key: string;
 	caption: string;
-	parent: Navigation | null;
+	parent: Omit<Navigation, "parent"> | null;
+	order: number;
+	[key: string]: any;
 }
 
 export interface Caption {
 	id: number;
 	key: string;
 	caption: string;
+	[key: string]: any;
 }
 
 interface PictureFormat {
@@ -16,6 +19,7 @@ interface PictureFormat {
 	height: number;
 	size: number;
 	url: string;
+	[key: string]: any;
 }
 
 interface Picture {
@@ -29,14 +33,16 @@ interface Picture {
 		medium: PictureFormat;
 	};
 	url: string;
+	[key: string]: any;
 }
 
 export interface Solution {
 	id: number;
 	caption: string;
 	description: string;
-	external_link: string;
+	external_link: string | null;
 	picture: Picture;
+	[key: string]: any;
 }
 
 export interface Client {
@@ -46,7 +52,9 @@ export interface Client {
 		height: number;
 		url: string;
 		hash: string;
+		[key: string]: any;
 	};
+	[key: string]: any;
 }
 
 export interface KeyFunction {
@@ -59,13 +67,16 @@ export interface KeyFunction {
 		width: number;
 		height: number;
 		url: string;
+		[key: string]: any;
 	};
+	[key: string]: any;
 }
 
 export interface News {
 	id: number;
 	title: string;
 	date: string;
+	[key: string]: any;
 }
 
 export interface Operation {
@@ -73,19 +84,22 @@ export interface Operation {
 	documentId: string;
 	title: string;
 	point: string;
-	description: string;
+	description?: string | null;
 	order: number;
 	functions: {
 		id: number;
-		title: string;
-		description: string;
+		title: string | null;
+		description: string | null;
 		function_blocks: {
 			id: number;
-			title: string;
+			title: string | null;
 			description: string;
 			order: number;
+			[key: string]: any;
 		}[];
+		[key: string]: any;
 	}[];
+	[key: string]: any;
 }
 
 export interface Stage {
@@ -99,7 +113,9 @@ export interface Stage {
 		width: number;
 		height: number;
 		url: string;
+		[key: string]: any;
 	};
+	[key: string]: any;
 }
 
 export interface Locale {
@@ -107,6 +123,7 @@ export interface Locale {
 	name: string;
 	code: string;
 	isDefault: boolean;
+	[key: string]: any;
 }
 
 const stageItem = {

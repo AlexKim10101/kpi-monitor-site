@@ -1,3 +1,9 @@
+declare const __USE_MOCK__: boolean;
+
+export const USE_MOCK = __USE_MOCK__;
+
+export const MOCK_URL = "https://kpi-site.profitproject.ru";
+
 export const PRIMARY_COLOR = "#22409A";
 export const SECONDARY_COLOR = "#E1E9FF";
 export const FUNCTION_COLOR = "#9EB1E8";
@@ -48,7 +54,7 @@ export const LOGO_DATA = {
 	to: "https://kpi-monitor.ru",
 };
 
-export const SCROLL_LIMIT = 1000;
+export const SCROLL_LIMIT = 500;
 
 export const keys = [
 	"menu_main",

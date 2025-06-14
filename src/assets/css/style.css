@@ -1,3 +1,20 @@
+:root {
+	--primary-color: #22409a;
+	--secondary-color: #e1e9ff;
+	--accent-color: #ffd04d;
+
+	--primary-hover-color: #0f2978;
+	--secondary-hover-color: #e1e9ff;
+	--accent-hover-color: #fabc0d;
+
+	--primary-active-color: #0f2978;
+	--secondary-active-color: #aabefa;
+	--accent-active-color: #fabc0d;
+
+	--white-color: #fefeff;
+	--black-color: #141414;
+}
+
 html {
 	overflow-y: scroll;
 	scrollbar-gutter: stable;
@@ -23,7 +40,7 @@ main {
 	gap: 60px;
 
 	position: relative;
-	padding-top: 105px;
+	padding-top: 165px;
 	flex-grow: 1;
 }
 
@@ -49,7 +66,7 @@ p {
 	flex-direction: row;
 	justify-content: space-between;
 
-	padding-top: 80px;
+	padding-top: 20px;
 }
 
 .nav-function-description,

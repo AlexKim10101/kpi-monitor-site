@@ -7,10 +7,12 @@ interface EnvVariables {
 	mode?: BuildMode;
 	analyzer?: boolean;
 	port?: number;
+	useMock: string;
 }
 
 export default (env: EnvVariables) => {
 	const isDev = env.mode === "development";
+	const useMock = env.useMock === "true";
 
 	const paths: BuildPaths = {
 		output: path.resolve(__dirname, "build"),
@@ -25,6 +27,7 @@ export default (env: EnvVariables) => {
 		mode: env.mode ?? "development",
 		paths,
 		analyzer: env.analyzer,
+		useMock,
 	});
 	return config;
 };

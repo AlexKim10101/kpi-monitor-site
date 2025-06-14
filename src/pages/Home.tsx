@@ -33,7 +33,7 @@ const HomePage: React.FC<IHomPageProps> = ({ captions, btnCaptions }) => {
 						<div className="message-text">{captions.russian_registry}</div>
 					</div>
 					<div className="intro-bts">
-						<Button variant="primary">{btnCaptions.quick_start}</Button>
+						<Button variant="accent">{btnCaptions.quick_start}</Button>
 						<Button variant="secondary">{btnCaptions.contact_us}</Button>
 					</div>
 				</div>

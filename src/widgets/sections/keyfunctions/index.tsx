@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@components/CustomButton";
 import Icon from "@components/icon";
 import { useKeyFunctoins } from "@api/model";
-import { URL_ADDRESS } from "@consts/paths";
+import { getImageUrl } from "../../../utils/getImageUrl";
 import "./functions.css";
 
 type IKeyFunctionsProps = {
@@ -37,7 +37,7 @@ const KeyFunctions: React.FC<IKeyFunctionsProps> = ({
 							<div className="function-icon">
 								<Icon
 									id={String(f.icon.id)}
-									path={URL_ADDRESS + f.icon.url}
+									path={getImageUrl(f.icon.url)}
 									width={f.icon.width}
 									height={f.icon.height}
 								/>

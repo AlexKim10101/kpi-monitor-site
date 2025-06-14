@@ -13,4 +13,5 @@ export interface BuildOptions {
 	paths: BuildPaths;
 	mode: BuildMode;
 	analyzer?: boolean;
+	useMock: boolean;
 }

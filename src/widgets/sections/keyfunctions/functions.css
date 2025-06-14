@@ -8,6 +8,7 @@
 	padding-bottom: 60px;
 
 	background: var(--blue_bg, #f8faff);
+	gap: 50px;
 }
 
 .function-grid {
