@@ -4,10 +4,10 @@ import throttle from "lodash.throttle";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Operation } from "../../api/interfaces";
-import { PRIMARY_COLOR, SCROLL_LIMIT } from "../../consts/consts";
+import { SCROLL_LIMIT } from "../../consts/consts";
 import NextIcon from "@assets/icons/ic_next.svg";
-import "./floating-tabs.css";
 import { chunkArray, findChunkIndexById } from "../../utils/chunkArrUtils";
+import "./floating-tabs.css";
 
 type FloatingTabsProps = {
 	operations: Operation[];
@@ -125,11 +125,11 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 
 								"& .MuiTabs-indicator": {
 									height: "1px",
-									backgroundColor: PRIMARY_COLOR,
+									backgroundColor: "var(--primary-color)",
 								},
 
 								"& .MuiTab-root": {
-									color: PRIMARY_COLOR,
+									color: "var(--primary-color)",
 									fontFamily: "Manrope",
 									fontSize: "16px",
 									fontStyle: "normal",
@@ -141,7 +141,7 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 									textTransform: "none",
 
 									"&.Mui-selected": {
-										color: PRIMARY_COLOR,
+										color: "var(--primary-color)",
 									},
 								},
 

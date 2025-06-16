@@ -1,20 +1,3 @@
-:root {
-	--primary-color: #22409a;
-	--secondary-color: #e1e9ff;
-	--accent-color: #ffd04d;
-
-	--primary-hover-color: #0f2978;
-	--secondary-hover-color: #e1e9ff;
-	--accent-hover-color: #fabc0d;
-
-	--primary-active-color: #0f2978;
-	--secondary-active-color: #aabefa;
-	--accent-active-color: #fabc0d;
-
-	--white-color: #fefeff;
-	--black-color: #141414;
-}
-
 html {
 	overflow-y: scroll;
 	scrollbar-gutter: stable;

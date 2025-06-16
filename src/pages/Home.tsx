@@ -1,12 +1,7 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-
-import Icon from "../components/icon";
 import Button from "../components/CustomButton";
 import ClientsSection from "../widgets/sections/clients";
 import SolutionsSection from "../widgets/sections/solutions";
-
-import { urls } from "../consts/consts";
 import KeyFunctions from "../widgets/sections/keyfunctions";
 import Stages from "../widgets/sections/stages";
 import News from "../widgets/sections/news";

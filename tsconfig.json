@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "outDir": "./dist",
+    // "outDir": "./dist",
     "baseUrl": "src",
     "paths": {
       "@components/*": ["components/*"],

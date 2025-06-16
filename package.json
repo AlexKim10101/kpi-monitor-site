@@ -5,8 +5,7 @@
 	"scripts": {
 		"start": "webpack serve --env mode=development useMock=false",
 		"mock": "webpack serve --env mode=development useMock=true",
-		"build": "webpack --env mode=production",
-		"tcm": "tcm src --include .module.css"
+		"build": "webpack --env mode=production"
 	},
 	"keywords": [],
 	"author": "",

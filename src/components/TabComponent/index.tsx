@@ -2,10 +2,7 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-
-import { PRIMARY_COLOR } from "../../consts/consts";
 import Button from "@components/CustomButton";
-import { URL_ADDRESS } from "@consts/paths";
 import { Solution } from "@api/interfaces";
 import { getImageUrl } from "../../utils/getImageUrl";
 
@@ -58,10 +55,10 @@ const TabComponent: React.FC<ITabComponent> = ({ solutions, btnCaptions }) => {
 							fontWeight: "400",
 							lineHeight: "normal",
 							"&:hover": {
-								color: PRIMARY_COLOR,
+								color: "var(--primary-color)",
 							},
 							"&.Mui-selected": {
-								color: PRIMARY_COLOR,
+								color: "var(--primary-color)",
 								fontWeight: "700",
 							},
 						},

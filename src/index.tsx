@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route, HashRouter } from "react-router";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "normalize.css";
-import "./assets/css/style.css";
+import "./assets/css/variables.css";
+import "./assets/css/global.css";
 
 import App from "./App";
 import { LanguageProvider } from "./context/languageContext";

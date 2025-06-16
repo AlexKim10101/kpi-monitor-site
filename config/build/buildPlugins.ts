@@ -23,16 +23,16 @@ export function buildPlugins({
 			favicon: path.resolve(paths.public, "favicon.svg"),
 		}),
 
-		new CopyPlugin({
-			patterns: [
-				{
-					from: paths.entry,
-					to: paths.output,
-					filter: (resourcePath: string) =>
-						!resourcePath.endsWith("index.html"),
-				},
-			],
-		}),
+		// new CopyPlugin({
+		// 	patterns: [
+		// 		{
+		// 			from: paths.entry,
+		// 			to: paths.output,
+		// 			filter: (resourcePath: string) =>
+		// 				!resourcePath.endsWith("index.html"),
+		// 		},
+		// 	],
+		// }),
 		new DefinePlugin({
 			__IS_PROD_BUNDLE_MODE__: JSON.stringify(!isDev),
 			__USE_MOCK__: JSON.stringify(useMock),
