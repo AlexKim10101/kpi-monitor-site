@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../components/CustomButton";
+import Button from "@components/CustomButton";
 import ClientsSection from "../widgets/sections/clients";
 import SolutionsSection from "../widgets/sections/solutions";
 import KeyFunctions from "../widgets/sections/keyfunctions";
@@ -19,11 +19,6 @@ const HomePage: React.FC<IHomPageProps> = ({ captions, btnCaptions }) => {
 				<div className="intro-info">
 					<div className="intro-title">{captions.heading_main}</div>
 					<div className="intro-message">
-						{/* <Icon
-							id="coat_of_arm"
-							path="/icons/Coat_of_Arms_of_the_Russian_Federation.svg"
-							size={44}
-						></Icon> */}
 						<CoatOfArmsIcon />
 						<div className="message-text">{captions.russian_registry}</div>
 					</div>

@@ -12,7 +12,7 @@ type ILanguageMenuProps = {
 	language: string;
 };
 
-export const LanguageMenu: React.FC<ILanguageMenuProps> = ({
+const LanguageMenu: React.FC<ILanguageMenuProps> = ({
 	locales,
 	setLanguage,
 	language,

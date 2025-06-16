@@ -1,14 +1,41 @@
 .custombtn {
 	all: unset;
 	cursor: pointer;
-	padding: 10px 30px;
-	font-size: 16px;
-	font-family: "Ubuntu";
-	font-weight: 400;
+	padding: 10px 20px;
 	border-radius: 30px;
-	white-space: nowrap;
-	border: 1px solid transparent;
+
+	font-family: "Ubuntu";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
 	text-decoration: none;
+	text-align: center;
+	border: 1px solid transparent;
+	white-space: nowrap;
+}
+
+@media (min-width: 320px) {
+	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+	/* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+	/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+	/* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+	.custombtn {
+		font-size: 16px;
+		padding: 10px 30px;
+	}
+}
+@media (min-width: 1281px) {
+	/* hi-res laptops and desktops */
 }
 
 .btnprimary {
@@ -16,11 +43,7 @@
 	color: var(--white-color);
 	border-color: var(--primary-color);
 }
-.btnprimary:hover {
-	background-color: var(--primary-hover-color);
-	color: var(--white-color);
-	border-color: var(--primary-hover-color);
-}
+
 .btnprimary:active {
 	background-color: var(--primary-active-color);
 	color: #aabefa;
@@ -32,11 +55,27 @@
 	color: var(--primary-color);
 	border-color: var(--secondary-color);
 }
-.btnsecondary:hover {
-	background-color: var(--secondary-hover-color);
-	color: var(--primary-color);
-	border-color: var(--primary-color);
+
+@media (hover: hover) and (pointer: fine) {
+	.btnprimary:hover {
+		background-color: var(--primary-hover-color);
+		color: var(--white-color);
+		border-color: var(--primary-hover-color);
+	}
+
+	.btnsecondary:hover {
+		background-color: var(--secondary-hover-color);
+		color: var(--primary-color);
+		border-color: var(--primary-color);
+	}
+
+	.btnaccent:hover {
+		background-color: var(--accent-hover-color);
+		color: var(--black-color);
+		border-color: var(--accent-hover-color);
+	}
 }
+
 .btnsecondary:active {
 	background-color: var(--secondary-active-color);
 	color: var(--primary-color);
@@ -48,11 +87,7 @@
 	color: var(--black-color);
 	border-color: var(--accent-color);
 }
-.btnaccent:hover {
-	background-color: var(--accent-hover-color);
-	color: var(--black-color);
-	border-color: var(--accent-hover-color);
-}
+
 .btnaccent:active {
 	background-color: var(--accent-active-color);
 	color: var(--black-color);

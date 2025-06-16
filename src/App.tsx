@@ -96,12 +96,12 @@ const App = () => {
 				</Routes>
 			</main>
 
-			<Footer
+			{/* <Footer
 				logo={LOGO_DATA}
 				links={links}
 				btnCaptions={btnCaptions}
 				captions={captions}
-			/>
+			/> */}
 		</div>
 	);
 };

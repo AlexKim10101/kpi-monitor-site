@@ -23,3 +23,29 @@
 .lang-btn:hover {
 	background: var(--blue_sec, #e1e9ff);
 }
+
+.mob-accent-text {
+	color: var(--primary-color, #22409a);
+
+	font-family: Manrope;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.mob-text {
+	color: var(--black-color, #141414);
+	font-family: Manrope;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.mobHeaderBtnWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 45px;
+}
