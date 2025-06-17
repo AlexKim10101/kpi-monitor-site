@@ -201,6 +201,12 @@ p {
 		padding-right: 0;
 	}
 
+	.section-fullWidth {
+		max-width: none;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	.mob-padding {
 		padding-left: 0;
 		padding-right: 0;

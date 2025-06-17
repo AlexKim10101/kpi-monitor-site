@@ -1,0 +1,43 @@
+.clientsSection {
+	width: 100%;
+	background: var(--blue_bg);
+
+	display: flex;
+	padding: 20px 0px;
+
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+	align-self: stretch;
+	overflow: hidden;
+}
+
+.sectionTitle {
+	width: 100%;
+	max-width: 1200px;
+	text-align: start;
+	box-sizing: border-box;
+}
+
+@media (min-width: 320px) {
+	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+	/* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+	/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+	/* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+	.clientsSection {
+		padding: 60px 0px;
+		gap: 50px;
+	}
+	/* big landscape tablets, laptops, and desktops */
+}
+@media (min-width: 1281px) {
+	/* hi-res laptops and desktops */
+}

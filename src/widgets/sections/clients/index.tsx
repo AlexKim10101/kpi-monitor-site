@@ -1,9 +1,10 @@
 import React from "react";
-import "./clients.css";
+import style from "./clients.module.css";
 import Icon from "../../../components/icon";
 import CardGallery from "../../../components/Slider";
 import { useClients } from "@api/model";
 import { getImageUrl } from "../../../utils/getImageUrl";
+import classNames from "classnames";
 
 type IClientsSectionProps = { captions: Record<string, string> };
 
@@ -17,12 +18,26 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
 	return (
-		<section className="clients-section">
-			<div className="section-title">{captions.heading_clients}</div>
+		<section
+			className={classNames(
+				"section",
+				"section-fullWidth",
+				style.clientsSection
+			)}
+		>
+			<div
+				className={classNames(
+					"section-title",
+					"mob-padding",
+					style.sectionTitle
+				)}
+			>
+				{captions.heading_clients}
+			</div>
 			<CardGallery
 				desctopSlidesToShow={6}
-				laptopSlidesToShow={6}
-				mobileSlidesToShow={6}
+				laptopSlidesToShow={3}
+				mobileSlidesToShow={3}
 			>
 				{data.map((item, index, arr) => {
 					const shift = Math.ceil(arr.length / 2);
@@ -38,18 +53,16 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 								<Icon
 									id={String(item.id)}
 									path={getImageUrl(item.logo.url)}
-									// width={160}
-									// height={130}
 									width={shiftItem.logo.width}
 									height={shiftItem.logo.height}
+									needAdaptive
 								/>
 								<Icon
 									id={String(shiftItem.id)}
 									path={getImageUrl(shiftItem.logo.url)}
-									// width={160}
-									// height={130}
 									width={shiftItem.logo.width}
 									height={shiftItem.logo.height}
+									needAdaptive
 								/>
 							</div>
 						</div>
