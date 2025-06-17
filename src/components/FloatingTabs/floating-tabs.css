@@ -41,3 +41,20 @@
 	all: unset;
 	cursor: pointer;
 }
+
+.floating-tab-item::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 1px;
+	background-color: #aabefa;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.3s ease;
+}
+
+.floating-tab-item:hover::after {
+	transform: scaleX(1);
+}

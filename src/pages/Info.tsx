@@ -66,9 +66,10 @@ const InfoPage: React.FC<IInfoPageProps> = ({ operations }) => {
 				<div className="nav-function-list">
 					{operations.map((item, index) => (
 						<div
-							className={classNames("nav-function-item", {
-								"nav-function-item-active": activeTab === item.documentId,
-							})}
+							// className={classNames("nav-function-item", {
+							// 	"nav-function-item-active": activeTab === item.documentId,
+							// })}
+							className="nav-function-item"
 							key={index}
 							onClick={() => scrollToTarget(item.documentId)}
 						>

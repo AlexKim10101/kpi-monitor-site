@@ -23,24 +23,35 @@ main {
 	gap: 60px;
 
 	position: relative;
-	padding-top: 165px;
-	flex-grow: 1;
+	padding-top: 70px;
 }
 
 p {
 	all: unset;
 }
 
-.intro-section {
+.section {
 	width: 100%;
-	max-width: 1200px;
-
-	display: flex;
-	flex-direction: row;
-	gap: 40px;
-	justify-content: space-between;
-	align-items: end;
+	box-sizing: border-box;
+	padding-left: var(--min-horisontal-padding-value);
+	padding-right: var(--min-horisontal-padding-value);
 }
+
+.section-fullWidth {
+	max-width: none;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.section-title {
+	color: var(--primary-color);
+	font-family: Manrope;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
 .nav-section {
 	width: 100%;
 	max-width: 1200px;
@@ -92,6 +103,8 @@ p {
 }
 
 .nav-function-item {
+	position: relative;
+
 	padding: 10px;
 
 	color: var(--Accent, #22409a);
@@ -101,6 +114,23 @@ p {
 	font-weight: 400;
 	line-height: normal;
 	cursor: pointer;
+}
+
+.nav-function-item::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0px;
+	height: 1px;
+	background-color: #aabefa;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.3s ease;
+}
+
+.nav-function-item:hover::after {
+	transform: scaleX(1);
 }
 
 .nav-function-item-active {
@@ -143,18 +173,6 @@ p {
 	line-height: normal;
 }
 
-.section-title {
-	color: var(--Accent, #22409a);
-	font-family: Manrope;
-	font-size: 32px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-
-	width: 100%;
-	max-width: 1200px;
-}
-
 .mob-padding {
 	padding-left: var(--min-horisontal-padding-value);
 	padding-right: var(--min-horisontal-padding-value);
@@ -173,9 +191,23 @@ p {
 	/* tablet, landscape iPad, lo-res laptops ands desktops */
 }
 @media (min-width: 1025px) {
+	main {
+		padding-top: 105px;
+	}
+
+	.section {
+		max-width: 1200px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	.mob-padding {
 		padding-left: 0;
 		padding-right: 0;
+	}
+
+	.section-title {
+		font-size: 32px;
 	}
 }
 @media (min-width: 1281px) {

@@ -154,6 +154,7 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 								return (
 									<Tab
 										key={operation.id}
+										className="floating-tab-item"
 										value={operation.documentId}
 										label={operation.point}
 										disableRipple
