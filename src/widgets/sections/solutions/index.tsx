@@ -1,7 +1,8 @@
 import React from "react";
 import TabComponent from "@components/TabComponent";
 import { useSolutions } from "@api/model";
-import "./solutions.css";
+import style from "./solutions.module.css";
+import classNames from "classnames";
 
 type ISolutionsSectionProps = {
 	captions: Record<string, string>;
@@ -21,7 +22,7 @@ const SolutionsSection: React.FC<ISolutionsSectionProps> = ({
 	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
 	return (
-		<section className="solutions-section">
+		<section className={classNames("section", style.solutionsSection)}>
 			<div className="section-title">{captions.heading_solutions}</div>
 			<TabComponent solutions={data} btnCaptions={btnCaptions} />
 		</section>

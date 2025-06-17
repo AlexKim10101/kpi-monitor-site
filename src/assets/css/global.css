@@ -50,6 +50,7 @@ p {
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	align-self: flex-start;
 }
 
 .nav-section {
@@ -178,6 +179,14 @@ p {
 	padding-right: var(--min-horisontal-padding-value);
 }
 
+.only-desctop {
+	display: none;
+}
+
+.only-mobyle {
+	display: block;
+}
+
 @media (min-width: 320px) {
 	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
 }
@@ -193,6 +202,14 @@ p {
 @media (min-width: 1025px) {
 	main {
 		padding-top: 105px;
+	}
+
+	.only-desctop {
+		display: block;
+	}
+
+	.only-mobile {
+		display: none;
 	}
 
 	.section {

@@ -13,6 +13,7 @@ type ButtonProps = {
 	onClick?: (
 		e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
 	) => void;
+	className?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,12 +23,14 @@ const Button: React.FC<ButtonProps> = ({
 	href,
 	children,
 	onClick,
+	className: externalClassName = "",
 }) => {
 	const className = classNames(
 		styles.custombtn,
 		variant === "primary" && styles.btnprimary,
 		variant === "secondary" && styles.btnsecondary,
-		variant === "accent" && styles.btnaccent
+		variant === "accent" && styles.btnaccent,
+		externalClassName
 	);
 
 	return (

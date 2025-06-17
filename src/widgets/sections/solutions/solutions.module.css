@@ -1,0 +1,135 @@
+.solutionsSection {
+	width: 100%;
+	max-width: 1200px;
+
+	display: flex;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+}
+.solutionContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	gap: 3px;
+
+	width: 100%;
+}
+.solutionContent {
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 15px;
+}
+.solutionPicture,
+.solutionDescription {
+	position: relative;
+	flex: 1;
+}
+
+.solutionPicture {
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.solutionPicture img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	transition: all 0.3s;
+}
+
+.solutionDescription {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	align-items: flex-start;
+}
+
+.descriptionText {
+	display: block;
+	color: var(--black, #141414);
+	font-family: Manrope;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.solBtnWrap {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.solutionPicture:hover img {
+	scale: 1.1;
+}
+
+@media (max-width: 1024px) {
+	.descriptionText {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		transition: all 0.3s ease;
+	}
+
+	.expanded {
+		display: block;
+		-webkit-line-clamp: unset;
+		-webkit-box-orient: unset;
+		overflow: visible;
+	}
+
+	.toggleButton {
+		display: block;
+		font-size: 14px;
+		color: var(--primary-color);
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+	}
+}
+
+@media (min-width: 320px) {
+	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+	/* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+	/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+	/* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+	.solutionsSection {
+		padding: 60px 0px;
+		gap: 50px;
+	}
+
+	.solutionContainer {
+		gap: 40px;
+	}
+	.solutionContent {
+		flex-direction: row;
+		gap: 30px;
+	}
+	.solutionDescription {
+		gap: 20px;
+	}
+	.descriptionText {
+		font-size: 16px;
+	}
+}
+@media (min-width: 1281px) {
+	/* hi-res laptops and desktops */
+}

@@ -17,6 +17,7 @@
 	max-width: 1200px;
 	text-align: start;
 	box-sizing: border-box;
+	align-self: center;
 }
 
 @media (min-width: 320px) {
