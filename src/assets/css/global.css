@@ -20,7 +20,7 @@ main {
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	gap: 60px;
+	gap: 30px;
 
 	position: relative;
 	padding-top: 70px;
@@ -41,6 +41,15 @@ p {
 	max-width: none;
 	padding-left: 0;
 	padding-right: 0;
+	width: 100%;
+	background: var(--blue_bg);
+	display: flex;
+	padding: 20px 0px;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+	align-self: stretch;
+	overflow: hidden;
 }
 
 .section-title {
@@ -51,6 +60,13 @@ p {
 	font-weight: 400;
 	line-height: normal;
 	align-self: flex-start;
+}
+.section-fullWidth-title {
+	width: 100%;
+	max-width: 1200px;
+	text-align: start;
+	box-sizing: border-box;
+	align-self: center;
 }
 
 .nav-section {
@@ -180,11 +196,11 @@ p {
 }
 
 .only-desctop {
-	display: none;
+	display: none !important;
 }
 
 .only-mobyle {
-	display: block;
+	display: block !important;
 }
 
 @media (min-width: 320px) {
@@ -202,14 +218,15 @@ p {
 @media (min-width: 1025px) {
 	main {
 		padding-top: 105px;
+		gap: 60px;
 	}
 
 	.only-desctop {
-		display: block;
+		display: block !important;
 	}
 
 	.only-mobile {
-		display: none;
+		display: none !important;
 	}
 
 	.section {
@@ -220,8 +237,8 @@ p {
 
 	.section-fullWidth {
 		max-width: none;
-		padding-left: 0;
-		padding-right: 0;
+		padding: 60px 0px;
+		gap: 50px;
 	}
 
 	.mob-padding {

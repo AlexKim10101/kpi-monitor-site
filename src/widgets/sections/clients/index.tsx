@@ -18,13 +18,7 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
 	return (
-		<section
-			className={classNames(
-				"section",
-				"section-fullWidth",
-				style.clientsSection
-			)}
-		>
+		<section className={classNames("section", "section-fullWidth")}>
 			<div
 				className={classNames(
 					"section-title",

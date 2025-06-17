@@ -1,0 +1,107 @@
+.functionGrid {
+	display: none;
+	flex-wrap: wrap;
+	gap: 50px 30px;
+
+	width: 100%;
+	max-width: 1200px;
+}
+
+.functionGridItem {
+	flex: 0 1 calc(50% - 15px);
+	padding: 15px 0px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border-top: 1px solid var(--gray_blue, #aabefa);
+
+	position: relative;
+}
+
+.functionTitle {
+	color: var(--black, #141414);
+	font-family: Manrope;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.functionDescription {
+	color: var(--black, #141414);
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.functionIcon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: none;
+}
+
+.functionBtnWrapper {
+	visibility: hidden;
+}
+.functionGridItem:hover {
+	border-top: 1px solid var(--Accent, #22409a);
+}
+.functionGridItem:hover .functionIcon {
+	display: block;
+}
+
+.functionGridItem:hover .functionBtnWrapper {
+	visibility: visible;
+}
+
+.functionAccordionContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding-left: var(--min-horisontal-padding-value);
+	padding-right: var(--min-horisontal-padding-value);
+}
+
+.funAccDescText {
+	color: var(--black-color);
+
+	font-family: Manrope;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.functionIconAcc {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+@media (min-width: 320px) {
+	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+	/* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+	/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+	/* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+	.functionGrid {
+		display: flex;
+	}
+	.functionAccordionContainer {
+		display: none;
+	}
+}
+@media (min-width: 1281px) {
+	/* hi-res laptops and desktops */
+}
