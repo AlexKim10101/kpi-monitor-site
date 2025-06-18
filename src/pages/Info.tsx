@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import classNames from "classnames";
+import React, { useMemo, useRef, useState } from "react";
 import throttle from "lodash.throttle";
+import NavSection from "../widgets/sections/nav";
 import Operations from "../widgets/sections/operations";
-import { useOperations } from "../api/model";
 import FloatingTabs from "@components/FloatingTabs";
-import { Operation } from "../api/interfaces";
 import Loader from "@components/Loader";
+import { Operation } from "@api/interfaces";
+import { useOperations } from "@api/model";
 
 type IInfoPageProps = { operations: Operation[] };
 
@@ -52,32 +52,7 @@ const InfoPage: React.FC<IInfoPageProps> = ({ operations }) => {
 
 	return (
 		<>
-			<section className="nav-section">
-				<div className="nav-function-description">
-					<div className="nav-section-title">Справочник функций</div>
-					<div className="nav-description-text">
-						На этой странице вы можете ознакомиться с функциями и параметрами,
-						доступными в программе KPI MONITOR.
-						<br />
-						Многолетний опыт в сфере BI-решений помог нам собрать исчерпывающий
-						набор функций для эффективной и удобной работы с нашим продуктом.
-					</div>
-				</div>
-				<div className="nav-function-list">
-					{operations.map((item, index) => (
-						<div
-							// className={classNames("nav-function-item", {
-							// 	"nav-function-item-active": activeTab === item.documentId,
-							// })}
-							className="nav-function-item"
-							key={index}
-							onClick={() => scrollToTarget(item.documentId)}
-						>
-							{item.point}
-						</div>
-					))}
-				</div>
-			</section>
+			<NavSection operations={operations} scrollToTarget={scrollToTarget} />
 			<FloatingTabs
 				operations={operations}
 				activeTab={activeTab}

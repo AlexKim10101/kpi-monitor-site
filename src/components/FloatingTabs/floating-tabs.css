@@ -1,6 +1,6 @@
 .floating-tabs-wrapper {
 	width: 100%;
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 
@@ -57,4 +57,10 @@
 
 .floating-tab-item:hover::after {
 	transform: scaleX(1);
+}
+
+@media (min-width: 1025px) {
+	.floating-tabs-wrapper {
+		display: flex;
+	}
 }

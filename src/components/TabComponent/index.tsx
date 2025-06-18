@@ -50,6 +50,7 @@ const TabComponent: React.FC<ITabComponent> = ({ solutions, btnCaptions }) => {
 					onChange={handleChange}
 					variant="scrollable"
 					allowScrollButtonsMobile={false}
+					scrollButtons={false}
 					sx={{
 						"& .MuiTabs-list": {
 							// Убираем space-between, чтобы скролл работал

@@ -5,7 +5,6 @@ import SolutionsSection from "../widgets/sections/solutions";
 import KeyFunctions from "../widgets/sections/keyfunctions";
 import Stages from "../widgets/sections/stages";
 import News from "../widgets/sections/news";
-import CoatOfArmsIcon from "@assets/icons/Coat_of_Arms.svg";
 
 type IHomPageProps = {
 	captions: Record<string, string>;

@@ -11,7 +11,7 @@ type OperationsProps = {
 
 const Operations: React.FC<OperationsProps> = ({ operations }) => {
 	return (
-		<section className="operations-section">
+		<section className="operations-section mob-padding">
 			{operations.map(operation => (
 				<div key={operation.id} className="operation-wrapper">
 					<div className="operation-section-title">{operation.title}</div>

@@ -1,0 +1,102 @@
+.navSection {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	padding-top: 20px;
+}
+
+.navFunctionDescription,
+.navFunctionList {
+	flex: 1;
+}
+
+.navFunctionDescription {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.navDescriptionText {
+	color: var(--black, #141414);
+	font-family: Manrope;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.navFunctionList {
+	display: none;
+	flex-wrap: wrap;
+	gap: 20px;
+
+	padding: 10px 30px;
+
+	border-left: 1px solid var(--gray_blue, #aabefa);
+}
+
+.navFunctionItem {
+	position: relative;
+
+	padding: 10px;
+
+	color: var(--Accent, #22409a);
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	cursor: pointer;
+}
+
+.navFunctionItem::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0px;
+	height: 1px;
+	background-color: #aabefa;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.3s ease;
+}
+
+.navFunctionItem:hover::after {
+	transform: scaleX(1);
+}
+
+.navFunctionItemActive {
+	border-bottom: 1px solid #22409a;
+}
+
+@media (min-width: 320px) {
+	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+	/* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+	/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+	/* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+	.navFunctionDescription {
+		flex: 0 1 calc(50% - 60px);
+		gap: 30px;
+	}
+
+	.navFunctionList {
+		display: flex;
+	}
+
+	.navDescriptionText {
+		font-size: 16px;
+	}
+}
+@media (min-width: 1281px) {
+	/* hi-res laptops and desktops */
+}

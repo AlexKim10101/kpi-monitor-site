@@ -25,7 +25,6 @@ const AccordionComponent: React.FC<AccordionComponentProps> = ({
 					boxShadow: "none",
 					display: "flex",
 					flexDirection: "column",
-					gap: "15px",
 					margin: 0,
 				},
 
@@ -57,6 +56,8 @@ const AccordionComponent: React.FC<AccordionComponentProps> = ({
 				},
 
 				"& .MuiAccordionSummary-content": {
+					display: "block",
+					alignSelf: "center",
 					margin: 0,
 				},
 
@@ -67,6 +68,16 @@ const AccordionComponent: React.FC<AccordionComponentProps> = ({
 				"& .MuiButtonBase-root": {
 					minHeight: "unset",
 					gap: "15px",
+
+					display: "flex",
+					padding: "10px",
+					alignItems: "flex-start",
+				},
+
+				"@media (min-width: 1025px)": {
+					"& .MuiButtonBase-root": {
+						padding: "15px",
+					},
 				},
 			}}
 		>
@@ -80,11 +91,18 @@ const AccordionComponent: React.FC<AccordionComponentProps> = ({
 			<AccordionDetails
 				sx={{
 					"&.MuiAccordionDetails-root": {
+						marginTop: "10px",
 						border: "1px solid  #E1E9FF",
 						borderRadius: "10px",
 						background: "#FEFEFF",
 						boxShadow: "0px 2px 20px 0px rgba(45, 86, 206, 0.05)",
-						padding: "15px",
+						padding: "20px 15px",
+					},
+					"@media (min-width: 1025px)": {
+						"&.MuiAccordionDetails-root": {
+							marginTop: "15px",
+							padding: "30px",
+						},
 					},
 				}}
 			>
