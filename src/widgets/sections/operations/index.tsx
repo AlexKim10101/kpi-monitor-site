@@ -1,6 +1,7 @@
 import React from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
 import AccordionComponent from "@components/AccordionComponent";
 import { Operation } from "@api/interfaces";
 import "./operations.css";
@@ -35,7 +36,7 @@ const Operations: React.FC<OperationsProps> = ({ operations }) => {
 												<div className="oper-block-title">{block.title}</div>
 											)}
 											<div className="oper-block-text">
-												<Markdown remarkPlugins={[remarkGfm]}>
+												<Markdown remarkPlugins={[remarkGfm, remarkBreaks]}>
 													{block.description}
 												</Markdown>
 											</div>

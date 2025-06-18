@@ -81,6 +81,7 @@
 
 	.floating-tabs-wrapper {
 		display: flex;
+		height: 75px;
 	}
 
 	.floating-tabs-wrapper-down {
