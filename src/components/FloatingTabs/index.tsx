@@ -233,6 +233,18 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 								})}
 							</Tabs>
 						))}
+						<div className="next-btr-wrapper">
+							<button
+								className="next-btn"
+								onClick={() =>
+									setSlice(prev => {
+										return operations.length > (prev + 1) * 5 ? prev + 1 : 0;
+									})
+								}
+							>
+								<NextIcon />
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
