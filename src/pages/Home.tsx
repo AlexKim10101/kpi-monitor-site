@@ -19,8 +19,8 @@ const HomePage: React.FC<IHomPageProps> = ({ captions, btnCaptions }) => {
 			<ClientsSection captions={captions} />
 			<SolutionsSection captions={captions} btnCaptions={btnCaptions} />
 			<KeyFunctions captions={captions} btnCaptions={btnCaptions} />
-			{/*<Stages captions={captions} btnCaptions={btnCaptions} />
-			<News captions={captions} btnCaptions={btnCaptions} /> */}
+			<Stages captions={captions} btnCaptions={btnCaptions} />
+			<News captions={captions} btnCaptions={btnCaptions} />
 		</>
 	);
 };

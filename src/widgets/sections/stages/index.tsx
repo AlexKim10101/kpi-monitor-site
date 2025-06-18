@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@components/CustomButton";
 import { useStages } from "@api/model";
 import { getImageUrl } from "../../../utils/getImageUrl";
-import "./stages.css";
+import styles from "./stages.module.css";
 
 type IStagesProps = {
 	captions: Record<string, string>;
@@ -21,22 +21,24 @@ const Stages: React.FC<IStagesProps> = ({ captions, btnCaptions }) => {
 	const sortedData = data.sort((a, b) => a.order - b.order);
 
 	return (
-		<section className="stages-section">
-			<div className="stage-header">
+		<section className="section section-flex">
+			<div className={styles.stageHeader}>
 				<div className="section-title">{captions.heading_request}</div>
-				<Button variant="secondary">{btnCaptions.quick_start}</Button>
+				<Button variant="secondary" className="only-desctop">
+					{btnCaptions.quick_start}
+				</Button>
 			</div>
 
-			<div className="stages-list">
+			<div className={styles.stagesList}>
 				{sortedData.map((s, i) => (
-					<div key={i} className="stage-list-item">
-						<div className="stage-title">{s.title}</div>
-						<div className="stage-description">
+					<div key={i} className={styles.stageListItem}>
+						<div className={styles.stageTitle}>{s.title}</div>
+						<div className={styles.stageDescription}>
 							{s.description.split("\n").map((item, i) => (
 								<div key={i}>{item}</div>
 							))}
 						</div>
-						<div className="stage-icon">
+						<div className={styles.stageIcon}>
 							<img
 								src={getImageUrl(s.icon.url)}
 								alt={s.icon.name}
@@ -47,6 +49,9 @@ const Stages: React.FC<IStagesProps> = ({ captions, btnCaptions }) => {
 					</div>
 				))}
 			</div>
+			<Button variant="secondary" className="only-mobile">
+				{btnCaptions.quick_start}
+			</Button>
 		</section>
 	);
 };

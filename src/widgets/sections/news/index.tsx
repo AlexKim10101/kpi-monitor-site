@@ -5,7 +5,8 @@ import formatDateToDDMMYYYY from "../../../utils/dateformatter";
 import NewsArrowIcon from "@assets/icons/news_arrow.svg";
 import NewsArrowIconHover from "@assets/icons/news_arrow_hover.svg";
 
-import "./news.css";
+import style from "./news.module.css";
+import classNames from "classnames";
 
 type INewsProps = {
 	captions: Record<string, string>;
@@ -22,31 +23,34 @@ const News: React.FC<INewsProps> = ({ captions, btnCaptions }) => {
 	if (error || !data) return <p>Ошибка загрузки данных</p>;
 
 	return (
-		<section className="news-section">
-			<div className="news-wrapper">
-				<div className="news-section-title">{captions.heading_news}</div>
-				<div className="news-section-content">
-					<div className="news-list">
+		<section className={classNames("section", "section-fullWidth")}>
+			<div className={classNames(style.newsWrapper, "mob-padding")}>
+				<div className={style.newsSectionTitle}>{captions.heading_news}</div>
+				<div className={style.newsSectionContent}>
+					<div className={style.newsList}>
 						{data.map((n, i) => (
-							<div key={n.id} className="news-list-item">
-								<div className="news-item-date">
+							<div key={n.id} className={style.newsListItem}>
+								<div className={style.newsItemDate}>
 									{n.date ? formatDateToDDMMYYYY(n.date) : ""}
 								</div>
-								<div className="news-item-title">{n.title}</div>
-								<div className="icon-wrapper">
-									<div className="icon">
+								<div className={style.newsItemTitle}>{n.title}</div>
+								<div className={style.iconWrapper}>
+									<div className={style.icon}>
 										<NewsArrowIcon />
 									</div>
-									<div className="icon-hover">
+									<div className={style.iconHover}>
 										<NewsArrowIconHover />
 									</div>
 								</div>
 							</div>
 						))}
 					</div>
-					<div className="news-btn-wrapper">
+					<div className="news-btn-wrapper only-desctop">
 						<Button variant="secondary">{btnCaptions.all_news}</Button>
 					</div>
+					<Button variant="secondary" className="only-mobile">
+						{btnCaptions.all_news}
+					</Button>
 				</div>
 			</div>
 		</section>

@@ -37,6 +37,19 @@ p {
 	padding-right: var(--min-horisontal-padding-value);
 }
 
+.section-flex {
+	width: 100%;
+	max-width: 1200px;
+
+	display: flex;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	flex-direction: column;
+	align-items: stretch;
+	gap: 30px;
+}
+
 .section-fullWidth {
 	max-width: none;
 	padding-left: 0;
@@ -191,6 +204,7 @@ p {
 }
 
 .mob-padding {
+	box-sizing: border-box;
 	padding-left: var(--min-horisontal-padding-value);
 	padding-right: var(--min-horisontal-padding-value);
 }
@@ -233,6 +247,11 @@ p {
 		max-width: 1200px;
 		padding-left: 0;
 		padding-right: 0;
+	}
+
+	.section-flex {
+		padding: 60px 0px;
+		gap: 50px;
 	}
 
 	.section-fullWidth {

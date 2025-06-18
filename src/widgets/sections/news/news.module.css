@@ -1,24 +1,42 @@
-.news-section {
-	width: 100%;
-
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.newsSection {
 	background: var(--blue_bg, #f8faff);
 }
 
-.news-wrapper {
+.newsWrapper {
 	width: 100%;
 	max-width: 1200px;
-
 	display: flex;
-	flex-direction: row;
-	gap: 50px;
-	padding-top: 60px;
-	padding-bottom: 60px;
+	flex-direction: column;
+	gap: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
-.news-section-title {
+@media (min-width: 320px) {
+	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+	/* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+	/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+	/* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+	.newsWrapper {
+		flex-direction: row;
+		gap: 50px;
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+}
+@media (min-width: 1281px) {
+	/* hi-res laptops and desktops */
+}
+
+.newsSectionTitle {
 	color: var(--Accent, #22409a);
 	font-family: Manrope;
 	font-size: 32px;
@@ -27,7 +45,7 @@
 	line-height: normal;
 }
 
-.news-section-content {
+.newsSectionContent {
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
@@ -35,42 +53,42 @@
 	gap: 40px;
 }
 
-.news-list {
+.newsList {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 }
 
-.news-list-item {
+.newsListItem {
 	position: relative;
 	padding: 10px;
 	border-bottom: 1px solid var(--gray_blue, #aabefa);
 	cursor: pointer;
 }
 
-.news-list-item:hover {
+.newsListItem:hover {
 	border-radius: 5px;
 	border-bottom: 1px solid var(--gray_blue, #aabefa);
 	background: var(--gray_blue_25, rgba(158, 177, 232, 0.25));
 }
 
-.news-list-item .icon {
+.newsListItem .icon {
 	display: block;
 }
 
-.news-list-item:hover .icon {
+.newsListItem:hover .icon {
 	display: none;
 }
 
-.news-list-item .icon-hover {
+.newsListItem .iconHover {
 	display: none;
 }
 
-.news-list-item:hover .icon-hover {
+.newsListItem:hover .iconHover {
 	display: block;
 }
 
-.news-item-date {
+.newsItemDate {
 	color: var(--Accent, #22409a);
 	font-family: Manrope;
 	font-size: 14px;
@@ -79,7 +97,7 @@
 	line-height: normal;
 }
 
-.news-item-title {
+.newsItemTitle {
 	color: var(--black, #141414);
 	font-family: Manrope;
 	font-size: 18px;
@@ -88,7 +106,7 @@
 	line-height: normal;
 }
 
-.icon-wrapper {
+.iconWrapper {
 	position: absolute;
 	top: 0;
 	right: 0;
