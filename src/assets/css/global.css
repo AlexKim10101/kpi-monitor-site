@@ -10,7 +10,6 @@ body {
 .wrapper {
 	display: flex;
 	flex-direction: column;
-
 	min-height: 100vh;
 }
 
@@ -213,7 +212,7 @@ p {
 	display: none !important;
 }
 
-.only-mobyle {
+.only-mobile {
 	display: block !important;
 }
 

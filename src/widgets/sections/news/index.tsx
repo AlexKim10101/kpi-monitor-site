@@ -25,7 +25,7 @@ const News: React.FC<INewsProps> = ({ captions, btnCaptions }) => {
 	return (
 		<section className={classNames("section", "section-fullWidth")}>
 			<div className={classNames(style.newsWrapper, "mob-padding")}>
-				<div className={style.newsSectionTitle}>{captions.heading_news}</div>
+				<div className="section-title">{captions.heading_news}</div>
 				<div className={style.newsSectionContent}>
 					<div className={style.newsList}>
 						{data.map((n, i) => (
@@ -34,7 +34,7 @@ const News: React.FC<INewsProps> = ({ captions, btnCaptions }) => {
 									{n.date ? formatDateToDDMMYYYY(n.date) : ""}
 								</div>
 								<div className={style.newsItemTitle}>{n.title}</div>
-								<div className={style.iconWrapper}>
+								<div className={classNames(style.iconWrapper, "only-desctop")}>
 									<div className={style.icon}>
 										<NewsArrowIcon />
 									</div>

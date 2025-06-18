@@ -57,6 +57,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	transform: scale(0.9);
 }
 
 @media (min-width: 320px) {
@@ -81,6 +82,9 @@
 	}
 	.stageDescription {
 		font-size: 16px;
+	}
+	.stageIcon {
+		transform: scale(1);
 	}
 }
 @media (min-width: 1281px) {

@@ -1,0 +1,135 @@
+.footer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 20px;
+
+	color: var(--Accent, #22409a);
+	font-family: Manrope;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	padding-bottom: 40px;
+}
+
+.footerDeskContainer {
+	width: 100%;
+	max-width: 1200px;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.footerDescContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 40px;
+}
+
+.footerNavContainer {
+	display: none;
+	flex-direction: column;
+	gap: 60px;
+}
+
+.navListFooter {
+	display: flex;
+	gap: 20px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	flex-direction: column;
+}
+
+.btnWrapperFooter {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+}
+
+.footerContactsContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.contactInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.footerDescSigna {
+	color: var(--Accent, #22409a);
+	font-family: Manrope;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.mobileCenter {
+	align-self: center;
+}
+
+.mt25Mob {
+	margin-top: 25px;
+}
+
+.phoneAndEmail {
+	display: flex;
+	justify-content: space-between;
+}
+
+@media (min-width: 320px) {
+	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+	/* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+	/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+	/* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+	.footer {
+		font-size: 16px;
+	}
+
+	.footerDescContent {
+		flex-direction: row;
+		gap: 200px;
+	}
+
+	.footerNavContainer {
+		display: flex;
+	}
+
+	.mobileCenter {
+		align-self: flex-start;
+	}
+	.footerDescSigna {
+		font-size: 14px;
+	}
+
+	.contactInfo {
+		gap: 26px;
+	}
+
+	.mt25Mob {
+		margin-top: 0px;
+	}
+	.phoneAndEmail {
+		display: block;
+	}
+}
+@media (min-width: 1281px) {
+	/* hi-res laptops and desktops */
+}

@@ -5,9 +5,11 @@ import Button from "@components/CustomButton";
 import { getPathname } from "../../utils/getPathName";
 import { locationsDict } from "@consts/consts";
 import KpiMonitorIcon from "@assets/icons/kpi_logo.svg";
+import KpiMonitorIconMob from "@assets/icons/kpi_logo_mob.svg";
+
 import ClipPathGroup from "@assets/icons/Clip-path-group.svg";
 
-import "./footer.css";
+import style from "./footer.module.css";
 
 type ILinkData = {
 	key: string;
@@ -29,25 +31,21 @@ const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
 		: [];
 
 	return (
-		<footer className="footer">
-			<div className="footer-desk-container">
-				<div className="footer-desc-content">
-					<Link to={logo.to}>
-						{/* <Box
-							component="img"
-							src={logo.url}
-							alt="Kpi logo"
-							sx={{
-								width: "235px",
-								height: "44px",
-							}}
-						/> */}
-						<KpiMonitorIcon />
+		<footer className={classNames(style.footer, "mob-padding")}>
+			<div className={style.footerDeskContainer}>
+				<div className={style.footerDescContent}>
+					<Link to={logo.to} className={style.mobileCenter}>
+						<div className="only-desctop">
+							<KpiMonitorIcon />
+						</div>
+						<div className="only-mobile">
+							<KpiMonitorIconMob />
+						</div>
 					</Link>
 
-					<div className="footer-nav-container">
+					<div className={style.footerNavContainer}>
 						<nav>
-							<ul className="nav-list nav-list-footer">
+							<ul className={style.navListFooter}>
 								{(links as ILinkData[]).map((link, index) => {
 									const linkClassName = classNames("nav-link", {
 										"nav-link-active":
@@ -68,20 +66,20 @@ const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
 							</ul>
 						</nav>
 
-						<div className="btn-wrapper btn-wrapper-footer">
+						<div className={style.btnWrapperFooter}>
 							<Button variant="secondary">{btnCaptions.quick_start}</Button>
 							<Button variant="primary">{btnCaptions.entry}</Button>
 						</div>
 					</div>
 
-					<div className="footer-contacts-container">
-						<div className="footer-title">
+					<div className={style.footerContactsContainer}>
+						<div className="section-title">
 							{captions.heading_footer_contacts}
 						</div>
 
-						<div className="contact-info">
+						<div className={style.contactInfo}>
 							<div className="address">{captions.footer_adress}</div>
-							<div className="phone-and-email">
+							<div className={style.phoneAndEmail}>
 								<div className="phone">
 									{phoneNumbers.map((pn, i) => (
 										<div key={pn + "index" + i}>{pn}</div>
@@ -89,18 +87,14 @@ const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
 								</div>
 								<div className="email">{captions.footer_email}</div>
 							</div>
-							{/* <Icon
-								path="/icons/Clip-path-group.svg"
-								id="Clip-path-group"
-								width={62}
-								height={77}
-							/> */}
-							<ClipPathGroup />
+							<div className={classNames(style.mobileCenter, style.mt25Mob)}>
+								<ClipPathGroup />
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div className="footer-desc-signa">
+				<div className={style.footerDescSigna}>
 					© 2010 KPI MONITOR - Автоматизация ключевых показателей эффективности
 					(KPI) предприятия. Все права защищены. Публикация любых материалов
 					сайта возможна только с разрешения владельца.{" "}
