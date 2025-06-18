@@ -33,7 +33,7 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 		}
 	};
 
-	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+	const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
 		setActiveTab(newValue);
 		activeObserverRef.current = false;
 		scrollToTarget(newValue);
@@ -54,8 +54,6 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 				entries.forEach(entry => {
 					const id = entry.target.getAttribute("id");
 					if (entry.isIntersecting && id) {
-						// setActiveTab(id);
-						// setSlice(findChunkIndexById(operations, 5, id));
 						activeObserverRef.current && throttledHandler(id);
 					}
 				});
@@ -94,31 +92,31 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 	}, []);
 
 	return (
-		<div
-			className={classNames("floating-tabs-wrapper", {
-				"floating-tabs-wrapper-down": !up,
-			})}
-		>
-			<div className="floating-tabs-container">
-				<div className="floating-tabs">
-					{chunks.map((chunk, index) => (
+		<>
+			<div
+				className={classNames("floating-tabs-wrapper", "only-mob-flex", {
+					"floating-tabs-wrapper-down": true,
+				})}
+			>
+				<div className="floating-tabs-container">
+					<div className="floating-tabs">
 						<Tabs
-							key={chunk[0].documentId + index}
 							value={
-								Boolean(chunk.find(item => item.documentId === activeTab))
+								Boolean(operations.find(item => item.documentId === activeTab))
 									? activeTab
 									: false
 							}
 							onChange={handleChange}
+							variant="scrollable"
 							sx={{
 								"&.MuiTabs-root": {
 									flexGrow: 4,
 									minHeight: 0,
-									display: index === slise ? "flex" : "none",
+									display: "flex",
 								},
 
 								"& .MuiTabs-list": {
-									justifyContent: "space-between",
+									gap: "10px",
 								},
 
 								"& .MuiTabs-list.MuiTab-root": {},
@@ -126,12 +124,13 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 								"& .MuiTabs-indicator": {
 									height: "1px",
 									backgroundColor: "var(--primary-color)",
+									bottom: "5px",
 								},
 
 								"& .MuiTab-root": {
 									color: "var(--primary-color)",
 									fontFamily: "Manrope",
-									fontSize: "16px",
+									fontSize: "14px",
 									fontStyle: "normal",
 									fontWeight: "400",
 									lineHeight: "normal",
@@ -150,7 +149,7 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 								},
 							}}
 						>
-							{chunk.map((operation, index) => {
+							{operations.map((operation, index) => {
 								return (
 									<Tab
 										key={operation.id}
@@ -162,144 +161,83 @@ const FloatingTabs: React.FC<FloatingTabsProps> = ({
 								);
 							})}
 						</Tabs>
-					))}
-
-					<div className="next-btr-wrapper">
-						<button
-							className="next-btn"
-							onClick={() =>
-								setSlice(prev => {
-									return operations.length > (prev + 1) * 5 ? prev + 1 : 0;
-								})
-							}
-						>
-							<NextIcon />
-						</button>
 					</div>
 				</div>
 			</div>
-		</div>
+			<div
+				className={classNames("floating-tabs-wrapper", "only-desc-flex", {
+					"floating-tabs-wrapper-down": !up,
+				})}
+			>
+				<div className="floating-tabs-container">
+					<div className="floating-tabs">
+						{chunks.map((chunk, index) => (
+							<Tabs
+								key={chunk[0].documentId + index}
+								value={
+									Boolean(chunk.find(item => item.documentId === activeTab))
+										? activeTab
+										: false
+								}
+								onChange={handleChange}
+								sx={{
+									"&.MuiTabs-root": {
+										flexGrow: 4,
+										minHeight: 0,
+										display: index === slise ? "flex" : "none",
+									},
+
+									"& .MuiTabs-list": {
+										justifyContent: "space-between",
+									},
+
+									"& .MuiTabs-list.MuiTab-root": {},
+
+									"& .MuiTabs-indicator": {
+										height: "1px",
+										backgroundColor: "var(--primary-color)",
+									},
+
+									"& .MuiTab-root": {
+										color: "var(--primary-color)",
+										fontFamily: "Manrope",
+										fontSize: "16px",
+										fontStyle: "normal",
+										fontWeight: "400",
+										lineHeight: "normal",
+										display: "flex",
+										minHeight: 0,
+										padding: "0px 5px 5px 5px",
+										textTransform: "none",
+
+										"&.Mui-selected": {
+											color: "var(--primary-color)",
+										},
+									},
+
+									"& .MuiButtonBase-root.MuiTab-root": {
+										maxWidth: "100%",
+									},
+								}}
+							>
+								{chunk.map((operation, index) => {
+									return (
+										<Tab
+											key={operation.id}
+											className="floating-tab-item"
+											value={operation.documentId}
+											label={operation.point}
+											disableRipple
+										/>
+									);
+								})}
+							</Tabs>
+						))}
+					</div>
+				</div>
+			</div>
+		</>
 	);
 };
 
 export default FloatingTabs;
-
-{
-	/* <Tabs
-					value={
-						Boolean(chunks[slise].find(item => item.documentId === value))
-							? value
-							: false
-					}
-					onChange={handleChange}
-					sx={{
-						"&.MuiTabs-root": {
-							flexGrow: 4,
-							minHeight: 0,
-						},
-
-						"& .MuiTabs-list": {
-							justifyContent: "space-between",
-						},
-
-						"& .MuiTabs-list.MuiTab-root": {},
-
-						"& .MuiTabs-indicator": {
-							height: "1px",
-							backgroundColor: PRIMARY_COLOR,
-						},
-
-						"& .MuiTab-root": {
-							color: PRIMARY_COLOR,
-							fontFamily: "Manrope",
-							fontSize: "16px",
-							fontStyle: "normal",
-							fontWeight: "400",
-							lineHeight: "normal",
-							display: "flex",
-							minHeight: 0,
-							padding: "0px 5px 5px 5px",
-							textTransform: "none",
-
-							"&.Mui-selected": {
-								color: PRIMARY_COLOR,
-							},
-						},
-
-						"& .MuiButtonBase-root.MuiTab-root": {
-							maxWidth: "100%",
-						},
-					}}
-				>
-					{chunks[slise].map((operation, index) => {
-						return (
-							<Tab
-								key={operation.id}
-								value={operation.documentId}
-								label={operation.point}
-								disableRipple
-							/>
-						);
-					})}
-				</Tabs> */
-}
-
-// <Tabs
-// 	value={
-// 		currentValueIndex < slise * 5 && currentValueIndex >= (slise - 1) * 5
-// 			? value
-// 			: false
-// 	}
-// 	onChange={handleChange}
-// 	sx={{
-// 		"&.MuiTabs-root": {
-// 			flexGrow: 4,
-// 			minHeight: 0,
-// 		},
-
-// 		"& .MuiTabs-list": {
-// 			justifyContent: "space-between",
-// 		},
-
-// 		"& .MuiTabs-list.MuiTab-root": {},
-
-// 		"& .MuiTabs-indicator": {
-// 			height: "1px",
-// 			backgroundColor: PRIMARY_COLOR,
-// 		},
-
-// 		"& .MuiTab-root": {
-// 			color: PRIMARY_COLOR,
-// 			fontFamily: "Manrope",
-// 			fontSize: "16px",
-// 			fontStyle: "normal",
-// 			fontWeight: "400",
-// 			lineHeight: "normal",
-// 			display: "flex",
-// 			minHeight: 0,
-// 			padding: "0px 5px 5px 5px",
-// 			textTransform: "none",
-
-// 			"&.Mui-selected": {
-// 				color: PRIMARY_COLOR,
-// 			},
-// 		},
-
-// 		"& .MuiButtonBase-root.MuiTab-root": {
-// 			maxWidth: "100%",
-// 		},
-// 	}}
-// >
-// 	{operations.map((operation, index) => {
-// 		if (index >= (slise - 1) * 5 && index < slise * 5) {
-// 			return (
-// 				<Tab
-// 					key={operation.id}
-// 					value={operation.documentId}
-// 					label={operation.point}
-// 					disableRipple
-// 				/>
-// 			);
-// 		}
-// 	})}
-// </Tabs>;

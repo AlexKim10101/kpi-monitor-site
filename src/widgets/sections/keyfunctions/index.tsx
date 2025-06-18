@@ -63,6 +63,7 @@ const KeyFunctions: React.FC<IKeyFunctionsProps> = ({
 			<div className={style.functionAccordionContainer}>
 				{data.map(f => (
 					<Accordion
+						key={f.id}
 						sx={{
 							"&.MuiAccordion-root": {
 								borderTop: "1px solid  #AABEFA",

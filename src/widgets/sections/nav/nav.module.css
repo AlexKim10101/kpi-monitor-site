@@ -3,7 +3,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 
-	padding-top: 20px;
+	padding-top: 60px;
 }
 
 .navFunctionDescription,
@@ -84,6 +84,10 @@
 	/* tablet, landscape iPad, lo-res laptops ands desktops */
 }
 @media (min-width: 1025px) {
+	.navSection {
+		padding-top: 20px;
+	}
+
 	.navFunctionDescription {
 		flex: 0 1 calc(50% - 60px);
 		gap: 30px;

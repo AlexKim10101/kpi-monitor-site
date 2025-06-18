@@ -17,7 +17,7 @@ header {
 }
 
 header.hidden {
-	transform: translateY(-100%);
+	/* transform: translateY(-100%); */
 }
 
 .header-container {
@@ -132,7 +132,7 @@ header.hidden {
 	width: 100%;
 	background: var(--white-color);
 
-	z-index: 900;
+	z-index: 950;
 	box-sizing: border-box;
 	padding-right: 15px;
 	padding-left: 15px;
@@ -213,6 +213,10 @@ header.hidden {
 		/* width: 84%;
 		max-width: var(--container-max-width);
 		margin: 0 auto; */
+	}
+
+	header.hidden {
+		transform: translateY(-100%);
 	}
 	/* big landscape tablets, laptops, and desktops */
 }

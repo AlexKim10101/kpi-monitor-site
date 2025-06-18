@@ -1,12 +1,13 @@
 .floating-tabs-wrapper {
 	width: 100%;
-	display: none;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 
 	position: fixed;
 	top: 0px;
-	height: 75px;
+	/* height: 75px; */
+	height: 40px;
 
 	background-color: white;
 	z-index: 900;
@@ -14,8 +15,16 @@
 	transition: all 0.3s ease;
 }
 
+.only-desc-flex {
+	display: none !important;
+}
+
+.only-mob-flex {
+	display: flex !important;
+}
+
 .floating-tabs-wrapper-down {
-	top: 105px;
+	top: 70px;
 }
 
 .floating-tabs-container {
@@ -55,12 +64,26 @@
 	transition: transform 0.3s ease;
 }
 
-.floating-tab-item:hover::after {
-	transform: scaleX(1);
+@media (hover: hover) and (pointer: fine) {
+	.floating-tab-item:hover::after {
+		transform: scaleX(1);
+	}
 }
 
 @media (min-width: 1025px) {
+	.only-desc-flex {
+		display: flex !important;
+	}
+
+	.only-mob-flex {
+		display: none !important;
+	}
+
 	.floating-tabs-wrapper {
 		display: flex;
+	}
+
+	.floating-tabs-wrapper-down {
+		top: 105px;
 	}
 }
