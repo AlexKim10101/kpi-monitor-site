@@ -6,5 +6,5 @@ export const getPathname = (
 		return locationsDict[key];
 	}
 
-	return "/";
+	return "/empty";
 };

@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router";
+import { List, ListItem, ListItemText, Collapse } from "@mui/material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 import classNames from "classnames";
 import Button from "@components/CustomButton";
 import LanguageMenu from "@components/LanguageMenu";
-import { Locale } from "../../api/interfaces";
+import { Locale, Navigation } from "../../api/interfaces";
 import MobileLanguageMenu from "@components/LanguageMenu/MobLanguagMenu";
 import KpiMonitorIcon from "@assets/icons/kpi_logo.svg";
 import KpiMonitorIconMob from "@assets/icons/kpi_logo_mob.svg";
@@ -13,6 +16,7 @@ import { getPathname } from "../../utils/getPathName";
 import { locationsDict, SCROLL_LIMIT } from "../../consts/consts";
 
 import "./header.css";
+import { getNavigationTree } from "../../utils/getNavigationTree";
 
 type ILinkData = {
 	key: string;
@@ -22,6 +26,7 @@ type ILinkData = {
 type IHeaderProps = {
 	logo: { url: string; to: string };
 	links: Record<string, any>[];
+	navData: Navigation[];
 	btnCaptions: Record<string, string>;
 	locales: Locale[];
 	language: string;
@@ -31,14 +36,36 @@ type IHeaderProps = {
 const Header: React.FC<IHeaderProps> = ({
 	logo,
 	links,
+	navData,
 	btnCaptions,
 	locales,
 	language,
 	setLanguage,
 }) => {
 	const [hidden, setHidden] = useState(false);
+	const [openParentId, setOpenParentId] = useState<number | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const [isClosing, setIsClosing] = useState(false);
+	const { pathname, hash, key, search, state } = useLocation();
+	const navTree = useMemo(() => getNavigationTree(navData), [navData]);
+
+	// console.log("pathname", pathname);
+	// console.log("hash", hash);
+	// console.log("key", key);
+	// console.log("search", search);
+	// console.log("state", state);
+
+	const handleClick = (id: number) => {
+		setOpenParentId(prev => (prev === id ? null : id));
+	};
+
+	const handleClickAway = () => {
+		setOpenParentId(null);
+	};
+
+	const closeDropList = () => {
+		setOpenParentId(null);
+	};
 
 	const closeModal = () => {
 		setIsClosing(true);
@@ -48,7 +75,21 @@ const Header: React.FC<IHeaderProps> = ({
 		}, 300);
 	};
 
-	const { pathname } = useLocation();
+	const listItemStyle = {
+		"&.MuiListItem-root": {
+			whiteSpace: "nowrap",
+			width: "auto",
+			cursor: "pointer",
+			userSelect: "none",
+			color: "var(--primary-color)",
+			fontFamily: "Manrope",
+			fontSize: "16px",
+			fontStyle: "normal",
+			fontWeight: 400,
+			lineHeight: "normal",
+			textDecoration: "none",
+		},
+	};
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -56,9 +97,11 @@ const Header: React.FC<IHeaderProps> = ({
 				document.documentElement.scrollHeight -
 				window.scrollY -
 				window.innerHeight;
-			setHidden(
-				distanceFromBottom < SCROLL_LIMIT && window.scrollY > SCROLL_LIMIT / 2
-			);
+
+			const newValue =
+				distanceFromBottom < SCROLL_LIMIT && window.scrollY > SCROLL_LIMIT / 2;
+
+			setHidden(newValue);
 		};
 		window.addEventListener("scroll", handleScroll);
 		return () => {
@@ -68,42 +111,152 @@ const Header: React.FC<IHeaderProps> = ({
 
 	return (
 		<>
-			<header className={classNames("mob-padding", hidden && "hidden")}>
+			<header
+				className={classNames(
+					"mob-padding",
+					hidden && "hidden",
+					Boolean(openParentId) && "bottomBorder"
+				)}
+			>
 				<div className="header-container">
 					<div className="block-desk">
 						<Link to={logo.to}>
 							<KpiMonitorIcon />
 						</Link>
-						<nav>
-							<ul className="nav-list">
-								{(links as ILinkData[]).map((link, index) => {
-									const linkClassName = classNames("nav-link", {
-										"nav-link-active":
-											getPathname(locationsDict, link.key) === pathname,
-									});
-									return (
-										<li key={index} className="nav-item">
-											<Link
-												className={linkClassName}
-												to={getPathname(locationsDict, link.key)}
-											>
-												{link.caption}
-											</Link>
-										</li>
-									);
-								})}
-							</ul>
-						</nav>
 
-						<div className="btn-wrapper">
-							<Button variant="secondary">{btnCaptions.quick_start}</Button>
-							<Button variant="primary">{btnCaptions.entry}</Button>
+						<div
+							style={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "space-between",
+								position: "relative",
+							}}
+						>
+							<ClickAwayListener onClickAway={handleClickAway}>
+								<List
+									component="nav"
+									sx={{
+										"&.MuiList-root": {
+											display: "flex",
+											position: "static",
+										},
+										"& .MuiButtonBase-root": {
+											flexGrow: 0,
+										},
+									}}
+								>
+									{navTree.map(parent => {
+										const hasChildren = parent.children.length > 0;
+										const linkClassName = classNames("nav-link", {
+											"nav-link-active":
+												pathname.split("/").includes(parent.key) ||
+												(pathname === "/" && parent.key === "main"),
+										});
 
-							<LanguageMenu
-								locales={locales}
-								setLanguage={setLanguage}
-								language={language}
-							/>
+										return (
+											<React.Fragment key={parent.id}>
+												{hasChildren ? (
+													<ListItem
+														onClick={() => handleClick(parent.id)}
+														sx={listItemStyle}
+													>
+														<div className={linkClassName}>
+															{parent.caption}
+															{openParentId === parent.id ? (
+																<ExpandLess />
+															) : (
+																<ExpandMore />
+															)}
+														</div>
+													</ListItem>
+												) : (
+													<ListItem
+														component={Link}
+														// to={getPathname(locationsDict, parent.key)}
+														to={`/${parent.key}`}
+														onClick={closeDropList}
+														sx={listItemStyle}
+													>
+														<div className={linkClassName}>
+															{parent.caption}
+														</div>
+													</ListItem>
+												)}
+
+												{hasChildren && (
+													<Collapse
+														in={openParentId === parent.id && !hidden}
+														timeout={{ appear: 0, enter: 0, exit: 0 }}
+														unmountOnExit
+														sx={{
+															"&.MuiCollapse-root": {
+																width: "100%",
+																position: "absolute",
+																top: "100%",
+																transform: "translateY(24px)",
+																backgroundColor: "var(--white-color)",
+																boxSizing: "border-box",
+																padding: "10px 10px 20px 10px",
+																borderRadius: " 0px 0px 20px 20px",
+																borderRight: "1px solid var(--secondary-color)",
+																borderBottom:
+																	"1px solid var(--secondary-color)",
+																borderLeft: "1px solid var(--secondary-color)",
+															},
+														}}
+													>
+														<List
+															component="div"
+															disablePadding
+															sx={{
+																"&.MuiList-root": {
+																	display: "flex",
+																	gap: "10px",
+																	flexWrap: "wrap",
+																},
+															}}
+														>
+															{parent.children.map(child => {
+																const linkClassName = classNames("nav-link", {
+																	"nav-link-active": pathname
+																		.split("/")
+																		.includes(child.key),
+																});
+
+																return (
+																	<ListItem
+																		key={child.id}
+																		sx={listItemStyle}
+																		component={Link}
+																		// to={getPathname(locationsDict, child.key)}
+																		to={`/${parent.key}/${child.key}`}
+																		onClick={closeDropList}
+																	>
+																		<div className={linkClassName}>
+																			{child.caption}
+																		</div>
+																	</ListItem>
+																);
+															})}
+														</List>
+													</Collapse>
+												)}
+											</React.Fragment>
+										);
+									})}
+								</List>
+							</ClickAwayListener>
+
+							<div className="btn-wrapper">
+								<Button variant="secondary">{btnCaptions.quick_start}</Button>
+								<Button variant="primary">{btnCaptions.entry}</Button>
+
+								<LanguageMenu
+									locales={locales}
+									setLanguage={setLanguage}
+									language={language}
+								/>
+							</div>
 						</div>
 					</div>
 					<div className="block-mob">

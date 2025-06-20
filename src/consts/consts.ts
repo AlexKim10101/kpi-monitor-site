@@ -23,12 +23,63 @@ export const INACTIVE = "#747474";
 export const DEV_BASE_URL = "http://10.0.0.39:1337";
 
 export const locationsDict = {
-	main: "/",
-	about: "/aboutprogram",
-	solutions: "/solutions",
-	infocentre: "/info",
-	version: "/version",
+	main: "/main",
+	functionhandbook: "/functionhandbook",
 };
+
+const e = {
+	possibilities: "",
+	forms: "",
+	paramtrictech: "",
+	version: "",
+	maintenance: "",
+	functionhandbook: "",
+	demo: "",
+	dashboards: "",
+	government: "",
+	versionhistory: "",
+	balancedindicatorsystem: "",
+	motivation: "",
+	userinterface: "",
+	integrations: "",
+	license: "",
+	faq: "",
+	contacts: "",
+	budget: "",
+	universitymanagment: "",
+	analyticsfeatures: "",
+	aboutus: "",
+};
+
+const keys = [
+	"possibilities",
+	"forms",
+	"paramtrictech",
+	"version",
+	"maintenance",
+	"functionhandbook",
+	"demo",
+	"dashboards",
+	"government",
+	"main",
+	"about",
+	"versionhistory",
+	"balancedindicatorsystem",
+	"motivation",
+	"userinterface",
+	"solutions",
+	"integrations",
+	"license",
+	"faq",
+	"contacts",
+	"infocentre",
+	"budget",
+	"universitymanagment",
+	"analyticsfeatures",
+	"aboutus",
+];
+
+const parentKeys = ["main", "about", "solutions", "infocentre"];
 
 export const LOGO_DATA = {
 	url: "/icons/kpi_logo.svg",

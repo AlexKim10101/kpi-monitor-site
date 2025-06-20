@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
 import { useLanguage } from "./context/languageContext";
 import { Locale } from "@api/interfaces";
 import { useNavigation, useCaptions, useButtons, useLocales } from "@api/model";
 import Home from "./pages/Home";
 import InfoPage from "./pages/Info";
+import EmptyPage from "./pages/Empty";
+
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
 import Loader from "@components/Loader";
@@ -78,6 +80,7 @@ const App = () => {
 			<Header
 				logo={LOGO_DATA}
 				links={links}
+				navData={navData}
 				btnCaptions={btnCaptions}
 				locales={localesData}
 				language={language}
@@ -89,10 +92,15 @@ const App = () => {
 						path="/"
 						element={<Home captions={captions} btnCaptions={btnCaptions} />}
 					/>
-					<Route path="/aboutprogram" element={<InfoPage />} />
-					<Route path="/solutions" element={<InfoPage />} />
-					<Route path="/info" element={<InfoPage />} />
-					<Route path="/version" element={<InfoPage />} />
+					<Route path="/main" element={<Navigate to="/" replace />} />
+					<Route path="/infocentre">
+						<Route index element={<Navigate to="functionhandbook" replace />} />
+						<Route path="functionhandbook" element={<InfoPage />} />
+					</Route>
+
+					<Route path="/empty" element={<EmptyPage />} />
+					<Route path="*" element={<Navigate to="/empty" replace />} />
+					{/* <Route path="/functionhandbook" element={<InfoPage />} /> */}
 				</Routes>
 			</main>
 

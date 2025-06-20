@@ -14,10 +14,12 @@ header {
 	background-color: #fefeff;
 
 	box-sizing: border-box;
+
+	border-bottom: 1px solid transparent;
 }
 
-header.hidden {
-	/* transform: translateY(-100%); */
+.bottomBorder {
+	border-bottom: 1px solid var(--secondary-color);
 }
 
 .header-container {
@@ -54,6 +56,9 @@ header.hidden {
 	font-weight: 400;
 	line-height: normal;
 	text-decoration: none;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .nav-link::after {
