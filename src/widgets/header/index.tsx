@@ -43,7 +43,7 @@ const Header: React.FC<IHeaderProps> = ({
 	setLanguage,
 }) => {
 	const [hidden, setHidden] = useState(false);
-	const [openParentId, setOpenParentId] = useState<number | null>(null);
+	const [openParent, setOpenParent] = useState<Navigation | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const [isClosing, setIsClosing] = useState(false);
 	const { pathname, hash, key, search, state } = useLocation();
@@ -55,16 +55,16 @@ const Header: React.FC<IHeaderProps> = ({
 	// console.log("search", search);
 	// console.log("state", state);
 
-	const handleClick = (id: number) => {
-		setOpenParentId(prev => (prev === id ? null : id));
+	const handleClick = (node: Navigation | null) => {
+		setOpenParent(prev => (prev === node ? null : node));
 	};
 
 	const handleClickAway = () => {
-		setOpenParentId(null);
+		setOpenParent(null);
 	};
 
 	const closeDropList = () => {
-		setOpenParentId(null);
+		setOpenParent(null);
 	};
 
 	const closeModal = () => {
@@ -115,149 +115,143 @@ const Header: React.FC<IHeaderProps> = ({
 				className={classNames(
 					"mob-padding",
 					hidden && "hidden",
-					Boolean(openParentId) && "bottomBorder"
+					Boolean(openParent) && "bottomBorder"
 				)}
 			>
 				<div className="header-container">
 					<div className="block-desk">
-						<Link to={logo.to}>
-							<KpiMonitorIcon />
-						</Link>
+						<ClickAwayListener onClickAway={handleClickAway}>
+							<div className="header-grid">
+								<Link to={logo.to} className="grid-item-logo">
+									<KpiMonitorIcon />
+								</Link>
 
-						<div
-							style={{
-								display: "flex",
-								alignItems: "center",
-								justifyContent: "space-between",
-								position: "relative",
-							}}
-						>
-							<ClickAwayListener onClickAway={handleClickAway}>
-								<List
-									component="nav"
-									sx={{
-										"&.MuiList-root": {
-											display: "flex",
-											position: "static",
-										},
-										"& .MuiButtonBase-root": {
-											flexGrow: 0,
-										},
-									}}
-								>
-									{navTree.map(parent => {
-										const hasChildren = parent.children.length > 0;
-										const linkClassName = classNames("nav-link", {
-											"nav-link-active":
-												pathname.split("/").includes(parent.key) ||
-												(pathname === "/" && parent.key === "main"),
-										});
+								<div className="empty1"></div>
 
-										return (
-											<React.Fragment key={parent.id}>
-												{hasChildren ? (
-													<ListItem
-														onClick={() => handleClick(parent.id)}
-														sx={listItemStyle}
-													>
-														<div className={linkClassName}>
-															{parent.caption}
-															{openParentId === parent.id ? (
-																<ExpandLess />
-															) : (
-																<ExpandMore />
-															)}
-														</div>
-													</ListItem>
-												) : (
-													<ListItem
-														component={Link}
-														// to={getPathname(locationsDict, parent.key)}
-														to={`/${parent.key}`}
-														onClick={closeDropList}
-														sx={listItemStyle}
-													>
-														<div className={linkClassName}>
-															{parent.caption}
-														</div>
-													</ListItem>
-												)}
+								<div className="grid-item-nav">
+									<List
+										component="nav"
+										sx={{
+											"&.MuiList-root": {
+												display: "flex",
+												position: "static",
+											},
+											"& .MuiButtonBase-root": {
+												flexGrow: 0,
+											},
+										}}
+									>
+										{navTree.map(parent => {
+											const hasChildren = parent.children.length > 0;
+											const linkClassName = classNames("nav-link", {
+												"nav-link-active":
+													pathname.split("/").includes(parent.key) ||
+													(pathname === "/" && parent.key === "main"),
+											});
 
-												{hasChildren && (
-													<Collapse
-														in={openParentId === parent.id && !hidden}
-														timeout={{ appear: 0, enter: 0, exit: 0 }}
-														unmountOnExit
-														sx={{
-															"&.MuiCollapse-root": {
-																width: "100%",
-																position: "absolute",
-																top: "100%",
-																transform: "translateY(24px)",
-																backgroundColor: "var(--white-color)",
-																boxSizing: "border-box",
-																padding: "10px 10px 20px 10px",
-																borderRadius: " 0px 0px 20px 20px",
-																borderRight: "1px solid var(--secondary-color)",
-																borderBottom:
-																	"1px solid var(--secondary-color)",
-																borderLeft: "1px solid var(--secondary-color)",
-															},
-														}}
-													>
-														<List
-															component="div"
-															disablePadding
-															sx={{
-																"&.MuiList-root": {
-																	display: "flex",
-																	gap: "10px",
-																	flexWrap: "wrap",
-																},
-															}}
+											return (
+												<React.Fragment key={parent.id}>
+													{hasChildren ? (
+														<ListItem
+															onClick={() => handleClick(parent)}
+															sx={listItemStyle}
 														>
-															{parent.children.map(child => {
-																const linkClassName = classNames("nav-link", {
-																	"nav-link-active": pathname
-																		.split("/")
-																		.includes(child.key),
-																});
+															<div className={linkClassName}>
+																{parent.caption}
+																{openParent && openParent.id === parent.id ? (
+																	<ExpandLess />
+																) : (
+																	<ExpandMore />
+																)}
+															</div>
+														</ListItem>
+													) : (
+														<ListItem
+															component={Link}
+															// to={getPathname(locationsDict, parent.key)}
+															to={`/${parent.key}`}
+															onClick={closeDropList}
+															sx={listItemStyle}
+														>
+															<div className={linkClassName}>
+																{parent.caption}
+															</div>
+														</ListItem>
+													)}
+												</React.Fragment>
+											);
+										})}
+									</List>
+								</div>
 
-																return (
-																	<ListItem
-																		key={child.id}
-																		sx={listItemStyle}
-																		component={Link}
-																		// to={getPathname(locationsDict, child.key)}
-																		to={`/${parent.key}/${child.key}`}
-																		onClick={closeDropList}
-																	>
-																		<div className={linkClassName}>
-																			{child.caption}
-																		</div>
-																	</ListItem>
-																);
-															})}
-														</List>
-													</Collapse>
-												)}
-											</React.Fragment>
-										);
-									})}
-								</List>
-							</ClickAwayListener>
+								<div className="empty2"></div>
 
-							<div className="btn-wrapper">
-								<Button variant="secondary">{btnCaptions.quick_start}</Button>
-								<Button variant="primary">{btnCaptions.entry}</Button>
+								<div className="btn-wrapper grid-item-btns">
+									<Button variant="secondary">{btnCaptions.quick_start}</Button>
+									<Button variant="primary">{btnCaptions.entry}</Button>
 
-								<LanguageMenu
-									locales={locales}
-									setLanguage={setLanguage}
-									language={language}
-								/>
+									<LanguageMenu
+										locales={locales}
+										setLanguage={setLanguage}
+										language={language}
+									/>
+								</div>
+								{openParent && (
+									<Collapse
+										in={Boolean(openParent) && !hidden}
+										timeout={{ appear: 0, enter: 0, exit: 0 }}
+										unmountOnExit
+										sx={{
+											"&.MuiCollapse-root": {
+												width: "100%",
+												backgroundColor: "var(--white-color)",
+												boxSizing: "border-box",
+												padding: "10px 10px 20px 10px",
+												borderRadius: " 0px 0px 20px 20px",
+												borderRight: "1px solid var(--secondary-color)",
+												borderBottom: "1px solid var(--secondary-color)",
+												borderLeft: "1px solid var(--secondary-color)",
+												gridArea: "col",
+											},
+										}}
+									>
+										<List
+											component="div"
+											disablePadding
+											sx={{
+												"&.MuiList-root": {
+													display: "flex",
+													gap: "10px",
+													flexWrap: "wrap",
+												},
+											}}
+										>
+											{openParent.children.map((child: Navigation) => {
+												const linkClassName = classNames("nav-link", {
+													"nav-link-active": pathname
+														.split("/")
+														.includes(child.key),
+												});
+
+												return (
+													<ListItem
+														key={child.id}
+														sx={listItemStyle}
+														component={Link}
+														to={`/${(openParent as Navigation).key}/${
+															child.key
+														}`}
+														onClick={closeDropList}
+													>
+														<div className={linkClassName}>{child.caption}</div>
+													</ListItem>
+												);
+											})}
+										</List>
+									</Collapse>
+								)}
 							</div>
-						</div>
+						</ClickAwayListener>
 					</div>
 					<div className="block-mob">
 						<Link to={logo.to}>
