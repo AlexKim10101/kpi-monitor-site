@@ -1,0 +1,114 @@
+.grid {
+	display: grid;
+	width: 100%;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+	box-sizing: border-box;
+}
+
+.gridItem {
+	border-radius: 15px;
+	position: relative;
+	overflow: hidden;
+	position: relative;
+}
+
+.image {
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	transform: scale(1.15);
+}
+
+.btnCenter {
+	display: flex;
+	justify-content: center;
+}
+
+.itemLabel {
+	position: absolute;
+	bottom: 0%;
+	transform: translateY(0%);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
+
+	padding: 15px 25px 25px 25px;
+
+	border-radius: 0px 0px 15px 15px;
+	background: var(--primary-color);
+	transition: all 400ms ease-in;
+}
+
+.itemDate {
+	color: var(--white-color);
+	font-family: "Manrope";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.itemTitle {
+	color: var(--white-color);
+	font-family: "Manrope";
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.itemDescription {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+
+	padding: 20px 25px;
+
+	position: absolute;
+	bottom: 0;
+	opacity: 0;
+	transition: all 400ms ease-in;
+}
+
+.itemDescriptionText {
+	font-family: "Manrope";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	color: var(--white-color);
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;
+}
+
+.gridItemTint {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--primary-color);
+	opacity: 0;
+	transition: all 400ms ease-in;
+}
+
+.gridItem:hover .itemLabel {
+	bottom: 100%;
+	transform: translateY(100%);
+	background: transparent;
+}
+
+.gridItem:hover .itemDescription {
+	opacity: 1;
+}
+
+.gridItem:hover .gridItemTint {
+	opacity: 0.7;
+}

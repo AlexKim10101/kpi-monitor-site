@@ -4,7 +4,7 @@ import ClientsSection from "../widgets/sections/clients";
 import SolutionsSection from "../widgets/sections/solutions";
 import KeyFunctions from "../widgets/sections/keyfunctions";
 import Stages from "../widgets/sections/stages";
-import News from "../widgets/sections/news";
+import NewsSection from "../widgets/sections/news";
 
 type IHomPageProps = {
 	captions: Record<string, string>;
@@ -19,7 +19,7 @@ const HomePage: React.FC<IHomPageProps> = ({ captions, btnCaptions }) => {
 			<SolutionsSection captions={captions} btnCaptions={btnCaptions} />
 			<KeyFunctions captions={captions} btnCaptions={btnCaptions} />
 			<Stages captions={captions} btnCaptions={btnCaptions} />
-			<News captions={captions} btnCaptions={btnCaptions} />
+			<NewsSection captions={captions} btnCaptions={btnCaptions} />
 		</>
 	);
 };

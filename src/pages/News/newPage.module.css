@@ -1,0 +1,30 @@
+.newsPageWrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.headingSection {
+	display: flex;
+	justify-content: space-between;
+}
+
+.newsSectionDescription {
+	width: 55%;
+
+	color: var(--black-color);
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.btnCenter {
+	display: flex;
+	justify-content: center;
+}

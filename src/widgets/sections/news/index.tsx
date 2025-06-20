@@ -46,9 +46,15 @@ const News: React.FC<INewsProps> = ({ captions, btnCaptions }) => {
 						))}
 					</div>
 					<div className="news-btn-wrapper only-desctop">
-						<Button variant="secondary">{btnCaptions.all_news}</Button>
+						<Button variant="secondary" href="/infocentre/news">
+							{btnCaptions.all_news}
+						</Button>
 					</div>
-					<Button variant="secondary" className="only-mobile">
+					<Button
+						variant="secondary"
+						className="only-mobile"
+						href="/infocentre/news"
+					>
 						{btnCaptions.all_news}
 					</Button>
 				</div>

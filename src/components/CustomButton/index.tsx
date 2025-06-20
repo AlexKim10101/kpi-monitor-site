@@ -1,8 +1,7 @@
 import React from "react";
+import { Link } from "react-router";
 import classNames from "classnames";
 import styles from "./customButton.module.css";
-
-// const styles = require("./customButton.module.css");
 
 type ButtonProps = {
 	variant?: "primary" | "secondary" | "accent";
@@ -32,6 +31,26 @@ const Button: React.FC<ButtonProps> = ({
 		variant === "accent" && styles.btnaccent,
 		externalClassName
 	);
+
+	if (href) {
+		return (
+			<Link
+				to={disabled ? "" : href}
+				className={className}
+				onClick={e => {
+					if (disabled) {
+						e.preventDefault();
+						return;
+					}
+					onClick?.(e);
+				}}
+				aria-disabled={disabled}
+				tabIndex={disabled ? -1 : 0}
+			>
+				{children}
+			</Link>
+		);
+	}
 
 	return (
 		<button className={className} onClick={onClick}>

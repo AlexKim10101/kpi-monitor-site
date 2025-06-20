@@ -6,11 +6,13 @@ import { useNavigation, useCaptions, useButtons, useLocales } from "@api/model";
 import Home from "./pages/Home";
 import InfoPage from "./pages/Info";
 import EmptyPage from "./pages/Empty";
+import NewsPage from "./pages/News";
 
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
 import Loader from "@components/Loader";
 import { LOGO_DATA } from "@consts/consts";
+import { ScrollToTop } from "@components/ScrollToTop";
 
 const App = () => {
 	const {
@@ -87,6 +89,7 @@ const App = () => {
 				setLanguage={setLanguage}
 			/>
 			<main>
+				<ScrollToTop />
 				<Routes>
 					<Route
 						path="/"
@@ -96,6 +99,12 @@ const App = () => {
 					<Route path="/infocentre">
 						<Route index element={<Navigate to="functionhandbook" replace />} />
 						<Route path="functionhandbook" element={<InfoPage />} />
+						<Route
+							path="news"
+							element={
+								<NewsPage captions={captions} btnCaptions={btnCaptions} />
+							}
+						/>
 					</Route>
 
 					<Route path="/empty" element={<EmptyPage />} />

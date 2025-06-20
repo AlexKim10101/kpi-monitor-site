@@ -7,6 +7,7 @@ import {
 	Client,
 	KeyFunction,
 	News,
+	AllNews,
 	Operation,
 	Stage,
 	Locale,
@@ -129,6 +130,20 @@ export function useNews() {
 				`/news?locale=${language}`,
 				undefined,
 				USE_MOCK ? fakeNews : undefined
+			),
+	});
+}
+
+export function useAllNews() {
+	const { language } = useLanguage();
+
+	return useQuery<AllNews[]>({
+		queryKey: ["allnews", language],
+		queryFn: () =>
+			fetchFromApi(
+				`/news?populate=picture&locale=${language}`,
+				undefined,
+				USE_MOCK ? [] : undefined
 			),
 	});
 }

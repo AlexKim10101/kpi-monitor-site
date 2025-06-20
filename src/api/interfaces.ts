@@ -79,6 +79,15 @@ export interface News {
 	[key: string]: any;
 }
 
+export interface AllNews {
+	id: number;
+	title: string;
+	date: string;
+	description: string;
+	picture: Picture[];
+	[key: string]: any;
+}
+
 export interface Operation {
 	id: number;
 	documentId: string;
