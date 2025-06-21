@@ -206,7 +206,7 @@ header {
 
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
+	gap: 10px;
 }
 
 .mob-nav-link {
@@ -217,6 +217,7 @@ header {
 	font-weight: 400;
 	line-height: normal;
 	text-decoration: none;
+	/* min-height: 38px; */
 }
 
 .mob-nav-link--active {

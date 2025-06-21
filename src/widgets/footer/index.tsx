@@ -1,14 +1,11 @@
 import React from "react";
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 import classNames from "classnames";
 import Button from "@components/CustomButton";
-import { getPathname } from "../../utils/getPathName";
-import { locationsDict } from "@consts/consts";
 import KpiMonitorIcon from "@assets/icons/kpi_logo.svg";
 import KpiMonitorIconMob from "@assets/icons/kpi_logo_mob.svg";
-
 import ClipPathGroup from "@assets/icons/Clip-path-group.svg";
-
+import { NavigationWithChildren } from "../../utils/getNavigationTree";
 import style from "./footer.module.css";
 
 type ILinkData = {
@@ -17,15 +14,21 @@ type ILinkData = {
 };
 
 type IFooter = {
+	pathname: string;
+	navData: NavigationWithChildren[];
+
 	logo: { url: string; to: string };
-	links: Record<string, any>[];
 	btnCaptions: Record<string, string>;
 	captions: Record<string, string>;
 };
 
-const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
-	const { pathname } = useLocation();
-
+const Footer: React.FC<IFooter> = ({
+	logo,
+	pathname,
+	navData,
+	btnCaptions,
+	captions,
+}) => {
 	const phoneNumbers = captions.footer_phones
 		? captions.footer_phones.split("\n")
 		: [];
@@ -46,18 +49,16 @@ const Footer: React.FC<IFooter> = ({ logo, links, btnCaptions, captions }) => {
 					<div className={style.footerNavContainer}>
 						<nav>
 							<ul className={style.navListFooter}>
-								{(links as ILinkData[]).map((link, index) => {
+								{navData.map((link, index) => {
 									const linkClassName = classNames("nav-link", {
 										"nav-link-active":
-											getPathname(locationsDict, link.key) === pathname,
+											pathname.split("/").includes(link.key) ||
+											(pathname === "/" && link.key === "main"),
 									});
 
 									return (
 										<li key={index} className="nav-item">
-											<Link
-												to={getPathname(locationsDict, link.key)}
-												className={linkClassName}
-											>
+											<Link to={`/${link.key}`} className={linkClassName}>
 												{link.caption}
 											</Link>
 										</li>

@@ -1,33 +1,25 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Link, useLocation } from "react-router";
-import { List, ListItem, ListItemText, Collapse } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
+import { List, ListItem, Collapse } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import classNames from "classnames";
 import Button from "@components/CustomButton";
 import LanguageMenu from "@components/LanguageMenu";
 import { Locale, Navigation } from "../../api/interfaces";
-import MobileLanguageMenu from "@components/LanguageMenu/MobLanguagMenu";
 import KpiMonitorIcon from "@assets/icons/kpi_logo.svg";
 import KpiMonitorIconMob from "@assets/icons/kpi_logo_mob.svg";
-import MobMenuListItemIcon from "@assets/icons/mob-menu-list-item-icon.svg";
 import BurgerIcon from "@assets/icons/burger-btn.svg";
-import { getPathname } from "../../utils/getPathName";
-import { locationsDict, SCROLL_LIMIT } from "../../consts/consts";
-
-import "./header.css";
-import { getNavigationTree } from "../../utils/getNavigationTree";
+import { SCROLL_LIMIT } from "../../consts/consts";
+import { NavigationWithChildren } from "../../utils/getNavigationTree";
 import MobAccordionComponent from "@components/AccordionComponent/MobAccordion";
 
-type ILinkData = {
-	key: string;
-	caption: string;
-};
+import "./header.css";
 
 type IHeaderProps = {
+	pathname: string;
 	logo: { url: string; to: string };
-	links: Record<string, any>[];
-	navData: Navigation[];
+	navData: NavigationWithChildren[];
 	btnCaptions: Record<string, string>;
 	locales: Locale[];
 	language: string;
@@ -35,8 +27,8 @@ type IHeaderProps = {
 };
 
 const Header: React.FC<IHeaderProps> = ({
+	pathname,
 	logo,
-	links,
 	navData,
 	btnCaptions,
 	locales,
@@ -47,14 +39,6 @@ const Header: React.FC<IHeaderProps> = ({
 	const [openParent, setOpenParent] = useState<Navigation | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const [isClosing, setIsClosing] = useState(false);
-	const { pathname, hash, key, search, state } = useLocation();
-	const navTree = useMemo(() => getNavigationTree(navData), [navData]);
-
-	// console.log("pathname", pathname);
-	// console.log("hash", hash);
-	// console.log("key", key);
-	// console.log("search", search);
-	// console.log("state", state);
 
 	const handleClick = (node: Navigation | null) => {
 		setOpenParent(prev => (prev === node ? null : node));
@@ -142,7 +126,7 @@ const Header: React.FC<IHeaderProps> = ({
 											},
 										}}
 									>
-										{navTree.map(parent => {
+										{navData.map(parent => {
 											const hasChildren = parent.children.length > 0;
 											const linkClassName = classNames("nav-link", {
 												"nav-link-active":
@@ -285,93 +269,88 @@ const Header: React.FC<IHeaderProps> = ({
 					>
 						<nav>
 							<ul className="mob-nav-list">
-								{navTree.map(parent => {
+								{navData.map(parent => {
 									const hasChildren = parent.children.length > 0;
+
+									const linkClassName = classNames("mob-nav-link", {
+										"mob-nav-link--active":
+											pathname.split("/").includes(parent.key) ||
+											(pathname === "/" && parent.key === "main"),
+									});
 
 									if (hasChildren) {
 										return (
 											<MobAccordionComponent
 												summary={
-													<li key={parent.id} className="mob-nav-item">
+													<li key={parent.id} className={linkClassName}>
 														{parent.caption}
 													</li>
 												}
-												details={parent.children.map(child => (
-													<div key={child.id}>
-														<Link
-															to={`/${parent.key}/${child.key}`}
-															onClick={closeModal}
-														>
-															{child.caption}
-														</Link>
-													</div>
-												))}
+												details={parent.children.map(child => {
+													const linkClassName = classNames("mob-nav-link", {
+														"mob-nav-link--active": pathname
+															.split("/")
+															.includes(child.key),
+													});
+													return (
+														<div key={child.id}>
+															<Link
+																to={`/${parent.key}/${child.key}`}
+																onClick={closeModal}
+																className={linkClassName}
+															>
+																{child.caption}
+															</Link>
+														</div>
+													);
+												})}
 											/>
 										);
 									}
 
 									return (
-										<li key={parent.id} className="mob-nav-item">
-											<Link to={`/${parent.key}`} onClick={closeModal}>
+										<li key={parent.id} className={linkClassName}>
+											<Link
+												to={`/${parent.key}`}
+												className={linkClassName}
+												onClick={closeModal}
+											>
 												{parent.caption}
 											</Link>
 										</li>
 									);
 								})}
-
-								{/* {links.map((link, index) => {
-									const linkClassName = classNames("mob-nav-link", {
-										"mob-nav-link--active":
-											getPathname(locationsDict, link.key) === pathname,
-									});
-
-									return (
-										<li key={index} className="mob-nav-item">
-											<Link
-												to={getPathname(locationsDict, link.key)}
-												className={linkClassName}
-												onClick={closeModal}
-											>
-												{link.caption}
-											</Link>
-											<MobMenuListItemIcon />
-										</li>
-									);
-								})} */}
 							</ul>
 						</nav>
-						{/* <MobileLanguageMenu
-							locales={locales}
-							setLanguage={setLanguage}
-							language={language}
-							closeMenu={closeModal}
-						/> */}
-						<MobAccordionComponent
-							summary={
-								<>
-									<span
-										style={{ textTransform: "uppercase" }}
-										className="mob-accent-text"
+
+						<div style={{ marginTop: "20px" }}>
+							<MobAccordionComponent
+								summary={
+									<>
+										<span
+											style={{ textTransform: "uppercase" }}
+											className="mob-accent-text"
+										>
+											{language}
+										</span>
+										&nbsp;
+										<span className="mob-text">Choose your language</span>
+									</>
+								}
+								details={locales.map(l => (
+									<div
+										key={l.id}
+										className="mob-text"
+										onClick={() => {
+											setLanguage(l.code);
+											closeModal();
+										}}
 									>
-										{language}
-									</span>
-									&nbsp;
-									<span className="mob-text">Choose your language</span>
-								</>
-							}
-							details={locales.map(l => (
-								<div
-									key={l.id}
-									className="mob-text"
-									onClick={() => {
-										setLanguage(l.code);
-										closeModal();
-									}}
-								>
-									{l.name}
-								</div>
-							))}
-						/>
+										{l.name}
+									</div>
+								))}
+							/>
+						</div>
 						<div className="mobHeaderBtnWrapper">
 							<Button variant="secondary">{btnCaptions.quick_start}</Button>
 							<Button variant="primary">{btnCaptions.entry}</Button>

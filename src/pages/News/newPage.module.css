@@ -11,12 +11,12 @@
 
 .headingSection {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
+	gap: 30px;
 }
 
 .newsSectionDescription {
-	width: 55%;
-
 	color: var(--black-color);
 	font-family: Manrope;
 	font-size: 16px;
@@ -27,4 +27,14 @@
 .btnCenter {
 	display: flex;
 	justify-content: center;
+}
+
+@media (min-width: 1025px) {
+	.headingSection {
+		flex-direction: row;
+	}
+
+	.newsSectionDescription {
+		width: 55%;
+	}
 }

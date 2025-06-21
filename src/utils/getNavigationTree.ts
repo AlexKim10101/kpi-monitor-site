@@ -1,6 +1,10 @@
 import { Navigation } from "@api/interfaces";
 
-export function getNavigationTree(navItems: Navigation[]) {
+export type NavigationWithChildren = Navigation & { children: Navigation[] };
+
+export function getNavigationTree(
+	navItems: Navigation[]
+): NavigationWithChildren[] {
 	const parents = navItems
 		.filter(el => el.parent === null)
 		.sort((a, b) => a.order - b.order);
