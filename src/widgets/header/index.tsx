@@ -17,6 +17,7 @@ import { locationsDict, SCROLL_LIMIT } from "../../consts/consts";
 
 import "./header.css";
 import { getNavigationTree } from "../../utils/getNavigationTree";
+import MobAccordionComponent from "@components/AccordionComponent/MobAccordion";
 
 type ILinkData = {
 	key: string;
@@ -284,7 +285,41 @@ const Header: React.FC<IHeaderProps> = ({
 					>
 						<nav>
 							<ul className="mob-nav-list">
-								{links.map((link, index) => {
+								{navTree.map(parent => {
+									const hasChildren = parent.children.length > 0;
+
+									if (hasChildren) {
+										return (
+											<MobAccordionComponent
+												summary={
+													<li key={parent.id} className="mob-nav-item">
+														{parent.caption}
+													</li>
+												}
+												details={parent.children.map(child => (
+													<div key={child.id}>
+														<Link
+															to={`/${parent.key}/${child.key}`}
+															onClick={closeModal}
+														>
+															{child.caption}
+														</Link>
+													</div>
+												))}
+											/>
+										);
+									}
+
+									return (
+										<li key={parent.id} className="mob-nav-item">
+											<Link to={`/${parent.key}`} onClick={closeModal}>
+												{parent.caption}
+											</Link>
+										</li>
+									);
+								})}
+
+								{/* {links.map((link, index) => {
 									const linkClassName = classNames("mob-nav-link", {
 										"mob-nav-link--active":
 											getPathname(locationsDict, link.key) === pathname,
@@ -302,14 +337,40 @@ const Header: React.FC<IHeaderProps> = ({
 											<MobMenuListItemIcon />
 										</li>
 									);
-								})}
+								})} */}
 							</ul>
 						</nav>
-						<MobileLanguageMenu
+						{/* <MobileLanguageMenu
 							locales={locales}
 							setLanguage={setLanguage}
 							language={language}
 							closeMenu={closeModal}
+						/> */}
+						<MobAccordionComponent
+							summary={
+								<>
+									<span
+										style={{ textTransform: "uppercase" }}
+										className="mob-accent-text"
+									>
+										{language}
+									</span>
+									&nbsp;
+									<span className="mob-text">Choose your language</span>
+								</>
+							}
+							details={locales.map(l => (
+								<div
+									key={l.id}
+									className="mob-text"
+									onClick={() => {
+										setLanguage(l.code);
+										closeModal();
+									}}
+								>
+									{l.name}
+								</div>
+							))}
 						/>
 						<div className="mobHeaderBtnWrapper">
 							<Button variant="secondary">{btnCaptions.quick_start}</Button>
