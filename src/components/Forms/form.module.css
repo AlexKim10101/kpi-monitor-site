@@ -11,6 +11,17 @@
 	box-shadow: 0px 2px 20px 0px rgba(45, 86, 206, 0.05);
 }
 
+.formTitle {
+	color: var(--primary-color);
+	font-family: "Manrope";
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	margin-bottom: 20px;
+}
+
 .form {
 	display: flex;
 	width: 100%;
@@ -21,6 +32,10 @@
 	min-height: 415px;
 }
 
+.contactForm {
+	min-height: 297px;
+}
+
 .errorMessage {
 	color: #f57272;
 	font-family: "Manrope";
@@ -29,47 +44,6 @@
 	font-weight: 400;
 	line-height: normal;
 }
-/* 
-.form label {
-	display: none;
-}
-
-.form input {
-	width: 100%;
-	padding: 15px;
-	padding: 23px 15px 8px 15px;
-	box-sizing: border-box;
-
-	border-radius: 10px;
-	border: 1px solid var(--gray_blue_25, rgba(158, 177, 232, 0.25));
-	background: var(--blue_bg, #f8faff);
-
-	color: var(--gray, #747474);
-
-	font-family: "Manrope";
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	position: relative;
-}
-
-.form input::placeholder {
-	position: absolute;
-	top: 50%;
-	left: 15px;
-	transform: translateY(-50%);
-}
-
-.form p {
-	color: #f57272;
-
-	font-family: "Manrope";
-	font-size: 12px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-} */
 
 .formLink {
 	display: flex;
@@ -97,17 +71,3 @@
 .submitBtn {
 	margin-top: auto;
 }
-/* MuiFormLabel-root 
-MuiInputLabel-root 
-MuiInputLabel-formControl 
-MuiInputLabel-animated 
-MuiInputLabel-shrink 
-MuiInputLabel-filled 
-MuiFormLabel-colorPrimary 
-MuiFormLabel-filled 
-MuiInputLabel-root 
-MuiInputLabel-formControl 
-MuiInputLabel-animated 
-MuiInputLabel-shrink 
-MuiInputLabel-filled 
-css-eok8s2-MuiFormLabel-root-MuiInputLabel-root */

@@ -7,6 +7,7 @@ import InfoPage from "./pages/Info";
 import EmptyPage from "./pages/Empty";
 import NewsPage from "./pages/News";
 import Auth from "./pages/Auth";
+import Contacts from "./pages/Contacts";
 
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
@@ -144,6 +145,12 @@ const App = () => {
 							path="news"
 							element={
 								<NewsPage captions={captions} btnCaptions={btnCaptions} />
+							}
+						/>
+						<Route
+							path="contacts"
+							element={
+								<Contacts captions={captions} btnCaptions={btnCaptions} />
 							}
 						/>
 					</Route>

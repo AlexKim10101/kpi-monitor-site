@@ -12,7 +12,7 @@ type FormData = {
 	company: string;
 };
 
-const RegistrationForm = () => {
+const ContactUsForm = () => {
 	const {
 		handleSubmit,
 		control,
@@ -28,7 +28,12 @@ const RegistrationForm = () => {
 
 	return (
 		<div className={style.formContainer}>
-			<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+			<div className={style.formTitle}>Мы на связи и готовы помочь!</div>
+
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				className={classNames(style.form, style.contactForm)}
+			>
 				<FormInput
 					control={control}
 					name="fullName"
@@ -55,40 +60,18 @@ const RegistrationForm = () => {
 
 				<FormInput
 					control={control}
-					name="email"
-					label="Email"
-					value={values.email}
-					error={errors.email}
-					rules={{
-						required: "Введите email",
-						pattern: {
-							value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-							message: "Неверный email",
-						},
-					}}
-				/>
-
-				<FormInput
-					control={control}
 					name="company"
 					label="Название компании"
 					value={values.company}
 					error={errors.company}
 				/>
 
-				<div className={style.formLink}>
-					<span>Уже зарегистрированы?</span>
-					<Link to="/auth/autorisation" className={style.link}>
-						Войти
-					</Link>
-				</div>
-
 				<Button type="submit" variant="accent" className={style.submitBtn}>
-					Зарегистрироваться
+					Заказать звонок
 				</Button>
 			</form>
 		</div>
 	);
 };
 
-export default RegistrationForm;
+export default ContactUsForm;

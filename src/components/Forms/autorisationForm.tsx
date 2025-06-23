@@ -1,10 +1,8 @@
 import { Link } from "react-router";
-import { useForm, Controller } from "react-hook-form";
-import { TextField } from "@mui/material";
-import Button from "@components/CustomButton";
-import { getTextFieldSx } from "./utils/getTextFieldSx";
-import style from "./form.module.css";
+import { useForm } from "react-hook-form";
 import { FormInput } from "./FormInput";
+import Button from "@components/CustomButton";
+import style from "./form.module.css";
 
 type FormData = {
 	login: string;
