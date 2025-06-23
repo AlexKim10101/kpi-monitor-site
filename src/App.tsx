@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router";
 import { useLanguage } from "./context/languageContext";
 import { useNavigation, useCaptions, useButtons, useLocales } from "@api/model";
@@ -13,10 +13,21 @@ import Footer from "./widgets/footer";
 import Loader from "@components/Loader";
 import { LOGO_DATA } from "@consts/consts";
 import { ScrollToTop } from "@components/ScrollToTop";
-
 import { getNavigationTree } from "./utils/getNavigationTree";
 import RegistrationForm from "@components/Forms/registrationForm";
 import AutorisationForm from "@components/Forms/autorisationForm";
+import Button from "@components/CustomButton";
+import LanguageMenu from "@components/LanguageMenu";
+import { Box, Modal } from "@mui/material";
+
+const style = {
+	position: "absolute",
+	top: "50%",
+	left: "50%",
+	transform: "translate(-50%, -50%)",
+	boxShadow: 24,
+	borderRadius: "20px",
+};
 
 const App = () => {
 	const { language, setLanguage } = useLanguage();
@@ -46,6 +57,10 @@ const App = () => {
 	} = useButtons();
 
 	const { pathname } = useLocation();
+
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 
 	const isAnyLoading =
 		isLocalesLoading || isCaptionsLoading || isNavLoading || isBtnLoading;
@@ -99,7 +114,20 @@ const App = () => {
 				locales={localesData}
 				language={language}
 				setLanguage={setLanguage}
-			/>
+			>
+				<Button variant="secondary" href="/auth">
+					{btnCaptions.quick_start}
+				</Button>
+				<Button variant="primary" onClick={handleOpen}>
+					{btnCaptions.entry}
+				</Button>
+
+				<LanguageMenu
+					locales={localesData}
+					setLanguage={setLanguage}
+					language={language}
+				/>
+			</Header>
 
 			<main>
 				<ScrollToTop />
@@ -136,7 +164,23 @@ const App = () => {
 				pathname={pathname}
 				btnCaptions={btnCaptions}
 				captions={captions}
-			/>
+			>
+				<Button variant="secondary" href="/auth">
+					{btnCaptions.quick_start}
+				</Button>
+				<Button variant="primary">{btnCaptions.entry}</Button>
+			</Footer>
+
+			<Modal
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box sx={style}>
+					<AutorisationForm onClose={handleClose} />
+				</Box>
+			</Modal>
 		</div>
 	);
 };

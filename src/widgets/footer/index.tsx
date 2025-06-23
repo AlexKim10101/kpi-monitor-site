@@ -20,6 +20,7 @@ type IFooter = {
 	logo: { url: string; to: string };
 	btnCaptions: Record<string, string>;
 	captions: Record<string, string>;
+	children?: React.ReactNode | React.ReactNode[];
 };
 
 const Footer: React.FC<IFooter> = ({
@@ -28,6 +29,7 @@ const Footer: React.FC<IFooter> = ({
 	navData,
 	btnCaptions,
 	captions,
+	children = [],
 }) => {
 	const phoneNumbers = captions.footer_phones
 		? captions.footer_phones.split("\n")
@@ -67,10 +69,7 @@ const Footer: React.FC<IFooter> = ({
 							</ul>
 						</nav>
 
-						<div className={style.btnWrapperFooter}>
-							<Button variant="secondary">{btnCaptions.quick_start}</Button>
-							<Button variant="primary">{btnCaptions.entry}</Button>
-						</div>
+						<div className={style.btnWrapperFooter}>{children}</div>
 					</div>
 
 					<div className={style.footerContactsContainer}>

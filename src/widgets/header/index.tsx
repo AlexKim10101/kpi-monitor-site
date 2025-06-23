@@ -24,6 +24,7 @@ type IHeaderProps = {
 	locales: Locale[];
 	language: string;
 	setLanguage: (code: string) => void;
+	children?: React.ReactNode | React.ReactNode[];
 };
 
 const Header: React.FC<IHeaderProps> = ({
@@ -34,6 +35,7 @@ const Header: React.FC<IHeaderProps> = ({
 	locales,
 	language,
 	setLanguage,
+	children = [],
 }) => {
 	const [hidden, setHidden] = useState(false);
 	const [openParent, setOpenParent] = useState<Navigation | null>(null);
@@ -171,18 +173,7 @@ const Header: React.FC<IHeaderProps> = ({
 
 								<div className="empty2"></div>
 
-								<div className="btn-wrapper grid-item-btns">
-									<Button variant="secondary" href="/auth">
-										{btnCaptions.quick_start}
-									</Button>
-									<Button variant="primary">{btnCaptions.entry}</Button>
-
-									<LanguageMenu
-										locales={locales}
-										setLanguage={setLanguage}
-										language={language}
-									/>
-								</div>
+								<div className="btn-wrapper grid-item-btns">{children}</div>
 								{openParent && (
 									<Collapse
 										in={Boolean(openParent) && !hidden}

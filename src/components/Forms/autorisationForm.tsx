@@ -11,7 +11,11 @@ type FormData = {
 	password: string;
 };
 
-const AutorisationForm = () => {
+type AutorisationFormProps = {
+	onClose?: () => void;
+};
+
+const AutorisationForm: React.FC<AutorisationFormProps> = ({ onClose }) => {
 	const {
 		handleSubmit,
 		control,
@@ -21,6 +25,7 @@ const AutorisationForm = () => {
 
 	const onSubmit = (data: FormData) => {
 		console.log("Форма отправлена:", data);
+		onClose && onClose();
 	};
 
 	const values = watch();
@@ -54,7 +59,13 @@ const AutorisationForm = () => {
 
 				<div className={style.formLink}>
 					<span>Еще нет аккаунта?</span>
-					<Link to="/auth/registration" className={style.link}>
+					<Link
+						to="/auth/registration"
+						className={style.link}
+						onClick={() => {
+							onClose && onClose();
+						}}
+					>
 						Зарегистрироваться
 					</Link>
 				</div>
