@@ -1,0 +1,113 @@
+.formContainer {
+	width: 615px;
+
+	box-sizing: border-box;
+	padding: 30px;
+
+	border-radius: 20px;
+	border: 1px solid var(--blue_sec, #e1e9ff);
+	background: var(--white, #fefeff);
+
+	box-shadow: 0px 2px 20px 0px rgba(45, 86, 206, 0.05);
+}
+
+.form {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 10px;
+
+	min-height: 415px;
+}
+
+.errorMessage {
+	color: #f57272;
+	font-family: "Manrope";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+/* 
+.form label {
+	display: none;
+}
+
+.form input {
+	width: 100%;
+	padding: 15px;
+	padding: 23px 15px 8px 15px;
+	box-sizing: border-box;
+
+	border-radius: 10px;
+	border: 1px solid var(--gray_blue_25, rgba(158, 177, 232, 0.25));
+	background: var(--blue_bg, #f8faff);
+
+	color: var(--gray, #747474);
+
+	font-family: "Manrope";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	position: relative;
+}
+
+.form input::placeholder {
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	transform: translateY(-50%);
+}
+
+.form p {
+	color: #f57272;
+
+	font-family: "Manrope";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+} */
+
+.formLink {
+	display: flex;
+	gap: 5px;
+	align-self: flex-end;
+	margin-top: 20px;
+
+	color: var(--black-color);
+	font-family: "Manrope";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.link {
+	color: var(--primary-color);
+	font-family: "Manrope";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	text-decoration: none;
+}
+
+.submitBtn {
+	margin-top: auto;
+}
+/* MuiFormLabel-root 
+MuiInputLabel-root 
+MuiInputLabel-formControl 
+MuiInputLabel-animated 
+MuiInputLabel-shrink 
+MuiInputLabel-filled 
+MuiFormLabel-colorPrimary 
+MuiFormLabel-filled 
+MuiInputLabel-root 
+MuiInputLabel-formControl 
+MuiInputLabel-animated 
+MuiInputLabel-shrink 
+MuiInputLabel-filled 
+css-eok8s2-MuiFormLabel-root-MuiInputLabel-root */

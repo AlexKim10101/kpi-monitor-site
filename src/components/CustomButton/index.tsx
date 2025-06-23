@@ -9,6 +9,7 @@ type ButtonProps = {
 	disabled?: boolean;
 	href?: string;
 	children: React.ReactNode;
+	type?: "button" | "submit" | "reset" | undefined;
 	onClick?: (
 		e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
 	) => void;
@@ -23,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({
 	children,
 	onClick,
 	className: externalClassName = "",
+	type = undefined,
 }) => {
 	const className = classNames(
 		styles.custombtn,
@@ -53,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
 	}
 
 	return (
-		<button className={className} onClick={onClick}>
+		<button type={type} className={className} onClick={onClick}>
 			{children}
 		</button>
 	);

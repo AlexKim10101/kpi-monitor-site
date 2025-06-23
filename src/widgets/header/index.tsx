@@ -172,7 +172,9 @@ const Header: React.FC<IHeaderProps> = ({
 								<div className="empty2"></div>
 
 								<div className="btn-wrapper grid-item-btns">
-									<Button variant="secondary">{btnCaptions.quick_start}</Button>
+									<Button variant="secondary" href="/auth">
+										{btnCaptions.quick_start}
+									</Button>
 									<Button variant="primary">{btnCaptions.entry}</Button>
 
 									<LanguageMenu

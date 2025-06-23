@@ -1,0 +1,63 @@
+.formSection {
+	display: flex;
+	flex-direction: column;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.textContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.subtitle {
+	color: var(--Accent, #22409a);
+	font-family: "Manrope";
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.tagsList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 13px;
+}
+
+.tag {
+	box-sizing: border-box;
+	padding: 5px 25px;
+	background-color: var(--secondary-color);
+	border-radius: 15px;
+
+	font-family: "Manrope";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.tag:first-child {
+	background-color: var(--primary-color);
+	color: var(--white-color);
+}
+
+.signa {
+	color: #747474;
+	font-family: "Manrope";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-top: auto;
+}
+
+@media (min-width: 1025px) {
+	.formSection {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}

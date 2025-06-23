@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import InfoPage from "./pages/Info";
 import EmptyPage from "./pages/Empty";
 import NewsPage from "./pages/News";
+import Auth from "./pages/Auth";
+
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
 import Loader from "@components/Loader";
@@ -13,25 +15,30 @@ import { LOGO_DATA } from "@consts/consts";
 import { ScrollToTop } from "@components/ScrollToTop";
 
 import { getNavigationTree } from "./utils/getNavigationTree";
+import RegistrationForm from "@components/Forms/registrationForm";
+import AutorisationForm from "@components/Forms/autorisationForm";
 
 const App = () => {
+	const { language, setLanguage } = useLanguage();
+
 	const {
 		data: localesData,
 		isLoading: isLocalesLoading,
 		error: localesError,
 	} = useLocales();
-	const { language, setLanguage } = useLanguage();
 
 	const {
 		data: captionsData,
 		isLoading: isCaptionsLoading,
 		error: captionsError,
 	} = useCaptions();
+
 	const {
 		data: navData,
 		isLoading: isNavLoading,
 		error: navError,
 	} = useNavigation();
+
 	const {
 		data: btnData,
 		isLoading: isBtnLoading,
@@ -49,7 +56,7 @@ const App = () => {
 		if (defaultLocale && defaultLocale.code !== language) {
 			setLanguage(defaultLocale.code);
 		}
-	}, [localesData, language, setLanguage]);
+	}, []);
 
 	const navTree = useMemo(
 		() => (navData ? getNavigationTree(navData) : []),
@@ -111,6 +118,12 @@ const App = () => {
 								<NewsPage captions={captions} btnCaptions={btnCaptions} />
 							}
 						/>
+					</Route>
+
+					<Route path="/auth" element={<Auth />}>
+						<Route index element={<Navigate to="registration" replace />} />
+						<Route path="registration" element={<RegistrationForm />} />
+						<Route path="autorisation" element={<AutorisationForm />} />
 					</Route>
 					<Route path="/empty" element={<EmptyPage />} />
 					<Route path="*" element={<Navigate to="/empty" replace />} />
