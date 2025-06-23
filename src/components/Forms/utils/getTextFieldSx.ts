@@ -19,7 +19,7 @@ export const getTextFieldSx = (error: boolean, isFilled: boolean) => ({
 	"& .MuiInputLabel-root.MuiInputLabel-shrink": {
 		color: "#747474",
 		fontFamily: "Manrope",
-		fontSize: "12px",
+		fontSize: "16px",
 		fontStyle: "normal",
 		fontWeight: 400,
 		lineHeight: "normal",
@@ -28,7 +28,7 @@ export const getTextFieldSx = (error: boolean, isFilled: boolean) => ({
 	"& .MuiInputLabel-root.Mui-focused": {
 		color: PRIMARY_COLOR,
 		fontFamily: "Manrope",
-		fontSize: "12px",
+		fontSize: "16px",
 		fontStyle: "normal",
 		fontWeight: 400,
 		lineHeight: "normal",

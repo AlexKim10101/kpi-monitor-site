@@ -1,6 +1,7 @@
 import ContactUsForm from "@components/Forms/contactUsForm";
 import classNames from "classnames";
 import style from "./Contacts.module.css";
+import MapBlock from "@components/Map";
 
 type ContactsProps = {
 	captions: Record<string, string>;
@@ -42,6 +43,9 @@ const Contacts: React.FC<ContactsProps> = ({ btnCaptions, captions }) => {
 				<div className="container">
 					<ContactUsForm />
 				</div>
+			</section>
+			<section className={classNames("section", style.mapSection)}>
+				<MapBlock />
 			</section>
 		</>
 	);
