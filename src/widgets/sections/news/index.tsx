@@ -7,6 +7,7 @@ import NewsArrowIconHover from "@assets/icons/news_arrow_hover.svg";
 
 import style from "./news.module.css";
 import classNames from "classnames";
+import { Link } from "react-router";
 
 type INewsProps = {
 	captions: Record<string, string>;
@@ -29,20 +30,28 @@ const News: React.FC<INewsProps> = ({ captions, btnCaptions }) => {
 				<div className={style.newsSectionContent}>
 					<div className={style.newsList}>
 						{data.map((n, i) => (
-							<div key={n.id} className={style.newsListItem}>
-								<div className={style.newsItemDate}>
-									{n.date ? formatDateToDDMMYYYY(n.date) : ""}
-								</div>
-								<div className={style.newsItemTitle}>{n.title}</div>
-								<div className={classNames(style.iconWrapper, "only-desctop")}>
-									<div className={style.icon}>
-										<NewsArrowIcon />
+							<Link
+								className={style.newsLink}
+								key={n.id}
+								to={`infocentre/news/article/${n.id}`}
+							>
+								<div className={style.newsListItem}>
+									<div className={style.newsItemDate}>
+										{n.date ? formatDateToDDMMYYYY(n.date) : ""}
 									</div>
-									<div className={style.iconHover}>
-										<NewsArrowIconHover />
+									<div className={style.newsItemTitle}>{n.title}</div>
+									<div
+										className={classNames(style.iconWrapper, "only-desctop")}
+									>
+										<div className={style.icon}>
+											<NewsArrowIcon />
+										</div>
+										<div className={style.iconHover}>
+											<NewsArrowIconHover />
+										</div>
 									</div>
 								</div>
-							</div>
+							</Link>
 						))}
 					</div>
 					<div className="news-btn-wrapper only-desctop">

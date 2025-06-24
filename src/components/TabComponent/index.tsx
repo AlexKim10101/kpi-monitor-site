@@ -143,7 +143,12 @@ const TabComponent: React.FC<ITabComponent> = ({ solutions, btnCaptions }) => {
 						{expanded ? "Скрыть" : "Показать больше"}
 					</button>
 
-					<Button variant="secondary" size="medium" className="only-desctop">
+					<Button
+						variant="secondary"
+						size="medium"
+						className="only-desctop"
+						href="/auth/registration"
+					>
 						{btnCaptions.quick_start}
 					</Button>
 				</div>

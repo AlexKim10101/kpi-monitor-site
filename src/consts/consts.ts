@@ -27,6 +27,15 @@ export const locationsDict = {
 	functionhandbook: "/functionhandbook",
 };
 
+const componentTypes = [
+	"shared.media",
+	"shared.subhead",
+	"shared.rich-text",
+	"shared.callout",
+	"shared.card-block",
+	"shared.button",
+];
+
 const e = {
 	possibilities: "",
 	forms: "",

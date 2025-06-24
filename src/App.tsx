@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router";
+import { Box, Modal } from "@mui/material";
+
 import { useLanguage } from "./context/languageContext";
 import { useNavigation, useCaptions, useButtons, useLocales } from "@api/model";
 import Home from "./pages/Home";
@@ -8,18 +10,18 @@ import EmptyPage from "./pages/Empty";
 import NewsPage from "./pages/News";
 import Auth from "./pages/Auth";
 import Contacts from "./pages/Contacts";
+import ArticlePage from "./pages/Article";
 
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
 import Loader from "@components/Loader";
-import { LOGO_DATA } from "@consts/consts";
 import { ScrollToTop } from "@components/ScrollToTop";
 import { getNavigationTree } from "./utils/getNavigationTree";
 import RegistrationForm from "@components/Forms/registrationForm";
 import AutorisationForm from "@components/Forms/autorisationForm";
 import Button from "@components/CustomButton";
 import LanguageMenu from "@components/LanguageMenu";
-import { Box, Modal } from "@mui/material";
+import { LOGO_DATA } from "@consts/consts";
 
 const style = {
 	position: "absolute",
@@ -142,15 +144,24 @@ const App = () => {
 						<Route index element={<Navigate to="functionhandbook" replace />} />
 						<Route path="functionhandbook" element={<InfoPage />} />
 						<Route
-							path="news"
+							path="contacts"
+							element={
+								<Contacts captions={captions} btnCaptions={btnCaptions} />
+							}
+						/>
+					</Route>
+
+					<Route path="/infocentre/news">
+						<Route
+							index
 							element={
 								<NewsPage captions={captions} btnCaptions={btnCaptions} />
 							}
 						/>
 						<Route
-							path="contacts"
+							path="article/:id"
 							element={
-								<Contacts captions={captions} btnCaptions={btnCaptions} />
+								<ArticlePage captions={captions} btnCaptions={btnCaptions} />
 							}
 						/>
 					</Route>
@@ -175,7 +186,9 @@ const App = () => {
 				<Button variant="secondary" href="/auth">
 					{btnCaptions.quick_start}
 				</Button>
-				<Button variant="primary">{btnCaptions.entry}</Button>
+				<Button variant="primary" onClick={handleOpen}>
+					{btnCaptions.entry}
+				</Button>
 			</Footer>
 
 			<Modal
@@ -193,114 +206,3 @@ const App = () => {
 };
 
 export default App;
-
-// const App = () => {
-// 	const {
-// 		data: localesData,
-// 		isLoading: isLocalesLoaging,
-// 		error: localesError,
-// 	} = useLocales();
-
-// 	const { language, setLanguage } = useLanguage();
-
-// 	const currentLocale = localesData.find(l => l.isDefault) as Locale;
-
-// 	useEffect(() => {
-// 		if (currentLocale && currentLocale.code !== language) {
-// 			setLanguage(currentLocale.code);
-// 		}
-// 	}, [currentLocale]);
-
-// 	const { data, isLoading, error } = useCaptions();
-
-// 	const {
-// 		data: navData,
-// 		isLoading: isNavLoaging,
-// 		error: navError,
-// 	} = useNavigation();
-
-// 	const {
-// 		data: btnData,
-// 		isLoading: isBtnLoaging,
-// 		error: btnError,
-// 	} = useButtons();
-
-// 	if (isLoading || isBtnLoaging || isNavLoaging || isLocalesLoaging) {
-// 		return (
-// 			<div className="wrapper">
-// 				<Loader />
-// 			</div>
-// 		);
-// 	}
-
-// 	if (
-// 		error ||
-// 		btnError ||
-// 		navError ||
-// 		localesError ||
-// 		!data ||
-// 		!btnData ||
-// 		!navData ||
-// 		!localesData
-// 	)
-// 		return <p>Ошибка загрузки данных</p>;
-// 	const navTree = useMemo(() => getNavigationTree(navData), [navData]);
-
-// 	const { pathname } = useLocation();
-
-// 	const captions: Record<string, string> = data.reduce((acc, item) => {
-// 		return { ...acc, [item.key]: item.caption };
-// 	}, {});
-
-// 	const btnCaptions: Record<string, string> = btnData.reduce((acc, item) => {
-// 		return { ...acc, [item.key]: item.caption };
-// 	}, {});
-
-// 	return (
-// 		<div className="wrapper">
-// 			<Header
-// 				pathname={pathname}
-// 				logo={LOGO_DATA}
-// 				navData={navTree}
-// 				btnCaptions={btnCaptions}
-// 				locales={localesData}
-// 				language={language}
-// 				setLanguage={setLanguage}
-// 			/>
-// 			<main>
-// 				<ScrollToTop />
-// 				<Routes>
-// 					<Route
-// 						path="/"
-// 						element={<Home captions={captions} btnCaptions={btnCaptions} />}
-// 					/>
-// 					<Route path="/main" element={<Navigate to="/" replace />} />
-// 					<Route path="/infocentre">
-// 						<Route index element={<Navigate to="functionhandbook" replace />} />
-// 						<Route path="functionhandbook" element={<InfoPage />} />
-// 						<Route
-// 							path="news"
-// 							element={
-// 								<NewsPage captions={captions} btnCaptions={btnCaptions} />
-// 							}
-// 						/>
-// 					</Route>
-
-// 					<Route path="/empty" element={<EmptyPage />} />
-// 					<Route path="*" element={<Navigate to="/empty" replace />} />
-// 					{/* <Route path="/functionhandbook" element={<InfoPage />} /> */}
-// 				</Routes>
-// 			</main>
-
-// 			<Footer
-// 				logo={LOGO_DATA}
-// 				navData={navTree}
-// 				pathname={pathname}
-// 				btnCaptions={btnCaptions}
-// 				captions={captions}
-// 			/>
-// 		</div>
-// 	);
-// };
-
-//  export default App;

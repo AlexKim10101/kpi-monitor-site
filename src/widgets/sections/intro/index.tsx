@@ -29,8 +29,12 @@ const IntroSection: React.FC<IntroSectionProps> = ({
 					<div className={style.messageText}>{captions.russian_registry}</div>
 				</div>
 				<div className={style.introBts}>
-					<Button variant="accent">{btnCaptions.quick_start}</Button>
-					<Button variant="secondary">{btnCaptions.contact_us}</Button>
+					<Button variant="accent" href="/auth/registration">
+						{btnCaptions.quick_start}
+					</Button>
+					<Button variant="secondary" href="/infocentre/contacts">
+						{btnCaptions.contact_us}
+					</Button>
 				</div>
 			</div>
 			<div className={style.introImageContainer}>

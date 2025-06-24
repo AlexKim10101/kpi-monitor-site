@@ -1,0 +1,262 @@
+.articleSection {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+	max-width: 980px;
+}
+
+.article {
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+
+	border-radius: 30px;
+	border: 1px solid var(--secondary-color);
+	background: var(--blue_bg);
+
+	box-shadow: 0px 2px 20px 0px rgba(45, 86, 206, 0.05);
+}
+
+.breadcrumbs a {
+	text-decoration: none;
+
+	color: var(--black-color);
+
+	font-family: "Manrope";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.breadcrumbs a:hover {
+	text-decoration: underline;
+}
+
+.breadcrumbs span {
+	color: var(--primary-color);
+
+	font-family: "Manrope";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.articleHeader {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	margin-bottom: 40px;
+}
+
+.articleDate {
+	color: var(--primary-color);
+	font-family: "Manrope";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.articleTitle {
+	color: var(--primary-color);
+
+	font-family: "Manrope";
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	box-sizing: border-box;
+	padding-bottom: 20px;
+	border-bottom: 1px solid var(--primary-color);
+}
+.articleDescription {
+	box-sizing: border-box;
+	padding-bottom: 20px;
+	border-bottom: 1px solid var(--primary-color);
+}
+
+.articleDescription p {
+	color: var(--black-color);
+
+	font-family: "Manrope";
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.articleDescription a {
+	color: var(--primary-color);
+	font-family: "Manrope";
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	text-decoration-skip-ink: auto;
+	text-decoration-thickness: auto;
+	text-underline-offset: auto;
+	text-underline-position: from-font;
+	white-space: nowrap;
+}
+
+.media {
+	overflow: hidden;
+	width: 100%;
+
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.media img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.subhead {
+	color: var(--primary-color);
+
+	font-family: "Manrope";
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.richText {
+	color: var(--black-color);
+
+	font-family: "Manrope";
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.callout {
+	margin-top: 30px;
+	margin-bottom: 30px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	padding: 30px;
+
+	border-radius: 10px;
+	border: 1px solid var(--blue_sec, #e1e9ff);
+	background: var(--white, #fefeff);
+
+	box-shadow: 0px 2px 20px 0px rgba(45, 86, 206, 0.05);
+}
+
+.calloutHeader {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.calloutTitle {
+	color: var(--primary-color);
+
+	font-family: "Manrope";
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.calloutBody {
+	color: var(--black-color);
+	font-family: "Manrope";
+	font-size: 18px;
+	font-style: normal;
+	font-style: normal;
+	line-height: normal;
+}
+
+.calloutBody strong {
+	font-weight: 700;
+}
+
+.calloutBody li {
+	font-weight: 400;
+}
+
+.button {
+	margin-top: 20px;
+}
+
+.cardsContainer {
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+	display: flex;
+	gap: 20px;
+
+	flex-wrap: wrap;
+}
+
+.card {
+	display: flex;
+
+	padding: 30px 20px 20px 20px;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+
+	border-radius: 10px;
+	border: 1px solid var(--secondary-color);
+	background-color: var(--white-color);
+
+	max-width: 44%;
+	min-width: 26%;
+	width: 27%;
+	flex-grow: 1;
+}
+
+/* .gridItem:nth-last-child(2):nth-child(3n + 1),
+.gridItem:last-child:nth-child(3n + 2) {
+	grid-column: span 2;
+}
+
+.gridItem:last-child:nth-child(3n + 1) {
+	grid-column: span 3;
+}
+
+@media (min-width: 1025px) {
+	.grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+} */
+
+.cardDescription {
+	color: var(--black-color);
+
+	text-align: center;
+
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.btnWrapper {
+	margin-top: 10px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}

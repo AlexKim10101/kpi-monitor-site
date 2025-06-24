@@ -24,7 +24,11 @@ const Stages: React.FC<IStagesProps> = ({ captions, btnCaptions }) => {
 		<section className="section section-flex">
 			<div className={styles.stageHeader}>
 				<div className="section-title">{captions.heading_request}</div>
-				<Button variant="secondary" className="only-desctop">
+				<Button
+					variant="secondary"
+					className="only-desctop"
+					href="/auth/registration"
+				>
 					{btnCaptions.quick_start}
 				</Button>
 			</div>
@@ -49,7 +53,11 @@ const Stages: React.FC<IStagesProps> = ({ captions, btnCaptions }) => {
 					</div>
 				))}
 			</div>
-			<Button variant="secondary" className="only-mobile">
+			<Button
+				variant="secondary"
+				className="only-mobile"
+				href="/auth/registration"
+			>
 				{btnCaptions.quick_start}
 			</Button>
 		</section>

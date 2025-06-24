@@ -1,4 +1,4 @@
-import React from "react";
+import { useLocation } from "react-router";
 import { AllNews } from "@api/interfaces";
 import { getImageUrl } from "../../../utils/getImageUrl";
 import formatDateToDDMMYYYY from "../../../utils/dateformatter";
@@ -14,6 +14,8 @@ const AllNewsSection: React.FC<IAllNewsSectionProps> = ({
 	news,
 	btnCaptions,
 }) => {
+	const { pathname } = useLocation();
+
 	return (
 		<section className="section">
 			<div className={style.grid}>
@@ -34,7 +36,9 @@ const AllNewsSection: React.FC<IAllNewsSectionProps> = ({
 						</div>
 						<div className={style.itemDescription}>
 							<div className={style.itemDescriptionText}>{n.description}</div>
-							<Button variant="secondary">{btnCaptions.details}</Button>
+							<Button variant="secondary" href={pathname + `/article/${n.id}`}>
+								{btnCaptions.details}
+							</Button>
 						</div>
 					</div>
 				))}

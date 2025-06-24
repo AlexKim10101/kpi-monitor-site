@@ -11,6 +11,7 @@ import {
 	Operation,
 	Stage,
 	Locale,
+	Articles,
 } from "./interfaces";
 import { useLanguage } from "../context/languageContext";
 import { USE_MOCK } from "@consts/consts";
@@ -142,6 +143,45 @@ export function useAllNews() {
 		queryFn: () =>
 			fetchFromApi(
 				`/news?populate=picture&locale=${language}`,
+				undefined,
+				USE_MOCK ? [] : undefined
+			),
+	});
+}
+///news?filters[id][$eq]=${id}&populate[content][populate]=*&locale=${language}
+//https://kpi-site.profitproject.ru/api/news?filters[id][$eq]=24&populate[content][populate]=*&locale=${language}
+///news?filters[id][$eq]=${id}&locale=${language}&populate[content][on][shared.card-block][populate][card][populate]=logo
+
+///news?filters[id][$eq]=${id}&locale=${language}&populate[content]=*&populate[content][on][shared.card-block][populate][card][populate]=logo
+
+///news?filters[id][$eq]=${id}&locale=${language}&populate[content]=*&populate[content][on][shared.card-block][populate][card][populate]=logo
+
+//news?filters[id][$eq]=${id}&locale=${language}&populate[content][populate]=shared.media,shared.subhead,shared.rich-text&populate[content][on][shared.card-block][populate][card][populate]=logo
+
+///news?filters[id][$eq]=${id}&locale=${language}&populate[content][populate][0]=shared.media&populate[content][populate][1]=shared.rich-text&populate[content][populate][2]=shared.image-block&populate[content][on][shared.card-block][populate][card][populate]=logo
+
+export function useSingleNews(id: string) {
+	const { language } = useLanguage();
+
+	return useQuery<Articles[]>({
+		queryKey: ["article", id, language],
+		queryFn: () =>
+			fetchFromApi(
+				`/news?filters[id][$eq]=${id}&populate[content][populate]=*&locale=${language}`,
+				undefined,
+				USE_MOCK ? [] : undefined
+			),
+	});
+}
+
+export function useCardBlockData(id: string) {
+	const { language } = useLanguage();
+
+	return useQuery<Articles[]>({
+		queryKey: ["cardBlock", id, language],
+		queryFn: () =>
+			fetchFromApi(
+				`/news?filters[id][$eq]=${id}&locale=${language}&populate[content][on][shared.card-block][populate][card][populate]=logo`,
 				undefined,
 				USE_MOCK ? [] : undefined
 			),

@@ -35,6 +35,10 @@
 	gap: 20px;
 }
 
+.newsLink {
+	text-decoration: none;
+}
+
 .newsListItem {
 	position: relative;
 	padding: 10px;

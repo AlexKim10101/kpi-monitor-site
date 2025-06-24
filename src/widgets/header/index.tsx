@@ -345,8 +345,12 @@ const Header: React.FC<IHeaderProps> = ({
 							/>
 						</div>
 						<div className="mobHeaderBtnWrapper">
-							<Button variant="secondary">{btnCaptions.quick_start}</Button>
-							<Button variant="primary">{btnCaptions.entry}</Button>
+							<Button variant="secondary" href="/auth/registration">
+								{btnCaptions.quick_start}
+							</Button>
+							<Button variant="primary" href="/auth/autorisation">
+								{btnCaptions.entry}
+							</Button>
 						</div>
 					</div>
 				</>
