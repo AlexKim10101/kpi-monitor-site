@@ -215,3 +215,29 @@ export function useStages() {
 			),
 	});
 }
+
+export const useAppContent = () => {
+	const captionsQuery = useCaptions();
+	const buttonsQuery = useButtons();
+	const navigationQuery = useNavigation();
+
+	const isLoading =
+		captionsQuery.isLoading ||
+		buttonsQuery.isLoading ||
+		navigationQuery.isLoading;
+
+	const error =
+		captionsQuery.error || buttonsQuery.error || navigationQuery.error;
+
+	const dataAvailable =
+		captionsQuery.data && buttonsQuery.data && navigationQuery.data;
+
+	return {
+		captions: captionsQuery.data || [],
+		btnCaptions: buttonsQuery.data || [],
+		navData: navigationQuery.data || [],
+		isLoading,
+		error,
+		isSuccess: !!dataAvailable,
+	};
+};

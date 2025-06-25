@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import { AllNews } from "@api/interfaces";
 import { getImageUrl } from "../../../utils/getImageUrl";
 import formatDateToDDMMYYYY from "../../../utils/dateformatter";
@@ -20,27 +20,32 @@ const AllNewsSection: React.FC<IAllNewsSectionProps> = ({
 		<section className="section">
 			<div className={style.grid}>
 				{news.map(n => (
-					<div key={n.id} className={style.gridItem}>
-						<img
-							className={style.image}
-							src={getImageUrl(n.picture[0].url)}
-							alt={n.title}
-						/>
-						<div className={style.gridItemTint}></div>
+					<Link to={pathname + `/article/${n.id}`}>
+						<div key={n.id} className={style.gridItem}>
+							<img
+								className={style.image}
+								src={getImageUrl(n.picture[0].url)}
+								alt={n.title}
+							/>
+							<div className={style.gridItemTint}></div>
 
-						<div className={style.itemLabel}>
-							<div className={style.itemDate}>
-								{formatDateToDDMMYYYY(n.date)}
+							<div className={style.itemLabel}>
+								<div className={style.itemDate}>
+									{formatDateToDDMMYYYY(n.date)}
+								</div>
+								<div className={style.itemTitle}>{n.title}</div>
 							</div>
-							<div className={style.itemTitle}>{n.title}</div>
+							<div className={style.itemDescription}>
+								<div className={style.itemDescriptionText}>{n.description}</div>
+								<Button
+									variant="secondary"
+									href={pathname + `/article/${n.id}`}
+								>
+									{btnCaptions.details}
+								</Button>
+							</div>
 						</div>
-						<div className={style.itemDescription}>
-							<div className={style.itemDescriptionText}>{n.description}</div>
-							<Button variant="secondary" href={pathname + `/article/${n.id}`}>
-								{btnCaptions.details}
-							</Button>
-						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</section>

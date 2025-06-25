@@ -12,7 +12,12 @@ type FormData = {
 	company: string;
 };
 
-const RegistrationForm = () => {
+type RegistrationFormProps = {
+	captions: Record<string, string>;
+	btnCaptions: Record<string, string>;
+};
+
+const RegistrationForm: React.FC<RegistrationFormProps> = ({ btnCaptions }) => {
 	const {
 		handleSubmit,
 		control,
@@ -78,13 +83,13 @@ const RegistrationForm = () => {
 
 				<div className={style.formLink}>
 					<span>Уже зарегистрированы?</span>
-					<Link to="/auth/autorisation" className={style.link}>
-						Войти
+					<Link to="/auth/authorization" className={style.link}>
+						{btnCaptions.entry}
 					</Link>
 				</div>
 
 				<Button type="submit" variant="accent" className={style.submitBtn}>
-					Зарегистрироваться
+					{btnCaptions.register}
 				</Button>
 			</form>
 		</div>

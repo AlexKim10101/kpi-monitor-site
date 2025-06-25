@@ -1,20 +1,26 @@
 .formSection {
 	display: flex;
 	flex-direction: column;
-	margin-top: 60px;
-	margin-bottom: 60px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .textContainer {
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
+	gap: 15px;
+
+	margin-bottom: 30px;
+}
+
+.formContainer {
+	margin-bottom: 30px;
 }
 
 .subtitle {
 	color: var(--Accent, #22409a);
 	font-family: "Manrope";
-	font-size: 24px;
+	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
@@ -23,18 +29,19 @@
 .tagsList {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	flex-wrap: wrap;
-	gap: 13px;
+	row-gap: 13px;
 }
 
 .tag {
 	box-sizing: border-box;
-	padding: 5px 25px;
+	padding: 5px 15px;
 	background-color: var(--secondary-color);
 	border-radius: 15px;
 
 	font-family: "Manrope";
-	font-size: 16px;
+	font-size: 12px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
@@ -48,7 +55,7 @@
 .signa {
 	color: #747474;
 	font-family: "Manrope";
-	font-size: 14px;
+	font-size: 12px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
@@ -56,8 +63,32 @@
 }
 
 @media (min-width: 1025px) {
+	.textContainer {
+		gap: 30px;
+	}
 	.formSection {
 		flex-direction: row;
 		justify-content: space-between;
+		margin-top: 60px;
+		margin-bottom: 60px;
+	}
+
+	.subtitle {
+		font-size: 24px;
+	}
+
+	.tagsList {
+		justify-content: flex-start;
+
+		gap: 13px;
+	}
+
+	.tag {
+		padding: 5px 25px;
+		font-size: 16px;
+	}
+
+	.signa {
+		font-size: 14px;
 	}
 }

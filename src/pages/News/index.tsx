@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./newPage.module.css";
+import style from "./newsPage.module.css";
 import classNames from "classnames";
 import { useAllNews } from "@api/model";
 import Loader from "@components/Loader";

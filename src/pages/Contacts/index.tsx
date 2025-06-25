@@ -41,7 +41,7 @@ const Contacts: React.FC<ContactsProps> = ({ btnCaptions, captions }) => {
 				</div>
 
 				<div className="container">
-					<ContactUsForm />
+					<ContactUsForm captions={captions} btnCaptions={btnCaptions} />
 				</div>
 			</section>
 			<section className={classNames("section", style.mapSection)}>

@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router";
 import classNames from "classnames";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
 import Button from "@components/CustomButton";
 import KpiMonitorIcon from "@assets/icons/kpi_logo.svg";
 import KpiMonitorIconMob from "@assets/icons/kpi_logo_mob.svg";
 import ClipPathGroup from "@assets/icons/Clip-path-group.svg";
 import { NavigationWithChildren } from "../../utils/getNavigationTree";
 import style from "./footer.module.css";
+import { removeNonDigits } from "../../utils/removeNonDigit";
 
 type ILinkData = {
 	key: string;
@@ -80,12 +84,25 @@ const Footer: React.FC<IFooter> = ({
 						<div className={style.contactInfo}>
 							<div className="address">{captions.footer_adress}</div>
 							<div className={style.phoneAndEmail}>
-								<div className="phone">
+								<div className={style.phone}>
 									{phoneNumbers.map((pn, i) => (
-										<div key={pn + "index" + i}>{pn}</div>
+										<Link
+											key={pn + "index" + i}
+											className={style.phoneNumberLink}
+											to={`tel:+${removeNonDigits(pn)}`}
+										>
+											{pn}
+										</Link>
 									))}
 								</div>
-								<div className="email">{captions.footer_email}</div>
+								<div className="email">
+									<Link
+										className={style.phoneNumberLink}
+										to={`mailto:${captions.footer_email}`}
+									>
+										{captions.footer_email}
+									</Link>
+								</div>
 							</div>
 							<div className={classNames(style.mobileCenter, style.mt25Mob)}>
 								<ClipPathGroup />
@@ -95,7 +112,10 @@ const Footer: React.FC<IFooter> = ({
 				</div>
 
 				<div className={style.footerDescSigna}>
-					© 2010 KPI MONITOR - Автоматизация ключевых показателей эффективности
+					<Markdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+						{captions.footer_copyright}
+					</Markdown>
+					{/* © 2010 KPI MONITOR - Автоматизация ключевых показателей эффективности
 					(KPI) предприятия. Все права защищены. Публикация любых материалов
 					сайта возможна только с разрешения владельца.{" "}
 					<Link
@@ -113,7 +133,7 @@ const Footer: React.FC<IFooter> = ({
 					>
 						Политика конфиденциальности
 					</Link>{" "}
-					.
+					. */}
 				</div>
 			</div>
 		</footer>

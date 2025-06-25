@@ -1,10 +1,8 @@
 .formContainer {
-	width: 615px;
-
 	box-sizing: border-box;
-	padding: 30px;
+	padding: 20px 15px;
 
-	border-radius: 20px;
+	border-radius: 10px;
 	border: 1px solid var(--blue_sec, #e1e9ff);
 	background: var(--white, #fefeff);
 
@@ -14,11 +12,10 @@
 .formTitle {
 	color: var(--primary-color);
 	font-family: "Manrope";
-	font-size: 24px;
+	font-size: 18px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-
 	margin-bottom: 20px;
 }
 
@@ -29,11 +26,7 @@
 	align-items: stretch;
 	gap: 10px;
 
-	min-height: 415px;
-}
-
-.contactForm {
-	min-height: 297px;
+	font-size: 14px;
 }
 
 .errorMessage {
@@ -47,21 +40,26 @@
 
 .formLink {
 	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 	gap: 5px;
 	align-self: flex-end;
 	margin-top: 20px;
+}
 
+.formLink span {
 	color: var(--black-color);
 	font-family: "Manrope";
-	font-size: 16px;
+	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
 }
+
 .link {
 	color: var(--primary-color);
 	font-family: "Manrope";
-	font-size: 16px;
+	font-size: 14px;
 	font-style: normal;
 	font-weight: 700;
 	line-height: normal;
@@ -69,5 +67,46 @@
 }
 
 .submitBtn {
-	margin-top: auto;
+	margin-top: 40px;
+}
+
+@media (min-width: 1025px) {
+	.formContainer {
+		width: 615px;
+		border-radius: 20px;
+		padding: 30px;
+	}
+
+	.form {
+		min-height: 415px;
+	}
+	.formTitle {
+		font-size: 24px;
+	}
+
+	.submitBtn {
+		margin-top: auto;
+	}
+
+	.formLink {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+
+		gap: 5px;
+		align-self: flex-end;
+		margin-top: 20px;
+	}
+
+	.formLink span {
+		font-size: 16px;
+	}
+
+	.link {
+		font-size: 16px;
+	}
+
+	.contactForm {
+		min-height: 297px;
+	}
 }

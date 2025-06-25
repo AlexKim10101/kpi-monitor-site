@@ -1,4 +1,9 @@
-import { Controller, Control, FieldError } from "react-hook-form";
+import {
+	Controller,
+	Control,
+	FieldError,
+	RegisterOptions,
+} from "react-hook-form";
 import { TextField } from "@mui/material";
 import { getTextFieldSx } from "./utils/getTextFieldSx";
 import style from "./form.module.css";
@@ -9,7 +14,7 @@ type FormInputProps = {
 	control: Control<any>;
 	error?: FieldError;
 	value?: string;
-	rules?: object;
+	rules?: RegisterOptions;
 };
 
 export const FormInput = ({
@@ -33,6 +38,7 @@ export const FormInput = ({
 						{...field}
 						label={label}
 						variant="filled"
+						required={!!rules?.required}
 						fullWidth
 						error={!!error}
 						sx={getTextFieldSx(!!error, isFilled)}

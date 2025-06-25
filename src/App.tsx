@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router";
 import { Box, Modal } from "@mui/material";
 
 import { useLanguage } from "./context/languageContext";
-import { useNavigation, useCaptions, useButtons, useLocales } from "@api/model";
+import { useLocales, useAppContent } from "@api/model";
 import Home from "./pages/Home";
 import InfoPage from "./pages/Info";
 import EmptyPage from "./pages/Empty";
@@ -18,7 +18,7 @@ import Loader from "@components/Loader";
 import { ScrollToTop } from "@components/ScrollToTop";
 import { getNavigationTree } from "./utils/getNavigationTree";
 import RegistrationForm from "@components/Forms/registrationForm";
-import AutorisationForm from "@components/Forms/autorisationForm";
+import AuthorizationForm from "@components/Forms/authorizationForm";
 import Button from "@components/CustomButton";
 import LanguageMenu from "@components/LanguageMenu";
 import { LOGO_DATA } from "@consts/consts";
@@ -42,32 +42,18 @@ const App = () => {
 	} = useLocales();
 
 	const {
-		data: captionsData,
-		isLoading: isCaptionsLoading,
-		error: captionsError,
-	} = useCaptions();
-
-	const {
-		data: navData,
-		isLoading: isNavLoading,
-		error: navError,
-	} = useNavigation();
-
-	const {
-		data: btnData,
-		isLoading: isBtnLoading,
-		error: btnError,
-	} = useButtons();
+		captions: captionsData,
+		btnCaptions: btnData,
+		navData,
+		isLoading: isAppContentLoading,
+		error: appContentError,
+	} = useAppContent();
 
 	const { pathname } = useLocation();
 
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
-
-	const isAnyLoading =
-		isLocalesLoading || isCaptionsLoading || isNavLoading || isBtnLoading;
-	const isAnyError = localesError || captionsError || navError || btnError;
 
 	useEffect(() => {
 		const defaultLocale = localesData?.find(locale => locale.isDefault);
@@ -95,7 +81,7 @@ const App = () => {
 		}, {});
 	}, [btnData]);
 
-	if (isAnyLoading) {
+	if (isAppContentLoading || isLocalesLoading) {
 		return (
 			<div className="wrapper">
 				<Loader />
@@ -103,7 +89,14 @@ const App = () => {
 		);
 	}
 
-	if (isAnyError || !captionsData || !btnData || !navData || !localesData) {
+	if (
+		appContentError ||
+		localesError ||
+		!captionsData ||
+		!btnData ||
+		!navData ||
+		!localesData
+	) {
 		return <p>Ошибка загрузки данных</p>;
 	}
 
@@ -168,8 +161,24 @@ const App = () => {
 
 					<Route path="/auth" element={<Auth />}>
 						<Route index element={<Navigate to="registration" replace />} />
-						<Route path="registration" element={<RegistrationForm />} />
-						<Route path="autorisation" element={<AutorisationForm />} />
+						<Route
+							path="registration"
+							element={
+								<RegistrationForm
+									captions={captions}
+									btnCaptions={btnCaptions}
+								/>
+							}
+						/>
+						<Route
+							path="authorization"
+							element={
+								<AuthorizationForm
+									captions={captions}
+									btnCaptions={btnCaptions}
+								/>
+							}
+						/>
 					</Route>
 					<Route path="/empty" element={<EmptyPage />} />
 					<Route path="*" element={<Navigate to="/empty" replace />} />
@@ -198,7 +207,11 @@ const App = () => {
 				aria-describedby="modal-modal-description"
 			>
 				<Box sx={style}>
-					<AutorisationForm onClose={handleClose} />
+					<AuthorizationForm
+						onClose={handleClose}
+						captions={captions}
+						btnCaptions={btnCaptions}
+					/>
 				</Box>
 			</Modal>
 		</div>

@@ -12,7 +12,15 @@ type FormData = {
 	company: string;
 };
 
-const ContactUsForm = () => {
+type ContactUsFormProps = {
+	captions: Record<string, string>;
+	btnCaptions: Record<string, string>;
+};
+
+const ContactUsForm: React.FC<ContactUsFormProps> = ({
+	btnCaptions,
+	captions,
+}) => {
 	const {
 		handleSubmit,
 		control,
@@ -67,7 +75,7 @@ const ContactUsForm = () => {
 				/>
 
 				<Button type="submit" variant="accent" className={style.submitBtn}>
-					Заказать звонок
+					{btnCaptions.callback}
 				</Button>
 			</form>
 		</div>

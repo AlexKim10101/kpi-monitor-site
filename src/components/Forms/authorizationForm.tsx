@@ -9,11 +9,16 @@ type FormData = {
 	password: string;
 };
 
-type AutorisationFormProps = {
+type AuthorizationFormProps = {
 	onClose?: () => void;
+	captions: Record<string, string>;
+	btnCaptions: Record<string, string>;
 };
 
-const AutorisationForm: React.FC<AutorisationFormProps> = ({ onClose }) => {
+const AuthorizationForm: React.FC<AuthorizationFormProps> = ({
+	onClose,
+	btnCaptions,
+}) => {
 	const {
 		handleSubmit,
 		control,
@@ -64,16 +69,16 @@ const AutorisationForm: React.FC<AutorisationFormProps> = ({ onClose }) => {
 							onClose && onClose();
 						}}
 					>
-						Зарегистрироваться
+						{btnCaptions.register}
 					</Link>
 				</div>
 
 				<Button type="submit" variant="accent" className={style.submitBtn}>
-					Войти
+					{btnCaptions.entry}
 				</Button>
 			</form>
 		</div>
 	);
 };
 
-export default AutorisationForm;
+export default AuthorizationForm;

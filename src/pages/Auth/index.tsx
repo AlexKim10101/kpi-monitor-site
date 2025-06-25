@@ -21,13 +21,16 @@ const Autorisation: React.FC<AutorisationProps> = () => {
 					<div className={style.tag}>Организация презентации</div>
 					<div className={style.tag}>Методические материалы</div>
 				</div>
-				<div className={style.signa}>
+				<div className={classNames(style.signa, "only-desctop")}>
 					*Доступ к KPI MONITOR предоставляется на 10 дней
 				</div>
 			</div>
 
 			<div className={style.formContainer}>
 				<Outlet />
+			</div>
+			<div className={classNames(style.signa, "only-mobile")}>
+				*Доступ к KPI MONITOR предоставляется на 10 дней
 			</div>
 		</section>
 	);

@@ -10,7 +10,7 @@ export const getTextFieldSx = (error: boolean, isFilled: boolean) => ({
 	"& .MuiInputLabel-root": {
 		color: "#747474",
 		fontFamily: "Manrope",
-		fontSize: "16px",
+		fontSize: "14px",
 		fontStyle: "normal",
 		fontWeight: 400,
 		lineHeight: "normal",
@@ -19,7 +19,7 @@ export const getTextFieldSx = (error: boolean, isFilled: boolean) => ({
 	"& .MuiInputLabel-root.MuiInputLabel-shrink": {
 		color: "#747474",
 		fontFamily: "Manrope",
-		fontSize: "16px",
+		fontSize: "14px",
 		fontStyle: "normal",
 		fontWeight: 400,
 		lineHeight: "normal",
@@ -28,7 +28,7 @@ export const getTextFieldSx = (error: boolean, isFilled: boolean) => ({
 	"& .MuiInputLabel-root.Mui-focused": {
 		color: PRIMARY_COLOR,
 		fontFamily: "Manrope",
-		fontSize: "16px",
+		fontSize: "14px",
 		fontStyle: "normal",
 		fontWeight: 400,
 		lineHeight: "normal",
@@ -37,7 +37,7 @@ export const getTextFieldSx = (error: boolean, isFilled: boolean) => ({
 	"& .MuiFilledInput-root": {
 		color: BLACK_COLOR,
 		fontFamily: "Manrope",
-		fontSize: "16px",
+		fontSize: "14px",
 		fontStyle: "normal",
 		fontWeight: 400,
 		lineHeight: "normal",
@@ -57,5 +57,27 @@ export const getTextFieldSx = (error: boolean, isFilled: boolean) => ({
 	},
 	"& .MuiFilledInput-root::after": {
 		display: "none",
+	},
+
+	"& .MuiFormLabel-asterisk": {
+		color: "#F57272",
+	},
+
+	"@media (min-width: 1025px)": {
+		"& .MuiInputLabel-root": {
+			fontSize: "16px",
+		},
+
+		"& .MuiInputLabel-root.MuiInputLabel-shrink": {
+			fontSize: "16px",
+		},
+
+		"& .MuiInputLabel-root.Mui-focused": {
+			fontSize: "16px",
+		},
+
+		"& .MuiFilledInput-root": {
+			fontSize: "16px",
+		},
 	},
 });

@@ -4,9 +4,9 @@
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	gap: 50px;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	gap: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .headingSection {
@@ -18,23 +18,43 @@
 
 .newsSectionDescription {
 	color: var(--black-color);
-	font-family: Manrope;
-	font-size: 16px;
+	font-family: "Manrope";
+	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
 }
+
 .btnCenter {
 	display: flex;
-	justify-content: center;
+	justify-content: stretch;
+	flex-direction: column;
+	width: 100%;
 }
 
 @media (min-width: 1025px) {
+	.newsPageWrapper {
+		gap: 50px;
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+
 	.headingSection {
 		flex-direction: row;
 	}
 
 	.newsSectionDescription {
 		width: 55%;
+	}
+
+	.newsSectionDescription {
+		font-size: 16px;
+	}
+
+	.btnCenter {
+		display: flex;
+		flex-direction: row;
+
+		justify-content: flex-start;
 	}
 }
