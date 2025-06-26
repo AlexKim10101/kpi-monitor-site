@@ -41,12 +41,14 @@ export interface Logo {
 export interface Card {
 	description: string;
 	logo: Logo;
+	[key: string]: any;
 }
 
 export interface Button {
 	id: number;
 	caption: string;
-	link: string;
+	link: string | null;
+	[key: string]: any;
 }
 
 export type IComponentTypes =
@@ -61,6 +63,7 @@ export interface BaseBlock<T extends IComponentTypes> {
 	__component: T;
 	id: number;
 	order: number;
+	[key: string]: any;
 }
 
 export interface MediaBlock extends BaseBlock<"shared.media"> {

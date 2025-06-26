@@ -115,25 +115,6 @@ const Footer: React.FC<IFooter> = ({
 					<Markdown remarkPlugins={[remarkGfm, remarkBreaks]}>
 						{captions.footer_copyright}
 					</Markdown>
-					{/* © 2010 KPI MONITOR - Автоматизация ключевых показателей эффективности
-					(KPI) предприятия. Все права защищены. Публикация любых материалов
-					сайта возможна только с разрешения владельца.{" "}
-					<Link
-						to="https://kpi-monitor.ru/terms-of-use"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Пользовательское соглашение
-					</Link>{" "}
-					|{" "}
-					<Link
-						to="https://kpi-monitor.ru/privacy-policy"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Политика конфиденциальности
-					</Link>{" "}
-					. */}
 				</div>
 			</div>
 		</footer>

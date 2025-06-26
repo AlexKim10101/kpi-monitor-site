@@ -14,8 +14,8 @@ export const renderBlock = (block: ArticleContentBlock) => {
 			return (
 				<div key={block.id} className={style.media}>
 					<img
-						width={`${block.file.width}px`}
-						height={`${block.file.height}px`}
+						// width={`${block.file.width}px`}
+						// height={`${block.file.height}px`}
 						src={getImageUrl(block.file.url)}
 						alt={block.file.name}
 					/>
@@ -70,7 +70,7 @@ export const renderBlock = (block: ArticleContentBlock) => {
 			return (
 				<div key={block.id} className={style.button}>
 					{block.buttons.map(b => (
-						<Button key={b.id} variant="accent" href={b.link}>
+						<Button key={b.id} variant="accent" href={b.link ? b.link : ""}>
 							{b.caption}
 						</Button>
 					))}

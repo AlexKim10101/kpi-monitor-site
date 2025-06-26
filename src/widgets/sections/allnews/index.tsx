@@ -20,7 +20,7 @@ const AllNewsSection: React.FC<IAllNewsSectionProps> = ({
 		<section className="section">
 			<div className={style.grid}>
 				{news.map(n => (
-					<Link to={pathname + `/article/${n.id}`}>
+					<Link key={n.id} to={pathname + `/article/${n.id}`}>
 						<div key={n.id} className={style.gridItem}>
 							<img
 								className={style.image}
@@ -37,12 +37,7 @@ const AllNewsSection: React.FC<IAllNewsSectionProps> = ({
 							</div>
 							<div className={style.itemDescription}>
 								<div className={style.itemDescriptionText}>{n.description}</div>
-								<Button
-									variant="secondary"
-									href={pathname + `/article/${n.id}`}
-								>
-									{btnCaptions.details}
-								</Button>
+								<Button variant="secondary">{btnCaptions.details}</Button>
 							</div>
 						</div>
 					</Link>

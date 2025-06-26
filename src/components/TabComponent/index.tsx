@@ -113,7 +113,12 @@ const TabComponent: React.FC<ITabComponent> = ({ solutions, btnCaptions }) => {
 				</Tabs>
 			</Box>
 			<div className={style.solutionContent}>
-				<Button variant="secondary" size="medium" className="only-mobile">
+				<Button
+					variant="secondary"
+					size="medium"
+					className="only-mobile"
+					href="/auth/registration"
+				>
 					{btnCaptions.quick_start}
 				</Button>
 				<div className={style.solutionPicture}>

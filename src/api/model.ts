@@ -26,6 +26,7 @@ import {
 	fakeNews,
 	fakeOperation,
 	fakeStage,
+	fakeArticle_1,
 } from "@consts/mockData";
 
 export function useNavigation() {
@@ -169,7 +170,7 @@ export function useSingleNews(id: string) {
 			fetchFromApi(
 				`/news?filters[id][$eq]=${id}&populate[content][populate]=*&locale=${language}`,
 				undefined,
-				USE_MOCK ? [] : undefined
+				USE_MOCK ? fakeArticle_1 : undefined
 			),
 	});
 }
@@ -183,7 +184,7 @@ export function useCardBlockData(id: string) {
 			fetchFromApi(
 				`/news?filters[id][$eq]=${id}&locale=${language}&populate[content][on][shared.card-block][populate][card][populate]=logo`,
 				undefined,
-				USE_MOCK ? [] : undefined
+				USE_MOCK ? fakeArticle_1 : undefined
 			),
 	});
 }

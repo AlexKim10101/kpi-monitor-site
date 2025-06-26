@@ -55,8 +55,9 @@ export interface AllNews {
 	[key: string]: any;
 }
 
-export interface Articles extends AllNews {
+export interface Articles extends Omit<AllNews, "picture"> {
 	content: ArticleContentBlock[];
+	[key: string]: any;
 }
 
 export interface Operation {

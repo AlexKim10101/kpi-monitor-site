@@ -1,21 +1,17 @@
-import { Link, useLocation, useParams } from "react-router";
+import { Link, useParams } from "react-router";
+import classNames from "classnames";
 import { useCardBlockData, useSingleNews } from "@api/model";
-import Typography from "@mui/material/Typography";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Loader from "@components/Loader";
-
+import Button from "@components/CustomButton";
+import { renderBlock } from "./renderBlock";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
-
-import classNames from "classnames";
-
-import style from "./Article.module.css";
 import formatDateToDDMMYYYY from "../../utils/dateformatter";
-import { renderBlock } from "./renderBlock";
-import { ArticleContentBlock } from "types/interfaces";
 import { prepareContent } from "../../utils/prepareArticleContent";
-import Button from "@components/CustomButton";
+import IconBackLink from "@assets/icons/icon_back_link.svg";
+import style from "./Article.module.css";
 
 type ArticlePageProps = {
 	captions: Record<string, string>;
@@ -24,7 +20,6 @@ type ArticlePageProps = {
 
 const ArticlePage: React.FC<ArticlePageProps> = () => {
 	const { id } = useParams();
-	const { pathname } = useLocation();
 
 	if (!id) return null;
 
@@ -59,7 +54,7 @@ const ArticlePage: React.FC<ArticlePageProps> = () => {
 
 	return (
 		<section className={classNames("section", style.articleSection)}>
-			<div className={style.breadcrumbs}>
+			<div className={classNames(style.breadcrumbs, "only-desctop")}>
 				<Breadcrumbs>
 					<Link color="inherit" to="/infocentre">
 						Инфоцентр
@@ -70,6 +65,11 @@ const ArticlePage: React.FC<ArticlePageProps> = () => {
 					<span>{article.title}</span>
 				</Breadcrumbs>
 			</div>
+
+			<Link className={style.backLink} to="/infocentre/news">
+				<IconBackLink />
+				Назад в пресс-центр
+			</Link>
 
 			<div className={style.article}>
 				<div className={style.articleHeader}>
