@@ -11,6 +11,7 @@ import NewsPage from "./pages/News";
 import Auth from "./pages/Auth";
 import Contacts from "./pages/Contacts";
 import ArticlePage from "./pages/Article";
+import InterfacePage from "./pages/Interfaces";
 
 import Header from "./widgets/header";
 import Footer from "./widgets/footer";
@@ -69,7 +70,7 @@ const App = () => {
 
 	const captions = useMemo(() => {
 		return (captionsData || []).reduce<Record<string, string>>((acc, item) => {
-			acc[item.key] = item.caption;
+			acc[item.key.trim()] = item.caption;
 			return acc;
 		}, {});
 	}, [captionsData]);
@@ -99,6 +100,8 @@ const App = () => {
 	) {
 		return <p>Ошибка загрузки данных</p>;
 	}
+
+	// console.table(captionsData.sort((a, b) => Number(a.id) - Number(b.id)));
 
 	return (
 		<div className="wrapper">
@@ -133,6 +136,18 @@ const App = () => {
 						element={<Home captions={captions} btnCaptions={btnCaptions} />}
 					/>
 					<Route path="/main" element={<Navigate to="/" replace />} />
+
+					<Route path="/about">
+						<Route index element={<Navigate to="userinterface" replace />} />
+
+						<Route
+							path="userinterface"
+							element={
+								<InterfacePage captions={captions} btnCaptions={btnCaptions} />
+							}
+						/>
+					</Route>
+
 					<Route path="/infocentre">
 						<Route index element={<Navigate to="functionhandbook" replace />} />
 						<Route path="functionhandbook" element={<InfoPage />} />

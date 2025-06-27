@@ -89,7 +89,7 @@ export interface ButtonBlock extends BaseBlock<"shared.button"> {
 	buttons: Button[];
 }
 
-type ComponentMap = {
+type ArticleComponentMap = {
 	"shared.media": MediaBlock;
 	"shared.subhead": SubheadBlock;
 	"shared.rich-text": RichTextBlock;
@@ -98,4 +98,78 @@ type ComponentMap = {
 	"shared.button": ButtonBlock;
 };
 
-export type ArticleContentBlock = ComponentMap[keyof ComponentMap];
+export type ArticleContentBlock =
+	ArticleComponentMap[keyof ArticleComponentMap];
+
+/////
+
+export type Component = "gallery" | "picture" | "cards";
+
+export const COMPONENT_TYPES = {
+	GALLERY: "type-content.gallery",
+	CARDS: "type-content.cards",
+	PICTURES: "type-content.pictures",
+} as const;
+
+export type ComponentType =
+	(typeof COMPONENT_TYPES)[keyof typeof COMPONENT_TYPES];
+
+export type DescriptionElement = Paragraph | List;
+
+export interface Paragraph {
+	type: "paragraph";
+	children: {
+		type: "text";
+		children: { text: string; type: "text" }[];
+	}[];
+}
+
+export interface List {
+	type: "list";
+	children: {
+		type: "list-item";
+		children: { text: string; type: "text" }[];
+	}[];
+}
+
+interface BaseContentItem {
+	id: number;
+	order: number;
+	[key: string]: any;
+}
+
+export interface GalleryContentItem extends BaseContentItem {
+	__component: "type-content.gallery";
+	title?: string | null;
+	description: DescriptionElement[];
+	picture_first: boolean;
+	picture: Picture;
+}
+
+export interface CardListContentItem extends BaseContentItem {
+	__component: "type-content.cards";
+	title: string;
+	description: string;
+	picture: Picture;
+}
+
+export interface PictureContentItem extends BaseContentItem {
+	__component: "type-content.pictures";
+	picture: Picture;
+}
+
+type ComponentMap = {
+	gallery: GalleryContentItem[];
+	picture: PictureContentItem[];
+	cards: CardListContentItem[];
+};
+
+export interface InterfaceDataItem<T extends Component = Component> {
+	id: number;
+	title: string;
+	interface_type: "user" | "admin";
+	order: number;
+	description: string | null;
+	type_content: T;
+	content: ComponentMap[T];
+}

@@ -10,19 +10,7 @@
 	align-items: center;
 	gap: 30px;
 }
-.solutionContainer {
-	display: flex;
-	flex-direction: column;
-	gap: 40px;
-	gap: 3px;
 
-	width: 100%;
-}
-.solutionContent {
-	display: flex;
-	flex-direction: column-reverse;
-	gap: 15px;
-}
 .solutionPicture,
 .solutionDescription {
 	position: relative;
@@ -58,7 +46,7 @@
 	line-height: normal;
 }
 
-.solBtnWrap {
+.solutionBtnWrap {
 	display: block;
 	position: absolute;
 	top: 50%;
@@ -98,38 +86,16 @@
 	}
 }
 
-@media (min-width: 320px) {
-	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-}
-@media (min-width: 480px) {
-	/* smartphones, Android phones, landscape iPhone */
-}
-@media (min-width: 600px) {
-	/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-}
-@media (min-width: 801px) {
-	/* tablet, landscape iPad, lo-res laptops ands desktops */
-}
 @media (min-width: 1025px) {
 	.solutionsSection {
 		padding: 60px 0px;
 		gap: 50px;
 	}
 
-	.solutionContainer {
-		gap: 40px;
-	}
-	.solutionContent {
-		flex-direction: row;
-		gap: 30px;
-	}
 	.solutionDescription {
 		gap: 20px;
 	}
 	.descriptionText {
 		font-size: 16px;
 	}
-}
-@media (min-width: 1281px) {
-	/* hi-res laptops and desktops */
 }

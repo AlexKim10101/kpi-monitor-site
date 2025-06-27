@@ -28,6 +28,7 @@ import {
 	fakeStage,
 	fakeArticle_1,
 } from "@consts/mockData";
+import { InterfaceDataItem } from "types/interfaces";
 
 export function useNavigation() {
 	const { language } = useLanguage();
@@ -213,6 +214,20 @@ export function useStages() {
 				`/applications?populate=icon&locale=${language}`,
 				undefined,
 				USE_MOCK ? fakeStage : undefined
+			),
+	});
+}
+
+export function useInterfaceData() {
+	const { language } = useLanguage();
+
+	return useQuery<InterfaceDataItem[]>({
+		queryKey: ["interfaces", language],
+		queryFn: () =>
+			fetchFromApi(
+				`/user-interfaces?populate[content][populate]=*&locale=${language}`,
+				undefined,
+				USE_MOCK ? [] : undefined
 			),
 	});
 }
