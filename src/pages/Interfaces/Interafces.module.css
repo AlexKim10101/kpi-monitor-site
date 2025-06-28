@@ -1,15 +1,21 @@
 .wrapper {
+	width: 100%;
 	margin-top: 60px;
 	margin-bottom: 60px;
 
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 60px;
 }
 
 .topSection {
 	display: flex;
 	justify-content: space-between;
+}
+
+.contentSection {
+	background-color: transparent;
 }
 
 .container {
@@ -29,4 +35,27 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+
+.tabsWrapper {
+	width: 100%;
+	max-width: 1200px;
+
+	position: relative;
+}
+
+/* .contentWrapper {
+	position: relative;
+} */
+
+.border {
+	position: absolute;
+	width: 100vw;
+	height: 2px;
+	border-bottom: 1px solid #aabefa;
+	left: 50%;
+	transform: translateX(-50%);
+
+	bottom: 61px;
+	z-index: 0;
 }

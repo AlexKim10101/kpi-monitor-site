@@ -34,8 +34,10 @@ export const getTabsSx = () => ({
 	"@media (min-width: 1025px)": {
 		"& .MuiTab-root": {
 			fontSize: "16px",
+			flexGrow: 1,
+
 			// width: "47%",
-			// maxWidth: "none",
+			maxWidth: "none",
 
 			"&.Mui-selected": {
 				borderBottom: "1px solid transparent",
@@ -48,7 +50,7 @@ export const getTabsSx = () => ({
 		},
 
 		"& .MuiTabs-indicator": {
-			height: "2px",
+			height: "1px",
 			bottom: "0px",
 			display: "block",
 		},
