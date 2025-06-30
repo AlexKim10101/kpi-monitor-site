@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import classNames from "classnames";
 import styles from "./Interafces.module.css";
 import Button from "@components/CustomButton";
@@ -13,6 +13,9 @@ import { fakeAdminDescription } from "@consts/consts";
 import { getDinamiContent } from "./getContent";
 import { getImageUrl } from "../../utils/getImageUrl";
 import ScalingImgEithBtn from "@components/ScalingImgWithBtn";
+import { Box, Modal } from "@mui/material";
+import { getModalSx, getTintSx } from "@components/Modal/getModalStyles";
+import RegistrationForm from "@components/Forms/registrationForm";
 
 type IDataWrapperProps = {
 	captions: Record<string, string>;
@@ -81,7 +84,10 @@ const InterfacePage: React.FC<InterfacePageProps> = ({
 	// console.log("userData", userData);
 	// console.log("adminData", adminData);
 
-	const [value, setValue] = React.useState(0);
+	const [value, setValue] = useState(0);
+	const [open, setOpen] = useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 	const tabsTitles = ["Интерфейс пользователя", "Интерфейс администратора"];
 	const currentData = data[value];
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -104,6 +110,7 @@ const InterfacePage: React.FC<InterfacePageProps> = ({
 							path={getImageUrl("/uploads/demo_23d3d55044.png")}
 							alt="demo-img"
 							btnCaption={btnCaptions.demo}
+							onClick={isUser ? undefined : handleOpen}
 						/>
 					</div>
 				</div>
@@ -158,6 +165,17 @@ const InterfacePage: React.FC<InterfacePageProps> = ({
 					</TabComponent>
 				</div>
 			</section>
+
+			<Modal open={open} onClose={handleClose} sx={getTintSx()}>
+				<Box sx={getModalSx()}>
+					<RegistrationForm
+						onClose={handleClose}
+						title="Зарегистрируйтесь для доступа к возможностям администратора"
+						captions={captions}
+						btnCaptions={btnCaptions}
+					/>
+				</Box>
+			</Modal>
 		</div>
 	);
 };

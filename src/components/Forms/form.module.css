@@ -1,4 +1,5 @@
 .formContainer {
+	min-width: 90vw;
 	box-sizing: border-box;
 	padding: 20px 15px;
 
@@ -72,6 +73,8 @@
 
 @media (min-width: 1025px) {
 	.formContainer {
+		min-width: auto;
+
 		width: 615px;
 		border-radius: 20px;
 		padding: 30px;

@@ -13,11 +13,17 @@ type FormData = {
 };
 
 type RegistrationFormProps = {
+	title?: string;
+	onClose?: () => void;
 	captions: Record<string, string>;
 	btnCaptions: Record<string, string>;
 };
 
-const RegistrationForm: React.FC<RegistrationFormProps> = ({ btnCaptions }) => {
+const RegistrationForm: React.FC<RegistrationFormProps> = ({
+	btnCaptions,
+	onClose,
+	title,
+}) => {
 	const {
 		handleSubmit,
 		control,
@@ -27,12 +33,15 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ btnCaptions }) => {
 
 	const onSubmit = (data: FormData) => {
 		console.log("Форма отправлена:", data);
+		onClose && onClose();
 	};
 
 	const values = watch();
 
 	return (
 		<div className={style.formContainer}>
+			{title && <div className={style.formTitle}>{title}</div>}
+
 			<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
 				<FormInput
 					control={control}

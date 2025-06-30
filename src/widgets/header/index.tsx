@@ -349,7 +349,7 @@ const Header: React.FC<IHeaderProps> = ({
 							<Button variant="secondary" href="/auth/registration">
 								{btnCaptions.quick_start}
 							</Button>
-							<Button variant="primary" href="/auth/autorisation">
+							<Button variant="primary" href="/auth/authorization">
 								{btnCaptions.entry}
 							</Button>
 						</div>

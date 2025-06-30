@@ -23,6 +23,7 @@ import AuthorizationForm from "@components/Forms/authorizationForm";
 import Button from "@components/CustomButton";
 import LanguageMenu from "@components/LanguageMenu";
 import { LOGO_DATA } from "@consts/consts";
+import { getModalSx, getTintSx } from "@components/Modal/getModalStyles";
 
 const style = {
 	position: "absolute",
@@ -215,13 +216,8 @@ const App = () => {
 				</Button>
 			</Footer>
 
-			<Modal
-				open={open}
-				onClose={handleClose}
-				aria-labelledby="modal-modal-title"
-				aria-describedby="modal-modal-description"
-			>
-				<Box sx={style}>
+			<Modal open={open} onClose={handleClose} sx={getTintSx()}>
+				<Box sx={getModalSx()}>
 					<AuthorizationForm
 						onClose={handleClose}
 						captions={captions}
