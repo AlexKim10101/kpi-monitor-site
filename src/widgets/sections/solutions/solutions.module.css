@@ -58,6 +58,12 @@
 	scale: 1.1;
 }
 
+.content {
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 15px;
+}
+
 @media (max-width: 1024px) {
 	.descriptionText {
 		display: -webkit-box;
@@ -87,6 +93,10 @@
 }
 
 @media (min-width: 1025px) {
+	.content {
+		flex-direction: row;
+		gap: 30px;
+	}
 	.solutionsSection {
 		padding: 60px 0px;
 		gap: 50px;

@@ -2,13 +2,17 @@ import React, { useMemo } from "react";
 import classNames from "classnames";
 import styles from "./Interafces.module.css";
 import Button from "@components/CustomButton";
-import { useInterfaceData } from "@api/model";
+import { useInterfaceData, useFiles } from "@api/model";
 import Loader from "@components/Loader";
 import { InterfaceDataItem, Component } from "types/interfaces";
 import { interfaceDataParser } from "./utils/dataParser";
 import { DataItemSchema } from "../../types/schemas/interfaceData";
 import TabComponent from "@components/TabComponent";
 import Tab from "@mui/material/Tab";
+import { fakeAdminDescription } from "@consts/consts";
+import { getDinamiContent } from "./getContent";
+import { getImageUrl } from "../../utils/getImageUrl";
+import ScalingImgEithBtn from "@components/ScalingImgWithBtn";
 
 type IDataWrapperProps = {
 	captions: Record<string, string>;
@@ -26,6 +30,11 @@ const DataWrapper: React.FC<IDataWrapperProps> = ({
 	btnCaptions,
 }) => {
 	const { data, isLoading, error } = useInterfaceData();
+	// const {
+	// 	data: fileData,
+	// 	isLoading: iLoadingFileData,
+	// 	error: errorFileData,
+	// } = useFiles();
 
 	if (isLoading) {
 		return <Loader />;
@@ -42,6 +51,11 @@ const DataWrapper: React.FC<IDataWrapperProps> = ({
 
 	const [userData, adminData] = interfaceDataParser(data);
 
+	// console.log(
+	// 	"fileData",
+	// 	fileData!.sort((a, b) => a.id - b.id)
+	// );
+
 	return (
 		<InterfacePage
 			btnCaptions={btnCaptions}
@@ -56,20 +70,13 @@ const InterfacePage: React.FC<InterfacePageProps> = ({
 	btnCaptions,
 	data,
 }) => {
-	// heading_userinterface;
-	// description_userinterface;
-	// heading_demo;
-	// heading_widgets;
-	// description_widgets;
-	// description_demouser;
-	// placeholder_name;
 	// console.log("heading_userinterface", captions.heading_userinterface);
 	// console.log("description_userinterface", captions.description_userinterface);
-	console.log("heading_demo", captions.heading_demo);
-	console.log("heading_widgets", captions.heading_widgets);
-	console.log("description_widgets", captions.description_widgets);
-	console.log("description_demouser", captions.description_demouser);
-	console.log("placeholder_name", captions.placeholder_name);
+	// console.log("heading_demo", captions.heading_demo);
+	// console.log("heading_widgets", captions.heading_widgets);
+	// console.log("description_widgets", captions.description_widgets);
+	// console.log("description_demouser", captions.description_demouser);
+	// console.log("placeholder_name", captions.placeholder_name);
 
 	// console.log("userData", userData);
 	// console.log("adminData", adminData);
@@ -81,28 +88,59 @@ const InterfacePage: React.FC<InterfacePageProps> = ({
 		setValue(newValue);
 	};
 
+	const getStaticContent = (isUser: boolean) => {
+		return (
+			<div className={styles.staticContent}>
+				<div className={styles.infoBlock}>
+					<div className={classNames("section-title", styles.subtitle)}>
+						{captions.heading_demo}
+					</div>
+					<div className={styles.description}>
+						{isUser ? captions.description_demouser : fakeAdminDescription}
+					</div>
+
+					<div className={styles.imgBlock}>
+						<ScalingImgEithBtn
+							path={getImageUrl("/uploads/demo_23d3d55044.png")}
+							alt="demo-img"
+							btnCaption={btnCaptions.demo}
+						/>
+					</div>
+				</div>
+
+				{isUser && (
+					<div className={styles.infoBlock}>
+						<div className={classNames("section-title", styles.subtitle)}>
+							{captions.heading_widgets}
+						</div>
+						<div className={styles.description}>
+							{captions.description_widgets}
+						</div>
+					</div>
+				)}
+			</div>
+		);
+	};
+
+	const titleImgSrc =
+		value === 0 ? "/images/user_int_img.png" : "/images/admin_int_img.png";
+
 	return (
 		<div className={styles.wrapper}>
 			<section className={classNames("section", styles.topSection)}>
 				<div className={styles.container}>
 					<div className="section-title">{captions.heading_userinterface}</div>
-					<div className={styles.description}>
+					<div className={classNames(styles.description, styles.mt15)}>
 						{captions.description_userinterface}
 					</div>
 					<Button variant="accent">{btnCaptions.demo}</Button>
 				</div>
 
 				<div className={styles.imgContainer}>
-					<img src="/images/user_int_img.png" alt="user_int_img" />
+					<img src={titleImgSrc} alt="title_int_img" />
 				</div>
 			</section>
-			<section
-				className={classNames(
-					"section",
-					"section-fullWidth",
-					styles.contentSection
-				)}
-			>
+			<section className={classNames("section", styles.contentSection)}>
 				<div className={styles.tabsWrapper}>
 					<div className={styles.border}></div>
 
@@ -113,7 +151,10 @@ const InterfacePage: React.FC<InterfacePageProps> = ({
 							<Tab key={index} value={index} label={title} disableRipple />
 						))}
 					>
-						CONTENT
+						<div className={styles.tabComponentContent}>
+							{getStaticContent(value === 0)}
+							{currentData.map(getDinamiContent)}
+						</div>
 					</TabComponent>
 				</div>
 			</section>

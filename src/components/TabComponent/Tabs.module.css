@@ -13,12 +13,6 @@
 	width: 100%;
 }
 
-.content {
-	display: flex;
-	flex-direction: column-reverse;
-	gap: 15px;
-}
-
 .tabsBorder {
 	width: 100%;
 
@@ -34,10 +28,6 @@
 
 	.container {
 		gap: 40px;
-	}
-	.content {
-		flex-direction: row;
-		gap: 30px;
 	}
 }
 /* className={tabStyle.tabs} */

@@ -30,6 +30,14 @@ import {
 } from "@consts/mockData";
 import { InterfaceDataItem } from "types/interfaces";
 
+export function useFiles() {
+	return useQuery<any[]>({
+		queryKey: ["files"],
+		queryFn: () =>
+			fetchFromApi(`/upload/files`, undefined, USE_MOCK ? [] : undefined),
+	});
+}
+
 export function useNavigation() {
 	const { language } = useLanguage();
 

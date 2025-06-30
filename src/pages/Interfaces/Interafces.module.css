@@ -1,17 +1,19 @@
 .wrapper {
 	width: 100%;
-	margin-top: 60px;
-	margin-bottom: 60px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 60px;
+	gap: 30px;
 }
 
 .topSection {
 	display: flex;
 	justify-content: space-between;
+	flex-direction: column;
+	gap: 16px;
 }
 
 .contentSection {
@@ -19,21 +21,70 @@
 }
 
 .container {
-	width: 585px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 15px;
 }
+.tabComponentContent {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.imgContainer img {
+	width: 100%;
+	object-fit: contain;
+}
 
 .description {
-	margin-top: 15px;
 	color: var(--black-color);
 
 	font-family: "Manrope";
-	font-size: 16px;
+	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
+	line-height: normal;
+
+	max-width: 775px;
+}
+
+.mt15 {
+	margin-top: 15px;
+}
+
+.staticContent {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin-top: 30px;
+}
+
+.infoBlock {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	row-gap: 15px;
+	flex-wrap: wrap;
+}
+
+.imgBlock {
+	width: 100%;
+}
+
+.imgBlock img {
+	width: 100%;
+
+	object-fit: cover;
+}
+
+.subtitle {
+	color: var(--Accent, #22409a);
+
+	font-family: Manrope;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 600;
 	line-height: normal;
 }
 
@@ -56,6 +107,235 @@
 	left: 50%;
 	transform: translateX(-50%);
 
-	bottom: 61px;
+	top: 44px;
 	z-index: 0;
+}
+
+.pictureBlock,
+.cardsBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.pictureContainer img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+.cardsContainer {
+	display: flex;
+	gap: 15px;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+}
+
+.card {
+	min-width: 240px;
+	box-sizing: border-box;
+
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto;
+	gap: 15px;
+
+	padding: 15px 10px 10px 10px;
+
+	border-radius: 10px;
+	border: 1px solid var(--blue_sec, #e1e9ff);
+	background: var(--white, #fefeff);
+
+	/* 2 */
+	box-shadow: 0px 2px 20px 0px rgba(45, 86, 206, 0.05);
+}
+
+.image img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.cardTitle {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	color: var(--Accent, #22409a);
+
+	font-family: Manrope;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+
+	order: 1;
+}
+
+.image {
+	order: 2;
+}
+
+.cardDescription {
+	color: var(--black, #141414);
+
+	font-family: Manrope;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	order: 3;
+}
+
+.galleryBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	overflow: hidden;
+}
+
+.slide {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	max-width: 100%;
+}
+
+.slideImg,
+.slideDescription {
+	/* flex: 1 1 calc(50% - 15px); */
+	max-width: 100%;
+}
+
+.slideImg img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.slideDescription {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.slideDescription ul {
+	margin: 0;
+	padding-inline-start: 1.2rem;
+}
+
+.slideDescription li {
+	color: var(--black, #141414);
+
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.descriptionTitle {
+	color: var(--black, #141414);
+
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+@media (min-width: 1025px) {
+	.wrapper {
+		margin-top: 60px;
+		margin-bottom: 60px;
+
+		gap: 60px;
+	}
+	.topSection {
+		flex-direction: row;
+	}
+	.container {
+		width: 585px;
+	}
+	.description {
+		font-size: 16px;
+	}
+
+	.subtitle {
+		min-width: 405px;
+		font-size: 24px;
+	}
+
+	.tabComponentContent {
+		gap: 60px;
+	}
+
+	.staticContent {
+		margin-top: 20px;
+		gap: 60px;
+	}
+
+	.infoBlock {
+		row-gap: 30px;
+	}
+
+	.pictureBlock,
+	.cardsBlock {
+		gap: 30px;
+	}
+	.cardsContainer {
+		gap: 30px;
+		flex-wrap: wrap;
+	}
+
+	.card {
+		min-width: auto;
+		flex: 1 1 calc(50% - 15px);
+		box-sizing: border-box;
+
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto auto;
+		grid-auto-flow: column;
+		gap: 20px;
+
+		padding: 30px 0px 30px 30px;
+	}
+
+	.image {
+		grid-row: span 2;
+		width: 280px;
+		order: 1;
+	}
+	.cardTitle {
+		font-size: 16px;
+		order: 1;
+	}
+
+	.cardDescription {
+		font-size: 16px;
+		order: 1;
+	}
+
+	.galleryBlock {
+		gap: 30px;
+	}
+
+	.slide {
+		flex-direction: row;
+		gap: 30px;
+	}
+
+	.slideImg,
+	.slideDescription {
+		flex: 1 1 calc(50% - 15px);
+	}
+
+	.slideDescription {
+		gap: 20px;
+	}
+
+	.firstSlideDescription {
+		order: -1;
+	}
 }

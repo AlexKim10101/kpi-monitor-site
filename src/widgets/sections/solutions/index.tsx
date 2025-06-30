@@ -9,6 +9,7 @@ import Loader from "@components/Loader";
 import { Solution } from "@api/interfaces";
 import Button from "@components/CustomButton";
 import { getImageUrl } from "../../../utils/getImageUrl";
+import ScalingImgEithBtn from "@components/ScalingImgWithBtn";
 
 type IDataWrapperProps = {
 	captions: Record<string, string>;
@@ -67,16 +68,22 @@ const SolutionsSection: React.FC<ISolutionsSectionProps> = ({
 					<Tab key={s.id} value={index} label={s.caption} disableRipple />
 				))}
 			>
-				<Button
-					variant="secondary"
-					size="medium"
-					className="only-mobile"
-					href="/auth/registration"
-				>
-					{btnCaptions.quick_start}
-				</Button>
-				<div className={style.solutionPicture}>
-					<img
+				<div className={style.content}>
+					<Button
+						variant="secondary"
+						size="medium"
+						className="only-mobile"
+						href="/auth/registration"
+					>
+						{btnCaptions.quick_start}
+					</Button>
+					<div className={style.solutionPicture}>
+						<ScalingImgEithBtn
+							path={getImageUrl(solution?.picture?.formats.medium.url)}
+							alt={solution?.picture?.name}
+							btnCaption={btnCaptions.demo}
+						/>
+						{/* <img
 						src={getImageUrl(solution?.picture?.formats.medium.url)}
 						alt={solution?.picture?.name}
 					/>
@@ -84,32 +91,33 @@ const SolutionsSection: React.FC<ISolutionsSectionProps> = ({
 						<Button variant="primary" size="medium">
 							{btnCaptions.demo}
 						</Button>
+					</div> */}
 					</div>
-				</div>
-				<div className={style.solutionDescription}>
-					<div
-						className={classNames(
-							style.descriptionText,
-							expanded && style.expanded
-						)}
-					>
-						{solution?.description}
-					</div>
-					<button
-						className={classNames(style.toggleButton, "only-mobile")}
-						onClick={() => setExpanded(prev => !prev)}
-					>
-						{expanded ? "Скрыть" : "Показать больше"}
-					</button>
+					<div className={style.solutionDescription}>
+						<div
+							className={classNames(
+								style.descriptionText,
+								expanded && style.expanded
+							)}
+						>
+							{solution?.description}
+						</div>
+						<button
+							className={classNames(style.toggleButton, "only-mobile")}
+							onClick={() => setExpanded(prev => !prev)}
+						>
+							{expanded ? "Скрыть" : "Показать больше"}
+						</button>
 
-					<Button
-						variant="secondary"
-						size="medium"
-						className="only-desctop"
-						href="/auth/registration"
-					>
-						{btnCaptions.quick_start}
-					</Button>
+						<Button
+							variant="secondary"
+							size="medium"
+							className="only-desctop"
+							href="/auth/registration"
+						>
+							{btnCaptions.quick_start}
+						</Button>
+					</div>
 				</div>
 			</TabComponent>
 		</section>

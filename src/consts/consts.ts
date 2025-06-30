@@ -22,10 +22,18 @@ export const INACTIVE = "#747474";
 // export const DEV_BASE_URL = "http://213.219.199.45";
 export const DEV_BASE_URL = "http://10.0.0.39:1337";
 
+const imgNames = ["demo.png", "img_main 1.png", "img_main_mob 1.png"];
+
 export const locationsDict = {
 	main: "/main",
 	functionhandbook: "/functionhandbook",
 };
+
+export const fakeCardsDescription =
+	"Составные диаграммы помогают визуализировать части целого и вложенные данные. Также в системе есть удобная сортировка показателей воронками.";
+
+export const fakeAdminDescription =
+	"Интерфейс администратора позволяет настроить для пользователя разнообразные по своему внешнему виду и составу Рабочие столы. Мы гордимся простым и не перегруженным интерфейсом KPI Monitor, который снижает нагрузку и помогает сосредоточиться на анализе данных. Оцените функциональность интерфейса сами — воспользуйтесь демо-макетом.";
 
 const componentTypes = [
 	"shared.media",

@@ -118,18 +118,22 @@ export type DescriptionElement = Paragraph | List;
 
 export interface Paragraph {
 	type: "paragraph";
-	children: {
-		type: "text";
-		children: { text: string; type: "text" }[];
-	}[];
+	children: TextNode[];
 }
 
 export interface List {
 	type: "list";
-	children: {
-		type: "list-item";
-		children: { text: string; type: "text" }[];
-	}[];
+	children: ListItem[];
+}
+
+export interface TextNode {
+	type: "text";
+	text: string;
+}
+
+export interface ListItem {
+	type: "list-item";
+	children: TextNode[];
 }
 
 interface BaseContentItem {
@@ -173,3 +177,21 @@ export interface InterfaceDataItem<T extends Component = Component> {
 	type_content: T;
 	content: ComponentMap[T];
 }
+
+// export type DescriptionElement = Paragraph | List;
+
+// export interface Paragraph {
+// 	type: "paragraph";
+// 	children: {
+// 		type: "text";
+// 		children: { text: string; type: "text" }[];
+// 	}[];
+// }
+
+// export interface List {
+// 	type: "list";
+// 	children: {
+// 		type: "list-item";
+// 		children: { text: string; type: "text" }[];
+// 	}[];
+// }

@@ -274,6 +274,7 @@ const Header: React.FC<IHeaderProps> = ({
 									if (hasChildren) {
 										return (
 											<MobAccordionComponent
+												key={parent.key}
 												summary={
 													<li key={parent.id} className={linkClassName}>
 														{parent.caption}

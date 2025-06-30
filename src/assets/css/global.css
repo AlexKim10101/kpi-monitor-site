@@ -5,6 +5,8 @@ html {
 
 body {
 	font-family: "Manrope", sans-serif;
+
+	overflow: hidden;
 }
 
 .wrapper {

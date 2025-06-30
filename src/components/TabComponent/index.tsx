@@ -31,7 +31,7 @@ const TabComponent: React.FC<ITabComponent> = ({
 					{tabs}
 				</Tabs>
 			</div>
-			<div className={style.content}>{children}</div>
+			{children}
 		</div>
 	);
 };

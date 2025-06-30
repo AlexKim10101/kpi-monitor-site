@@ -1,7 +1,16 @@
 .slider-container {
-	width: 150%;
+	/* width: 150%; */
 	position: relative;
-	left: -5px;
+	left: 0px;
+}
+.extraWidth {
+	width: 150%;
+}
+
+.slick-dots {
+	position: static;
+	margin-top: 15px;
+	color: var(--primary-color);
 }
 
 .card {
@@ -44,6 +53,10 @@
 	gap: 20px;
 }
 
+.buttonContainerWithCounter {
+	gap: 10px;
+}
+
 .client-card {
 	display: flex;
 	flex-direction: column;
@@ -67,6 +80,7 @@
 	/* big landscape tablets, laptops, and desktops */
 	.button-container {
 		display: flex;
+		align-items: center;
 	}
 	.card {
 		min-height: 192px;
@@ -76,8 +90,8 @@
 	}
 
 	.slider-container {
-		width: calc(100% + 10px);
-		left: -5px;
+		width: 100%;
+		left: 0px;
 	}
 }
 @media (min-width: 1281px) {
@@ -105,6 +119,11 @@
 	cursor: pointer;
 }
 
+.arrow-button {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
 .left-arrow-hover_svg__left2 {
 	display: none;
 }
@@ -127,4 +146,34 @@
 
 .arrow-button:hover .right-arrow-hover_svg__right-arrow-hover {
 	display: block;
+}
+
+.counter {
+	color: var(--black, #141414);
+
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	width: 45px;
+	display: flex;
+	justify-content: center;
+
+	user-select: none;
+}
+
+.dots-list {
+	pointer-events: none;
+	margin: 0;
+	padding: 0;
+}
+
+.dots-list li button:before {
+	font-size: 8px;
+	color: var(--primary-color);
+}
+.slick-dots li.slick-active button:before {
+	color: var(--primary-color);
 }

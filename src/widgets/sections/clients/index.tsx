@@ -32,6 +32,7 @@ const ClientsSection: React.FC<IClientsSectionProps> = ({ captions }) => {
 				desctopSlidesToShow={6}
 				laptopSlidesToShow={3}
 				mobileSlidesToShow={3}
+				extraWidth
 			>
 				{data.map((item, index, arr) => {
 					const shift = Math.ceil(arr.length / 2);
